@@ -1490,6 +1490,7 @@ var Reveal = (function(){
 			var fragments = sortFragments( currentSlide.querySelectorAll( '.fragment' ) );
 
 			toArray( fragments ).forEach( function( fragment, indexf ) {
+				console.log(indexf, f);
 				if( indexf < f ) {
 					fragment.classList.add( 'visible' );
 				}
