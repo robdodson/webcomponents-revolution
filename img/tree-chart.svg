@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="346px" height="358px" viewBox="-13.282 -14.304 346 358"
+	 overflow="visible" enable-background="new -13.282 -14.304 346 358" xml:space="preserve">
+<defs>
+</defs>
+<circle fill="#3C7B3F" stroke="#000000" stroke-miterlimit="10" cx="158.123" cy="118.627" r="29.444"/>
+<circle fill="#3C7B3F" stroke="#000000" stroke-miterlimit="10" cx="99.236" cy="202.03" r="29.443"/>
+<circle fill="#3C7B3F" stroke="#000000" stroke-miterlimit="10" cx="29.944" cy="295.081" r="29.444"/>
+<circle fill="#3C7B3F" stroke="#000000" stroke-miterlimit="10" cx="118.122" cy="296.136" r="29.444"/>
+<circle fill="#3C7B3F" stroke="#000000" stroke-miterlimit="10" cx="217.01" cy="202.03" r="29.443"/>
+<text transform="matrix(1 0 0 1 146.1177 121.7251)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">body</text>
+<circle fill="#00AEEF" stroke="#000000" stroke-miterlimit="10" cx="158.123" cy="29.944" r="29.444"/>
+<text transform="matrix(1 0 0 1 133.7373 33.0435)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">document</text>
+<text transform="matrix(1 0 0 1 73.7197 205.1538)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">my-widget</text>
+<text transform="matrix(1 0 0 1 193.7197 199.8755)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">my-other-</text>
+<text transform="matrix(1 0 0 1 200.9512 213.6812)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">widget</text>
+<text transform="matrix(1 0 0 1 23.7993 298.1782)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">h1</text>
+<text transform="matrix(1 0 0 1 114.8486 299.2349)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">p</text>
+<circle fill="#3C7B3F" stroke="#000000" stroke-miterlimit="10" cx="202.364" cy="295.081" r="29.444"/>
+<circle fill="#3C7B3F" stroke="#000000" stroke-miterlimit="10" cx="290.543" cy="296.136" r="29.444"/>
+<text transform="matrix(1 0 0 1 196.2197 298.1782)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">h1</text>
+<text transform="matrix(1 0 0 1 287.2695 299.2349)" fill="#FFFFFF" font-family="'MyriadPro-Regular'" font-size="11.5051">p</text>
+<line fill="none" x1="138.99" y1="141.005" x2="113.609" y2="176.012"/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="138.99" y1="141.005" x2="117.822" y2="170.202"/>
+<polygon points="114.664,166.111 113.631,176.028 122.737,171.963 "/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="159.575" y1="59.387" x2="159.575" y2="82.467"/>
+<polygon points="154.617,81.008 159.603,89.644 164.589,81.008 "/>
+<line fill="none" x1="76.021" y1="221.411" x2="41.718" y2="268.499"/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="76.021" y1="221.411" x2="45.944" y2="262.698"/>
+<polygon points="42.795,258.6 41.74,268.514 50.855,264.471 "/>
+<line fill="none" x1="116.387" y1="225.286" x2="118.122" y2="266.693"/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="116.387" y1="225.286" x2="117.822" y2="259.523"/>
+<polygon points="112.807,258.273 118.149,266.692 122.77,257.855 "/>
+<line fill="none" x1="239.809" y1="220.66" x2="277.636" y2="269.667"/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="239.809" y1="220.66" x2="273.251" y2="263.987"/>
+<polygon points="268.435,265.861 277.657,269.651 276.327,259.768 "/>
+<line fill="none" x1="198.952" y1="225.286" x2="199.101" y2="265.942"/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="198.952" y1="225.286" x2="199.075" y2="258.766"/>
+<polygon points="194.112,257.325 199.129,265.942 204.083,257.288 "/>
+<line fill="none" x1="177.288" y1="141.005" x2="202.67" y2="176.012"/>
+<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="177.288" y1="141.005" x2="198.457" y2="170.202"/>
+<polygon points="193.587,171.93 202.692,175.996 201.659,166.078 "/>
+</svg>

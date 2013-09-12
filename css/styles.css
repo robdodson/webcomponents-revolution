@@ -10,17 +10,6 @@
 }
 
 @font-face {
-  font-family: 'archiveregular';
-  src: url('../fonts/archive-webfont.eot');
-  src: url('../fonts/archive-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/archive-webfont.woff') format('woff'),
-       url('../fonts/archive-webfont.ttf') format('truetype'),
-       url('../fonts/archive-webfont.svg#archiveregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'capture_itregular';
   src: url('../fonts/capture_it-webfont.eot');
   src: url('../fonts/capture_it-webfont.eot?#iefix') format('embedded-opentype'),
@@ -41,9 +30,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
-
-
 
 @font-face {
   font-family: 'league_gothicregular';
@@ -74,20 +60,6 @@
   font-weight: bold;
 }
 
-.demo {
-  height: 600px;
-}
-
-.demo-code {
-  position: relative;
-}
-
-.btn-demo {
-  position: absolute;
-  right: 60px;
-  bottom: 10px;
-}
-
 .reveal section .img-chromeless {
   border: none;
   box-shadow: none;
@@ -105,3 +77,59 @@
 .reveal .slides section .fragment.visible.focus { opacity: 1; }
 
 .reveal .slides section code .fragment.force-focus { opacity: 1 !important; }
+
+/**
+ * Demos
+ */
+
+.demo-code {
+ position: relative;
+}
+
+.demo-btn {
+  position: absolute;
+  right: 60px;
+  bottom: 10px;
+}
+
+.reveal .demo .widget {
+  box-sizing: border-box;
+  width: 90%;
+  border: 2px dashed gray;
+  margin: 15px auto;
+  padding: 30px;
+}
+
+#demo-templates,
+#demo-content {
+  height: 600px;
+}
+
+.jigglypuff {
+  position: absolute;
+  -webkit-transform: rotate(-15deg);
+  width: 450px;
+  transition: bottom 0.3s ease !important;
+  bottom: -1000px;
+}
+
+.jigglypuff.in {
+  bottom: -350px;
+}
+
+#bio {
+  display: inline-block;
+}
+
+input[type="text"] {
+  font-size: 20px;
+  padding: 3px;
+}
+
+/**
+ * Helpers
+ */
+
+.hidden {
+  display: none;
+}

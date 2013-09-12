@@ -190,7 +190,7 @@
           </aside>
         </section>
         
-        <section class="demo" id="section-demo1">
+        <section class="demo" id="demo-templates">
           <div class="demo-code">
             <pre><code data-trim contenteditable style="margin-top: 20px;">
 <template id="my-widget">
@@ -207,10 +207,10 @@
   document.body.appendChild(template.content.cloneNode(true));
 &lt;/script&gt;
             </code></pre>
-            <button class="btn-demo" onclick="runDemo1();">Run</button>
+            <button class="demo-btn" onclick="runTemplateDemo();">Run</button>
           </div>
 
-          <template id="template-demo1">
+          <template>
             <img width="300" src=""/>
             <p>Templates. Full of WIN!</p>
             <script>
@@ -218,10 +218,10 @@
             </script>
           </template>
           <script>
-            function runDemo1() {
-              var template = document.querySelector('#template-demo1');
+            function runTemplateDemo() {
+              var section = Reveal.getCurrentSlide();
+              var template = section.querySelector('template');
               template.content.querySelector('img').src = 'http://localhost:3000/img/corgi.jpg';
-              var section = document.querySelector('#section-demo1');
               section.appendChild(template.content.cloneNode(true));
             }
           </script>
@@ -229,8 +229,8 @@
 
         <section style="text-align: left;">
           <h2>Gotchas</h2>
-          <h3>No Built-In Interpolation</h3>
-          <h3>Nested Templates Aren't Automatically Activated</h3>
+          <h3 class="fragment">No Built-In Interpolation</h3>
+          <h3 class="fragment" style="line-height: 1;">Nested Templates Aren't Automatically Activated</h3>
         </section>
 
         <section>
@@ -238,60 +238,34 @@
           
         </section>
 
-        <section>
-          <h2>Templates</h2>
-          <ul>
-            <li>
-              Completely inert
-            </li>
-            <li>
-              Activates when inserted into the DOM
-            </li>
-            <li>
-              Great for holding Shadow DOM
-            </li>
-          </ul>
-        </section>
-
         <section data-state="blackout">
           <h1 style="color: #FFF;">Shadow DOM</h1>
         </section>
 
-        <section style="text-align: left;">
+        <section>
           <p>
-            Shadow DOM allows developers to encapsulate their HTML markup and CSS styles.
-          </p>
-          <p>
-            It gives us the ability to build our own 1st class tags just like the &lt;video&gt; or &lt;audio&gt; tag.
+            <em>Encapsulation and Control</em>
           </p>
         </section>
 
         <section>
-          <p>video tag example w/ show shadow dom</p>
+          <h3>Typical HTML Document</h3>
+          <pre style="width: 50%; float: left; margin-top: 50px;"><code data-trim contenteditable>
+&lt;body&gt;
+  &lt;div class="my-widget"&gt;
+    &lt;h1&gt;My Widget Header&lt;/h1&gt;
+    &lt;p&gt;Some my-widget content&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="my-other-widget"&gt;
+    &lt;h1&gt;My Other Widget Header&lt;/h1&gt;
+    &lt;p&gt;Some my-other-widget content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+          </code></pre>
+          <img class="img-chromeless" style="width: 50%;" src="./img/tree-chart.svg">
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-            Simple html document
-
-            ```
-            <body>
-              <div class="my-widget">
-                <h1>My Widget Header</h1>
-                <p>Some my-widget content</p>
-              </div>
-              <div class="my-other-widget">
-                <h1>My Other Widget Header</h1>
-                <p>Some my-other-widget content</p>
-              </div>
-            </body>
-            ```
-
-            and graph?
-          </script>
-        </section>
-
-        <section class="demo">
+        <section class="demo" id="demo-shadow-host">
           <div class="demo-code">
 <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment" data-fragment-index="1">&lt;div class="widget"&gt;Hello, world!&lt;/div&gt;</span><span class="fragment" data-fragment-index="2">
@@ -302,12 +276,12 @@
 &lt;/script&gt;
 </span>
 </code></pre>
-            <button class="btn-demo" onclick="runDemo2();">Run</button>
+            <button class="demo-btn" onclick="runShadowHostDemo();">Run</button>
           </div>
 
           <div class="widget">Hello, world!</div>
           <script>
-            function runDemo2() {
+            function runShadowHostDemo() {
               var host = document.querySelector('.widget');
               var root = host.createShadowRoot();
               root.textContent = 'Im inside yr div!';
@@ -323,137 +297,233 @@
             });
           </script>
           
-          <p>inspect with dev tools</p>
-          <p>and graph?</p>
+          <aside class="notes">
+            Inspect with dev tools
 
-          <aside>
             The takeaway is that the content inside of the shadow host is not rendered. Instead, the content inside of the shadow root is what gets rendered.
           </aside>
         </section>
 
         <section>
-          <img style="margin-top: -30px; width: 100%;" class="img-chromeless" src="./img/tree-of-trees3.svg">
+          <img style="width: 100%;" class="img-chromeless" src="./img/tree-of-trees3.svg">
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-            Another example
-
-            ```
-            <body>
-              <div class="widget">Hello, world!</div>
-              <script>
-                var host = document.querySelector('.widget');
-                var root = host.createShadowRoot();
-
-                var header = document.createElement('h1');
-                header.textContent = 'A Wild Shadow Header Appeared!';
-
-                var paragraph = document.createElement('p');
-                paragraph.textContent = 'Some sneaky shadow text';
-
-                root.appendChild(header);
-                root.appendChild(paragraph);
-              </script>
-            </body>
-            ```
-          </script>
-
-          inspect with the dev tools
-
-          <aside>
-            Here I’m taking our previous example and just adding two additional elements to it. I’ve done this to illustrate that working with the Shadow DOM is really not so different from working with the regular DOM. You still create elements and use appendChild or insertBefore to add them to a parent.
-
-            Just like before, the content in the shadow host, Hello, world!, is not rendered. Instead the content in the shadow root is rendered.
-
-            “That’s easy enough,” you might say. “But what if I actually want the content in my shadow host to render?”
-          </aside>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            Style encapsulation
-
-            ```
-            <body>
-              <style>
-                button {
-                  font-size: 18px;
-                  font-family: cursive;
-                }
-              </style>
-              <button>I'm a regular button</button>
-              <div></div>
-
-              <script>
-                var host = document.querySelector('div');
-                var root = host.createShadowRoot();
-                root.innerHTML = '<style>button { font-size: 24px; color: blue; } </style>' +
-                                 '<button>I\'m a shadow button</button>'
-              </script>
-            </body>
-            ```
+        <section id="demo-style-encapsulation">
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;script&gt;
+  var host = document.querySelector('div');
+  var root = host.createShadowRoot();
+  root.innerHTML = '&lt;style&gt;button { font-size: 30px; color: blue; } &lt;/style&gt;' +
+                   '&lt;button&gt;I\'m a shadow button&lt;/button&gt;'
+&lt;/script&gt;
+          </code></pre>
+          <button>I'm a regular button</button>
+          <div></div>
+          <script>
+            var host = document.querySelector('#demo-style-encapsulation div');
+            var root = host.createShadowRoot();
+            root.innerHTML = '<style>button { font-size: 30px; color: blue; } </style>' +
+                             '<button>I\'m a shadow button</button>'
           </script>
         </section>
 
-        <section>
-          Styling :host
+        <section id="demo-parts" style="height: 600px;">
+          <div class="demo-code">
+            <pre style="margin-bottom: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;style&gt;
+  .blog-post::part(heading) { font-family: Courier; }
+  .blog-post::part(article) { font-style: italic; }
+&lt;/style&gt;
+
+&lt;div class="blog-post"&gt;&lt;/div&gt;
+&lt;template class="blog-post-template"&gt;
+  &lt;h3 part="heading"&gt;Interesting Article&lt;/h3&gt;
+  &lt;p part="article"&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  var host = document.querySelector('.blog-post');
+  var root = host.createShadowRoot();
+  var template = document.querySelector('.blog-post-template');
+  root.appendChild(template.content.cloneNode(true));
+&lt;/script&gt;
+            </code></pre>
+            <button class="demo-btn" onclick="runPartsDemo();">Run</button>
+          </div>
+
+          <style>
+            .blog-post::part(heading) { font-family: Courier; }
+            .blog-post::part(article) { font-style: italic; }
+          </style>
+
+          <div class="blog-post"></div>
+          <template class="blog-post-template">
+            <h3 part="heading">Interesting Article</h3>
+            <p part="article">Lorem ipsum dolor sit amet...</p>
+          </template>
+
+          <script>
+            function runPartsDemo() {
+              var host = Reveal.getCurrentSlide().querySelector('.blog-post');
+              var root = host.createShadowRoot();
+              var template = Reveal.getCurrentSlide().querySelector('.blog-post-template');
+              root.appendChild(template.content.cloneNode(true));
+            }
+          </script>
         </section>
 
-        <section>
-          Styling ::parts
-        </section>
+        <section id="demo-content">
+          <div class="demo-code">
+            <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;div class="pokemon"&gt;
+  Jigglypuff
+&lt;/div&gt;
 
-        <section data-markdown>
-          <script type="text/template">
-            content
+&lt;template class="pokemon-template"&gt;
+  &lt;h1&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h1&gt;
+&lt;/template&gt;
 
-            ```
-            <body>
-              <div class="pokemon">
-                Jigglypuff
-              </div>
+&lt;script&gt;
+  var host = document.querySelector('.pokemon');
+  var root = host.createShadowRoot();
+  var template = document.querySelector('.pokemon-template');
+  root.appendChild(template.content.cloneNode(true));
+&lt;/script&gt;
+            </code></pre>
+            <button class="demo-btn" onclick="runContentDemo();">Run</button>
+          </div>
 
-              <template class="pokemon-template">
-                <h1>A Wild <content></content> Appeared!</h1>
-              </template>
+          <div class="hidden pokemon">
+            Jigglypuff
+          </div>
 
-              <script>
-                var host = document.querySelector('.pokemon');
-                var root = host.createShadowRoot();
-                var template = document.querySelector('.pokemon-template');
-                root.appendChild(template.content.cloneNode(true));
-              </script>
-            </body>
-            ```
+          <template class="pokemon-template">
+            <h1>A Wild <content></content> Appeared!</h1>
+          </template>
+
+          <img class="jigglypuff img-chromeless" src="./img/jigglypuff.png">
+
+          <script>
+            function runContentDemo() {
+              var host = Reveal.getCurrentSlide().querySelector('.pokemon');
+              host.classList.remove('hidden');
+              var root = host.createShadowRoot();
+              var template = Reveal.getCurrentSlide().querySelector('.pokemon-template');
+              root.appendChild(template.content.cloneNode(true));
+              var jigglypuff = Reveal.getCurrentSlide().querySelector('.jigglypuff');
+              setTimeout(function() {
+                jigglypuff.classList.add('in');
+              }, 2000);
+            }
           </script>
 
-          <aside>
+          <aside class="notes">
             Using the &lt;content&gt; tag we’ve created an insertion point that projects the text from the .pokemon div so it appears within our shadow &lt;h1&gt;. Insertion points are very powerful because they allow us to change the order in which things render without physically altering the source. It also means that we can be selective about what gets rendered.
 
             You may have noticed that we’re using a template tag instead of building our Shadow DOM entirely in JavaScript. I’ve found that using &lt;template&gt; tags makes the process of working with the Shadow DOM much easier.
           </aside>
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-            A simple selects example
+        <section id="demo-insertion-points">
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+<div class="bio">
+  <span class="first-name">Rob</span>
+  <span class="last-name">Dodson</span>
+  <span class="city">San Francisco</span>
+  <p>I’m also a writer and occasional daily blogger.</p>
+</div>
+          </code></pre>
 
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+<p>Last Name: <content select=".last-name"></content></p>
+<p>First Name: <content select=".first-name"></content></p>
+<p>City: <content select=".city"></content></p>
+<p><content select=""></content></p>
+          </code></pre>
+
+          <div id="bio">
+            <span class="first-name">Rob</span>
+            <span class="last-name">Dodson</span>
+            <span class="city">San Francisco</span>
+            <p>I’m also a writer and occasional daily blogger.</p>
+          </div>
+
+          <template id="insertion-template">
+            <style>p { margin: 0; text-align: left; }</style>
+            <p>Last Name: <content select=".last-name"></content></p>
+            <p>First Name: <content select=".first-name"></content></p>
+            <p>City: <content select=".city"></content></p>
+            <p><content select=""></content></p>
+          </template>
+
+          <script>
+            var section = document.querySelector('#demo-insertion-points');
+            var host = section.querySelector('#bio');
+            var root = host.createShadowRoot();
+            var template = section.querySelector('#insertion-template');
+            root.appendChild(template.content.cloneNode(true));
+          </script>
+
+          <aside class="notes">
             Dominic&apos;s party invitation
             Eric&apos;s visualizer
+          </aside>
+        </section>
+
+        <section id="retargeted-events">
+          <h3>Events are retargeted</h3>
+
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+<input id="normal-text" type="text" value="I'm normal text">
+
+<div id="host">
+  <input id="distributed-text" type="text" value="I'm distributed text">
+</div>
+
+<template>
+  <div>
+    <input id="shadow-text" type="text" value="I'm shadow text">
+  </div>
+  <div>
+    <content></content>
+  </div>
+</template>
+          </code></pre>
+          
+          <div class="example">
+            <input id="normal-text" type="text" value="I'm normal text">
+
+            <div id="host">
+              <input id="distributed-text" type="text" value="I'm distributed text">
+            </div>
+
+            <template>
+              <div>
+                <input id="shadow-text" type="text" value="I'm shadow text">
+              </div>
+              <div>
+                <content></content>
+              </div>
+            </template>
+          </div>
+
+          <script>
+            (function () {
+              var section = document.querySelector('#retargeted-events .example');
+              var host = section.querySelector('#host');
+              var root = host.createShadowRoot();
+              root.applyAuthorStyles = true;
+              var template = section.querySelector('template');
+              root.appendChild(template.content.cloneNode(true));
+
+              var logElement = function(e) {
+                alert('#' + e.target.id + ' clicked!');
+              };
+
+              section.addEventListener('click', logElement);
+
+            }());
           </script>
-        </section>
-
-        <section>
-          <p>JavaScript is not encapsulated!</p>
-        </section>
-
-        <section>
-          <p>Events are retargeted</p>
-        </section>
-
-        <section>
-          <p>Gotchas</p>
         </section>
 
         <section>
@@ -461,7 +531,11 @@
         </section>
 
         <section>
-          <p>Summary</p>
+          <h1>Custom Elements</h1>
+        </section>
+
+        <section>
+          <h2>&lt;twbs-navbar&gt;</h2>
         </section>
 
         <section>
@@ -521,14 +595,6 @@
           <script type="text/template">
             Can we use Shadow DOM...?
           </script>
-        </section>
-
-        <section>
-          <h1>Custom Elements</h1>
-        </section>
-
-        <section>
-          <h2>&lt;twbs-navbar&gt;</h2>
         </section>
 
         <section>
