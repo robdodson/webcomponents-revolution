@@ -20,16 +20,19 @@
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/github.css">
 
+    <!-- For icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
     <!-- Our styles -->
     <link rel="stylesheet" href="css/styles.css" id="styles">
 
     <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+    
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
-    <script>
+    <!--<script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-    </script>
+    </script>-->
 
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
@@ -67,28 +70,87 @@
           </p> -->
         </section>
 
-        <section>
-          <h1 style="text-transform: none;">Hi</h1>
+        <section class="left-align">
+          <h2 class="voice voice-human">Hi I'm Rob,</h2>
+          <h2 class="voice voice-human">I'll be your speaker today.</h2>
+          <hr class="wide-rule">
+          <ul class="unstyled-list contact-info">
+            <li><a href="http://robdodson.me"><i class="icon-rss-sign"></i> robdodson.me</a></li>
+            <li><a href="http://twitter.com/rob_dodson"><i class="icon-twitter-sign"></i> @rob_dodson</a></li>
+            <li><a href="http://github.com/robdodson"><i class="icon-github-sign"></i> robdodson</a></li>
+          </ul>
 
           <aside class="notes">
-            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+            <p>Hi, I'm Rob Dodson.</p>
+            <p>I'm really excited to talk about Web Components because I think that they're going to completely change the way we build applications. I really think they're going to be as big for the web platform as ajax was a few years ago.</p>
+            <p>Before we get started I want to thank you for coming to my talk and to thank Ann for putting on this conference. It's awesome that we get to come to together to share these things that we're so passionate about.</p>
           </aside>
         </section>
 
-        <section>
-          <h2>Web Components</h2>
-          <h2>...Wat?</h2>
+        <section class="left-align">
+          <h3>Within this talk</h3>
+          <ul>
+            <li>What are Web Components?</li>
+            <li>The Specs</li>
+            <li>Using Web Components Today!</li>
+            <li>Magic <i class="icon-magic"></i></li>
+          </ul>
+        </section>
 
+        <section>
+          <h2 class="blink" style="font-size: 95px;"><i class="icon-warning-sign"></i> Code Ahead!</h2>
+          <img width="70%" class="img-chromeless" src="./img/wrestler.gif">
+        </section>
+
+        <section>
+          <h2><i class="icon-heart"></i> Web Components</h2>
+          <img width="80%" class="img-chromeless" src="./img/jake.gif">
+        </section>
+
+        <section style="text-align: left;">
+          <h2>Web Components!</h2>
+          <br>
+          <h3 class="fragment">1. Create your own HTML Elements</h3>
+          <h3 class="fragment">2. Encapsulate your styles</h3>
+          <h3 class="fragment">3. Tap into lifecycle callbacks</h3>
           <aside class="notes">
-            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+            <p>OK. What am I talking about?</p>
+            <p>Create your own 1st class tags</p>
+            <p>Your component's CSS will not conflict with the CSS already on the page (unless you want it to).</p>
+            <p>React with JavaScript whenever your component is instantiated, added to the page, removed from the page or has an attribute changed.</p>
           </aside>
         </section>
 
-        <section>
-          <h1>&lt;video&gt;</h1>
+        <section id="chart-demo" style="height: 300px;">
+          <h3>&lt;chart-pie&gt;&lt;/chart-pie&gt;</h3>
+          <div class="fragment" data-pie="true"></div>
+        </section>
+
+        <!-- <section class="left-align">
+          <p>We want to be building <strong>applications</strong> but we're using tools designed for <strong>static documents.</strong></p>
+        </section> -->
+
+        <!-- <section>
+          <h3>Writing a ton of boilerplate</h3>
         </section>
 
         <section>
+          <h3>CSS is still messy</h3>
+        </section> -->
+
+        <section>
+          <h2>Why Web Components?</h2>
+        </section>
+
+        <section>
+          <h3>Standards are slow</h3>
+        </section>
+
+        <section>
+          <h3>We Need to <a href="http://extensiblewebmanifesto.org/">Extend the Browser</a></h3>
+        </section>
+
+        <!-- <section>
           <video controls preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
             <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
             <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
@@ -102,49 +164,22 @@
   &lt;source id="ogv" src="./video/trailer.ogv" type="video/ogg"&gt;
 &lt;/video&gt;
           </code></pre>
-        </section>
-
-        <section style="height: 300px;">
-          <h2>&lt;chart-pie&gt;</h2>
-          <div class="fragment" data-pie="true"></div>
-          <script>
-            (function () {
-              var showPie = function showPie(e) {
-                if (Boolean(e.fragment.getAttribute('data-pie'))) {
-                  var slide = Reveal.getCurrentSlide();
-                  var pie = document.createElement('chart-pie');
-                  slide.appendChild(pie);
-                  Reveal.removeEventListener('fragmentshown', showPie);
-                }
-              };
-
-              Reveal.addEventListener('fragmentshown', showPie);
-            }());
-          </script>
-        </section>
-
-        <section style="text-align: left;">
-          <h2>With Web Components...</h2>
-          <br>
-          <h3 class="fragment">1. Create your own HTML tags</h3>
-          <h3 class="fragment">2. Encapsulate your styles</h3>
-          <h3 class="fragment">3. Tap into lifecycle callbacks</h3>
-        </section>
+        </section> -->
 
         <section>
-          <h2>Extend the Browser</h2>
-        </section>
-
-        <section>
-          <h1>The Tools</h1>
+          <h1>The Specs</h1>
         </section>
 
         <section>
           <div style="text-align: left; display: inline-block;">
-            <h2>Templates</h2>
-            <h2 class="fragment">Shadow DOM</h2>
-            <h2 class="fragment">Custom Elements</h2>
-            <h2 class="fragment">Imports</h2>
+            <h3 style="margin-bottom: 5px;">Templates</h3>
+            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>API</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
+            <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
           </div>
         </section>
         
@@ -152,13 +187,12 @@
           <h1>Templates</h1>
         </section>
 
-        <section>
-          <p>
-            <em>Scaffold your component.</em>
-          </p>
+        <section class="left-align">
+          <p>Templates are <strong>inert</strong> chunks of DOM that can be reused throughout the page.</p>
         </section>
 
         <section>
+          <h3>Template Basics</h3>
 <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment" data-fragment-index="1">&lt;template id="my-widget"&gt;</span>
   <span class="fragment" data-fragment-index="2">&lt;p&gt;Once upon a time...&lt;/p&gt;</span>
@@ -169,12 +203,12 @@
 <span class="fragment" data-fragment-index="1">&lt;/template&gt;</span>
 </code></pre>
 
-<pre class="fragment"><code data-trim contenteditable style="margin-top: 20px;">
+<pre class="fragment"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;script&gt;
-  var template = document.querySelector('#my-widget');
-  document.body.appendChild(template.content.cloneNode(true));
-  // OR
-  document.body.appendChild(template.innerHTML);
+  <span class="fragment" data-fragment-index="5">var template = document.querySelector('#my-widget');</span>
+  <span class="fragment" data-fragment-index="6">document.body.appendChild(template.content.cloneNode(true));</span>
+  <span class="fragment" data-fragment-index="7">// OR</span>
+  <span class="fragment" data-fragment-index="7">document.body.appendChild(template.innerHTML);</span>
 &lt;/script&gt;
 </code></pre>
           <aside class="notes">
@@ -191,27 +225,28 @@
         </section>
         
         <section class="demo" id="demo-templates">
+          <h3>Cloning Templates</h3>
           <div class="demo-code">
-            <pre><code data-trim contenteditable style="margin-top: 20px;">
-<template id="my-widget">
-  <img src=""/>
-  <p>Templates. Full of WIN!</p>
-  <script>
+            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;template id="my-widget"&gt;
+  &lt;img src=""/&gt;
+  &lt;p&gt;Templates. Full of WIN!&lt;/p&gt;
+  &lt;script&gt;
     alert("I'm alive!")
-  </script>
-</template>
+  &lt;/script&gt;
+&lt;/template&gt;
 
 &lt;script&gt;
   var template = document.querySelector('#my-widget');
-  template.content.querySelector('img').src = './img/corgi.jpg';
+  template.content.querySelector('img').src = './img/corgi.gif';
   document.body.appendChild(template.content.cloneNode(true));
 &lt;/script&gt;
             </code></pre>
             <button class="demo-btn" onclick="runTemplateDemo();">Run</button>
           </div>
 
-          <template>
-            <img width="300" src=""/>
+          <template id="my-widget">
+            <img class="img-chromeless" width="350" src=""/>
             <p>Templates. Full of WIN!</p>
             <script>
               alert("I'm alive!");
@@ -220,8 +255,8 @@
           <script>
             function runTemplateDemo() {
               var section = Reveal.getCurrentSlide();
-              var template = section.querySelector('template');
-              template.content.querySelector('img').src = 'http://localhost:3000/img/corgi.jpg';
+              var template = section.querySelector('#my-widget');
+              template.content.querySelector('img').src = 'http://localhost:3000/img/corgi.gif';
               section.appendChild(template.content.cloneNode(true));
             }
           </script>
@@ -230,22 +265,28 @@
         <section style="text-align: left;">
           <h2>Gotchas</h2>
           <h3 class="fragment">No Built-In Interpolation</h3>
-          <h3 class="fragment" style="line-height: 1;">Nested Templates Aren't Automatically Activated</h3>
+          <h3 class="fragment" style="line-height: 1;">Nested Templates Are Not Automatically Activated</h3>
         </section>
 
         <section>
-          <h2>Support</h2>
-          
+          <h2>Browser Support</h2>
+          <ul class="unstyled-list">
+            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
+            <li><i class="icon-ok-circle supported"></i> Firefox</li>
+            <li><i class="icon-remove-circle not-supported"></i> Internet Explorer</li>
+            <li><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</li>
+            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
+          </ul>
         </section>
 
         <section data-state="blackout">
           <h1 style="color: #FFF;">Shadow DOM</h1>
         </section>
 
-        <section>
-          <p>
-            <em>Encapsulation and Control</em>
-          </p>
+        <section class="left-align">
+          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong> through <strong>Shadow Boundaries</strong>.</p>
+
+          <p>It is <strong>the same technology used by browser makers</strong> to implement tags like <strong>&lt;video&gt;</strong> and <strong>&lt;textarea&gt;</strong>.</p>
         </section>
 
         <section>
@@ -263,6 +304,10 @@
 &lt;/body&gt;
           </code></pre>
           <img class="img-chromeless" style="width: 50%;" src="./img/tree-chart.svg">
+        </section>
+
+        <section class="left-align">
+          <img width="100%" class="img-chromeless" src="./img/tree-of-trees3.svg">
         </section>
 
         <section class="demo" id="demo-shadow-host">
@@ -302,10 +347,6 @@
 
             The takeaway is that the content inside of the shadow host is not rendered. Instead, the content inside of the shadow root is what gets rendered.
           </aside>
-        </section>
-
-        <section>
-          <img style="width: 100%;" class="img-chromeless" src="./img/tree-of-trees3.svg">
         </section>
 
         <section id="demo-style-encapsulation">
@@ -527,11 +568,36 @@
         </section>
 
         <section>
-          <p>Support</p>
+          <h2>Support</h2>
+
         </section>
 
         <section>
           <h1>Custom Elements</h1>
+          <p>
+            MailChimp
+            Wufoo
+            Stripe
+          </p>
+          <p>
+            Chart.js
+            D3
+            HighCharts?
+          </p>
+          <p>
+            Two.js
+            Three.js
+          </p>
+          <p>
+            BlueButton?
+            [Pen](http://sofish.github.io/pen/)
+            [grande](https://github.com/mduvall/grande.js)
+            [Moment](https://github.com/moment/moment).. a moment-format tag holding a moment tag?
+            Google Code Prettify
+            Intro.js
+            Select2
+            Async...?
+          </p>
         </section>
 
         <section>
@@ -606,6 +672,8 @@
 
     </div>
 
+    <script src="js/reveal.js"></script>
+
     <script>
 
       // Full list of configuration options available here:
@@ -636,6 +704,8 @@
       });
 
     </script>
+
+    <script src="./js/app.js"></script>
 
   </body>
 </html>

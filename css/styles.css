@@ -127,9 +127,67 @@ input[type="text"] {
 }
 
 /**
+ * Voices
+ */
+
+.voice.voice-human {
+  text-transform: none;
+}
+
+/**
  * Helpers
  */
 
+.left-align {
+  text-align: left;
+}
+
 .hidden {
   display: none;
+}
+
+.wide-rule {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.blink {
+  -webkit-animation: blink 1s steps(5, start) infinite;
+  -moz-animation: blink 1s steps(5, start) infinite;
+  animation: blink 1s steps(5, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.supported {
+  color: #387D7E;
+}
+
+.not-supported {
+  color: #d14;
+}
+
+/**
+ * Overrides
+ */
+
+.reveal i {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  vertical-align: baseline;
+  margin-top: 0;
+}
+
+.reveal .unstyled-list {
+  list-style-type: none;
+  margin-left: 5px;
+}
+
+.reveal .contact-info {
+  font-size: 26px
 }
