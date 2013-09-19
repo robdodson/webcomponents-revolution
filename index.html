@@ -87,8 +87,8 @@
           </aside>
         </section>
 
-        <section class="left-align">
-          <h3>Within this talk</h3>
+        <section>
+          <h2>Within this talk</h2>
           <ul>
             <li>What are Web Components?</li>
             <li>The Specs</li>
@@ -99,12 +99,15 @@
 
         <section>
           <h2 class="blink" style="font-size: 95px;"><i class="icon-warning-sign"></i> Code Ahead!</h2>
-          <img width="70%" class="img-chromeless" src="./img/wrestler.gif">
+          <img width="70%" class="chromeless" src="./img/wrestler.gif">
+          <aside class="notes">
+            Some of the syntax and property names may change!
+          </aside>
         </section>
 
         <section>
           <h2><i class="icon-heart"></i> Web Components</h2>
-          <img width="80%" class="img-chromeless" src="./img/jake.gif">
+          <img width="80%" class="chromeless" src="./img/jake.gif">
         </section>
 
         <section style="text-align: left;">
@@ -114,10 +117,8 @@
           <h3 class="fragment">2. Encapsulate your styles</h3>
           <h3 class="fragment">3. Tap into lifecycle callbacks</h3>
           <aside class="notes">
-            <p>OK. What am I talking about?</p>
-            <p>Create your own 1st class tags</p>
-            <p>Your component's CSS will not conflict with the CSS already on the page (unless you want it to).</p>
-            <p>React with JavaScript whenever your component is instantiated, added to the page, removed from the page or has an attribute changed.</p>
+            <p>Web Components is an umbrella term which encompasses a few different technologies.</p>
+            <p>When used in conjunction these technologies allow you to do some pretty cool things.</p>
           </aside>
         </section>
 
@@ -126,48 +127,50 @@
           <div class="fragment" data-pie="true"></div>
         </section>
 
-        <!-- <section class="left-align">
-          <p>We want to be building <strong>applications</strong> but we're using tools designed for <strong>static documents.</strong></p>
-        </section> -->
-
-        <!-- <section>
-          <h3>Writing a ton of boilerplate</h3>
-        </section>
-
-        <section>
-          <h3>CSS is still messy</h3>
-        </section> -->
-
         <section>
           <h2>Why Web Components?</h2>
         </section>
 
         <section>
+          <h3>Writing a ton of boilerplate</h3>
+        </section>
+
+        <section>
+          <h3>We're still not modular</h3>
+        </section>
+
+        <section>
           <h3>Standards are slow</h3>
+          <aside class="notes">
+            <p>The video tag was proposed in 2007 and I bet there are people in here who still haven't or can't use it.</p>
+          </aside>
+        </section>
+
+        <section class="left-align">
+          <p>We want to build <strong>applications</strong> but we're using tools designed for <strong>static documents.</strong></p>
+
+          <aside class="notes">
+            <p>If we're trying to compete with native options like iOS we're going to have to stop reinventing the wheel.</p>
+          </aside>
         </section>
 
         <section>
           <h3>We Need to <a href="http://extensiblewebmanifesto.org/">Extend the Browser</a></h3>
+
+          <aside class="notes">
+            <p>We need to shorten the loop from spec proposal, to implementation, to developer adoption.</p>
+            <p>And that's where Web Components come in</p>
+          </aside>
         </section>
 
-        <!-- <section>
-          <video controls preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
-            <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-            <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
-            <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
-          </video>
+        <section class="left-align">
+          <p>
+            Web Components use the same tools that the browser makers use. As a result <strong>it's only a short hop from web component to new standard.</strong>
+          </p>
+        </section>
 
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;video controls preload="none" poster="./video/poster.png"&gt;
-  &lt;source id="mp4" src="./video/trailer.mp4" type="video/mp4"&gt;
-  &lt;source id="webm" src="./video/trailer.webm" type="video/webm"&gt;
-  &lt;source id="ogv" src="./video/trailer.ogv" type="video/ogg"&gt;
-&lt;/video&gt;
-          </code></pre>
-        </section> -->
-
-        <section>
-          <h1>The Specs</h1>
+        <section class="left-align">
+          <h1 style="font-size: 3.5em;">Web Components <i class="icon-umbrella"></i></h1>
         </section>
 
         <section>
@@ -182,6 +185,12 @@
             <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
           </div>
         </section>
+
+        <!-- <section>
+          <h2>Prerequisite</h2>
+          <p>Enable Flags</p>
+          <p>Show Shadow DOM</p>
+        </section> -->
         
         <section>
           <h1>Templates</h1>
@@ -189,6 +198,13 @@
 
         <section class="left-align">
           <p>Templates are <strong>inert</strong> chunks of DOM that can be reused throughout the page.</p>
+        </section>
+
+        <section class="left-align">
+          If you've used mustache or handlebars it's the same concept. <strong>But now it has its own tag.</strong>
+          <aside class="notes">
+            Show of hands, how many of you have used mustache or handlebars?
+          </aside>
         </section>
 
         <section>
@@ -202,30 +218,16 @@
   &lt;/script&gt;</span>
 <span class="fragment" data-fragment-index="1">&lt;/template&gt;</span>
 </code></pre>
-
-<pre class="fragment"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;script&gt;
-  <span class="fragment" data-fragment-index="5">var template = document.querySelector('#my-widget');</span>
-  <span class="fragment" data-fragment-index="6">document.body.appendChild(template.content.cloneNode(true));</span>
-  <span class="fragment" data-fragment-index="7">// OR</span>
-  <span class="fragment" data-fragment-index="7">document.body.appendChild(template.innerHTML);</span>
-&lt;/script&gt;
-</code></pre>
-          <aside class="notes">
-            Working directly w/ DOM
-            Parsed; not rendered
-            Not run, stylesheets/images not loaded, media not played
-            Hidden from document. Cannot traverse into its DOM
-            document.querySelector('#mytemplate .comment') == null
-              but
-            document.querySelector('#mytemplate').content.img.src
-
-            What happens if you use innerHTML?
-          </aside>
         </section>
-        
+
+        <section>
+          <h3>The Content Keyword</h3>
+          <img class="chromeless" src="./img/template-content.png">
+          <p class="fragment left-align"><em>JavaScript can not access the internals of our template unless we use the <code>content</code> keyword</em></p>
+        </section>
+
         <section class="demo" id="demo-templates">
-          <h3>Cloning Templates</h3>
+          <h3>Using Templates</h3>
           <div class="demo-code">
             <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;template id="my-widget"&gt;
@@ -242,30 +244,26 @@
   document.body.appendChild(template.content.cloneNode(true));
 &lt;/script&gt;
             </code></pre>
-            <button class="demo-btn" onclick="runTemplateDemo();">Run</button>
+            <button class="demo-btn" onclick="demos.template();">Run</button>
           </div>
 
           <template id="my-widget">
-            <img class="img-chromeless" width="350" src=""/>
+            <img class="chromeless" width="350" src=""/>
             <p>Templates. Full of WIN!</p>
             <script>
               alert("I'm alive!");
             </script>
           </template>
-          <script>
-            function runTemplateDemo() {
-              var section = Reveal.getCurrentSlide();
-              var template = section.querySelector('#my-widget');
-              template.content.querySelector('img').src = 'http://localhost:3000/img/corgi.gif';
-              section.appendChild(template.content.cloneNode(true));
-            }
-          </script>
         </section>
 
         <section style="text-align: left;">
           <h2>Gotchas</h2>
-          <h3 class="fragment">No Built-In Interpolation</h3>
-          <h3 class="fragment" style="line-height: 1;">Nested Templates Are Not Automatically Activated</h3>
+          <br>
+          <h3 class="fragment" data-fragment-index="1">No Built-In Data Interpolation</h3>
+          <p class="fragment" data-fragment-index="1"><em>{{ }} tags don't do anything...yet</em></p>
+          <br>
+          <h3 class="fragment" data-fragment-index="2" style="line-height: 1;">Nested Templates Are Not Automatically Activated</h3>
+          <p class="fragment" data-fragment-index="2"><em>You'll have to append each separately</em></p>
         </section>
 
         <section>
@@ -284,12 +282,28 @@
         </section>
 
         <section class="left-align">
-          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong> through <strong>Shadow Boundaries</strong>.</p>
+          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</p>
 
           <p>It is <strong>the same technology used by browser makers</strong> to implement tags like <strong>&lt;video&gt;</strong> and <strong>&lt;textarea&gt;</strong>.</p>
         </section>
 
         <section>
+          <h3>&lt;video&gt;'s secret DOM</h3>
+          <video src="./videos/darren.webm" controls preload="none" poster="./img/darren.jpg"></video>
+          <pre style="text-align: center;"><code data-trim contenteditable style="margin-top: 20px;">
+<video src="./foo.webm" controls></video>
+          </code></pre>
+        </section>
+
+        <section class="left-align">
+          <h3>Important Terms</h3>
+          <p>The &lt;video&gt; tag is the <strong>shadow host.</strong></p>
+          <p>The node with all the content is the <strong>shadow root.</strong></p>
+          <p>Nested Shadow DOM nodes are a <strong>shadow tree.</strong></p>
+          <p>The content is protected by the <strong>shadow barrier.</strong></p>
+        </section>
+
+        <!-- <section>
           <h3>Typical HTML Document</h3>
           <pre style="width: 50%; float: left; margin-top: 50px;"><code data-trim contenteditable>
 &lt;body&gt;
@@ -303,14 +317,15 @@
   &lt;/div&gt;
 &lt;/body&gt;
           </code></pre>
-          <img class="img-chromeless" style="width: 50%;" src="./img/tree-chart.svg">
-        </section>
+          <img class="chromeless" style="width: 50%;" src="./img/tree-chart.svg">
+        </section> -->
 
         <section class="left-align">
-          <img width="100%" class="img-chromeless" src="./img/tree-of-trees3.svg">
+          <img width="100%" class="chromeless" src="./img/tree-of-trees3.svg">
         </section>
 
-        <section class="demo" id="demo-shadow-host">
+        <section class="demo">
+          <h3>Our first shadow root</h3>
           <div class="demo-code">
 <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment" data-fragment-index="1">&lt;div class="widget"&gt;Hello, world!&lt;/div&gt;</span><span class="fragment" data-fragment-index="2">
@@ -321,52 +336,48 @@
 &lt;/script&gt;
 </span>
 </code></pre>
-            <button class="demo-btn" onclick="runShadowHostDemo();">Run</button>
+            <button class="demo-btn" onclick="demos.shadowRoot();">Run</button>
           </div>
 
           <div class="widget">Hello, world!</div>
-          <script>
-            function runShadowHostDemo() {
-              var host = document.querySelector('.widget');
-              var root = host.createShadowRoot();
-              root.textContent = 'Im inside yr div!';
-            }
-
-            document.addEventListener('keyup', function(e) {
-              if (e.keyCode === 74) { // j
-                var fragments = Reveal.getCurrentSlide().querySelectorAll('.fragment');
-                Array.prototype.forEach.call(fragments, function(fragment) {
-                  fragment.classList.toggle('force-focus');
-                });
-              }
-            });
-          </script>
-          
           <aside class="notes">
             Inspect with dev tools
 
-            The takeaway is that the content inside of the shadow host is not rendered. Instead, the content inside of the shadow root is what gets rendered.
+            The takeaway is that the content inside of the shadow root is what gets rendered.
           </aside>
         </section>
 
-        <section id="demo-style-encapsulation">
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;script&gt;
-  var host = document.querySelector('div');
-  var root = host.createShadowRoot();
-  root.innerHTML = '&lt;style&gt;button { font-size: 30px; color: blue; } &lt;/style&gt;' +
-                   '&lt;button&gt;I\'m a shadow button&lt;/button&gt;'
-&lt;/script&gt;
-          </code></pre>
-          <button>I'm a regular button</button>
-          <div></div>
-          <script>
-            var host = document.querySelector('#demo-style-encapsulation div');
-            var root = host.createShadowRoot();
-            root.innerHTML = '<style>button { font-size: 30px; color: blue; } </style>' +
-                             '<button>I\'m a shadow button</button>'
-          </script>
+
+<!-- :: shadow dom + template -->
+        <section class="demo">
+          <h3>Shadow DOM + Template</h3>
+          
+          <div class="demo-code">
+            <pre><code data-trim contenteditable style="margin-top: 20px;">
+<template>
+  <style>
+    button {
+      color: tomato;
+    }
+  </style>
+</template>
+            </code></pre>
+
+            <pre><code data-trim contenteditable style="margin-top: 20px;">
+var host = document.querySelector('#host');
+var template = document.querySelector('template');
+var root = host.createShadowRoot();
+root.appendChild(template.content.cloneNode(true));
+            </code></pre>
+            <button class="demo-btn" onclick="demos.shadowRoot();">Run</button>
+          </div>
+
+          <div class="widget">
+            <button>I'm a regular button</button>
+          </div>
         </section>
+
+
 
         <section id="demo-parts" style="height: 600px;">
           <div class="demo-code">
@@ -442,7 +453,7 @@
             <h1>A Wild <content></content> Appeared!</h1>
           </template>
 
-          <img class="jigglypuff img-chromeless" src="./img/jigglypuff.png">
+          <img class="jigglypuff chromeless" src="./img/jigglypuff.png">
 
           <script>
             function runContentDemo() {

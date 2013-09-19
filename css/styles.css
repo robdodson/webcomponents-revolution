@@ -42,41 +42,9 @@
   font-style: normal;
 }
 
-.reveal .billboard {
-  font-family: 'league_gothicregular';
-  letter-spacing: 5px;
+video {
+  width: 600px;
 }
-
-.reveal .stencil {
-  font-family: 'capture_itregular';
-  letter-spacing: 5px;
-}
-
-.reveal code {
-  font-family: 'source_code_proregular';
-}
-
-.reveal .strong {
-  font-weight: bold;
-}
-
-.reveal section .img-chromeless {
-  border: none;
-  box-shadow: none;
-  background: none;
-}
-
-/**
- * Standard CSS classes for charred-trail. Visible elements that are not
- * currently in focus get an opacity of 30%.
- */
-.reveal .slides section code .fragment,
-.reveal .slides section code .fragment.visible { opacity: 0.3; }
-
-.reveal .slides section .fragment.visible.no-burn,
-.reveal .slides section .fragment.visible.focus { opacity: 1; }
-
-.reveal .slides section code .fragment.force-focus { opacity: 1 !important; }
 
 /**
  * Demos
@@ -170,9 +138,66 @@ input[type="text"] {
   color: #d14;
 }
 
+.reveal .flex-container {
+  display: flex;
+  height: 220px;
+  width: 90%;
+  margin: 15px auto 50px;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.foo {
+  height: 100%;
+  width: 48%;
+}
+
+.foo pre {
+  width: 100%;
+  height: 100%;
+}
+
+.foo code {
+  height: 97%;
+}
+
 /**
- * Overrides
+ * Extensions
  */
+
+ .reveal .billboard {
+   font-family: 'league_gothicregular';
+   letter-spacing: 5px;
+ }
+
+ .reveal .stencil {
+   font-family: 'capture_itregular';
+   letter-spacing: 5px;
+ }
+
+ .reveal .strong {
+   font-weight: bold;
+ }
+
+ .reveal section .chromeless {
+   border: none;
+   box-shadow: none;
+   background: none;
+ }
+
+ /**
+  * Standard CSS classes for charred-trail. Visible elements that are not
+  * currently in focus get an opacity of 30%.
+  */
+ .reveal .slides section code .fragment,
+ .reveal .slides section code .fragment.visible { opacity: 0.3; }
+
+ .reveal .slides section .fragment.visible.no-burn,
+ .reveal .slides section .fragment.visible.focus { opacity: 1; }
+
+ .reveal .slides section code .fragment.force-focus { opacity: 1 !important; }
 
 .reveal i {
   font-family: "FontAwesome";
@@ -183,6 +208,15 @@ input[type="text"] {
   margin-top: 0;
 }
 
+.reveal pre {
+  font-size: 0.6em;
+}
+
+.reveal pre code {
+  font-family: 'source_code_proregular';
+  max-height: 600px;
+}
+
 .reveal .unstyled-list {
   list-style-type: none;
   margin-left: 5px;
@@ -190,4 +224,16 @@ input[type="text"] {
 
 .reveal .contact-info {
   font-size: 26px
+}
+
+/**
+ * Icons
+ */
+
+.icon-warning-sign {
+  color: #E58B44;
+}
+
+.icon-heart {
+  color: #d14;
 }
