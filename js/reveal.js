@@ -1412,7 +1412,6 @@ var Reveal = (function(){
 	 * @param {int} o Optional origin for use in multimaster environments
 	 */
 	function slide( h, v, f, o ) {
-
 		// Remember where we were at before
 		previousSlide = currentSlide;
 
@@ -1490,9 +1489,9 @@ var Reveal = (function(){
 			var fragments = sortFragments( currentSlide.querySelectorAll( '.fragment' ) );
 
 			toArray( fragments ).forEach( function( fragment, indexf ) {
-				console.log(indexf, f);
 				if( indexf < f ) {
 					fragment.classList.add( 'visible' );
+					dispatchEvent( 'fragmentshown', { fragment: fragment, fragments: fragments } );
 				}
 				else {
 					fragment.classList.remove( 'visible' );
