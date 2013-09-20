@@ -50,8 +50,9 @@ video {
  * Demos
  */
 
-.demo-code {
+.reveal .demo-code {
  position: relative;
+ margin-bottom: 40px;
 }
 
 .demo-btn {
@@ -65,6 +66,10 @@ video {
   width: 90%;
   border: 2px dashed gray;
   margin: 15px auto;
+  padding: 0 40px;
+}
+
+.reveal .demo .widget.expand {
   padding: 30px;
 }
 
@@ -254,7 +259,7 @@ input[type="text"] {
 
 /* This style is fudged in here for the applyAuthorStyles demo */
 h4 {
-  margin: 0 0 20px 0;
+  margin: 20px 0;
   color: #333333;
   font-family: "Quicksand", sans-serif;
   font-weight: 200;

@@ -45,12 +45,13 @@
   };
 
   demos.styleEncapsulation = function styleEncapsulation() {
-    var section = Reveal.getCurrentSlide();
+    var section = document.querySelector('#demo-style-encapsulation');
     var template = section.querySelector('template');
     var host = section.querySelector('.widget div');
     var root = host.createShadowRoot();
     root.appendChild(template.content.cloneNode(true));
   };
+  demos.styleEncapsulation();
 
   demos.doResetStyles = true;
   demos.resetStyleInheritance = function resetStyleInheritance() {
@@ -81,6 +82,15 @@
     root.appendChild(template.content.cloneNode(true));
   };
   demos.applyAuthorStyles();
+
+  demos.parts = function parts() {
+    var section = document.querySelector('#demo-parts');
+    var template = section.querySelector('template');
+    var host = section.querySelector('.widget .blog-post');
+    var root = host.createShadowRoot();
+    root.appendChild(template.content.cloneNode(true));
+  };
+  demos.parts();
 
   window.demos = demos;
 
