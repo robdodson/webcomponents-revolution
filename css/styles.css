@@ -109,6 +109,28 @@ input[type="text"] {
 .left-align {
   text-align: left;
 }
+.demo.left-align .widget {
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.wrap {
+  overflow: hidden;
+}
 
 .hidden {
   display: none;
@@ -136,6 +158,10 @@ input[type="text"] {
 
 .not-supported {
   color: #d14;
+}
+
+.marginless {
+  margin: 0 !important;
 }
 
 .reveal .flex-container {
@@ -224,6 +250,18 @@ input[type="text"] {
 
 .reveal .contact-info {
   font-size: 26px
+}
+
+/* This style is fudged in here for the applyAuthorStyles demo */
+h4 {
+  margin: 0 0 20px 0;
+  color: #333333;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 200;
+  line-height: 0.9em;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+  text-shadow: none;
 }
 
 /**

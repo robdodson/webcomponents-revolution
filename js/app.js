@@ -1,13 +1,19 @@
 (function (window, document, undefined) {
 
-  document.addEventListener('keyup', function(e) {
-    if (e.keyCode === 74) { // j key
-      var fragments = Reveal.getCurrentSlide().querySelectorAll('.fragment');
-      Array.prototype.forEach.call(fragments, function(fragment) {
-        fragment.classList.toggle('force-focus');
-      });
+  util = {};
+
+  util.emptyNode = function emptyNode(node) {
+    while (node.firstChild) {
+      node.removeChild(node.firstChild);
     }
-  });
+  };
+
+  window.util = util;
+
+}(window, document));
+
+
+(function (util) {
 
   // <chart-pie> demo
   var showPie = function showPie(e) {
@@ -38,6 +44,58 @@
     root.textContent = 'Im inside yr div!';
   };
 
+  demos.styleEncapsulation = function styleEncapsulation() {
+    var section = Reveal.getCurrentSlide();
+    var template = section.querySelector('template');
+    var host = section.querySelector('.widget div');
+    var root = host.createShadowRoot();
+    root.appendChild(template.content.cloneNode(true));
+  };
+
+  demos.doResetStyles = true;
+  demos.resetStyleInheritance = function resetStyleInheritance() {
+    var section = document.querySelector('#demo-resetStyleInheritance');
+    var output = section.querySelector('#isStyleInheritance');
+    var template = section.querySelector('template');
+    var host = section.querySelector('.widget div');
+    var root = host.createShadowRoot();
+    util.emptyNode(root);
+    this.doResetStyles = !this.doResetStyles;
+    root.resetStyleInheritance = this.doResetStyles;
+    output.textContent = this.doResetStyles;
+    root.appendChild(template.content.cloneNode(true));
+  };
+  demos.resetStyleInheritance();
+
+  demos.doAuthorStyles = true;
+  demos.applyAuthorStyles = function applyAuthorStyles() {
+    var section = document.querySelector('#demo-applyAuthorStyles');
+    var output = section.querySelector('#isAuthorStyles');
+    var template = section.querySelector('template');
+    var host = section.querySelector('.widget div');
+    var root = host.createShadowRoot();
+    util.emptyNode(root);
+    this.doAuthorStyles = !this.doAuthorStyles;
+    root.applyAuthorStyles = this.doAuthorStyles;
+    output.textContent = this.doAuthorStyles;
+    root.appendChild(template.content.cloneNode(true));
+  };
+  demos.applyAuthorStyles();
+
   window.demos = demos;
 
-}(window, document));
+}(window.util));
+
+
+(function () {
+  
+  document.addEventListener('keyup', function(e) {
+    if (e.keyCode === 74) { // j key
+      var fragments = Reveal.getCurrentSlide().querySelectorAll('.fragment');
+      Array.prototype.forEach.call(fragments, function(fragment) {
+        fragment.classList.toggle('force-focus');
+      });
+    }
+  });
+
+}());

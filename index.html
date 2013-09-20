@@ -321,7 +321,7 @@
         </section> -->
 
         <section class="left-align">
-          <img width="100%" class="chromeless" src="./img/tree-of-trees3.svg">
+          <img width="100%" class="chromeless marginless" src="./img/tree-of-trees3.svg">
         </section>
 
         <section class="demo">
@@ -348,19 +348,19 @@
         </section>
 
 
-<!-- :: shadow dom + template -->
+        <!-- :: style encapsulation -->
         <section class="demo">
-          <h3>Shadow DOM + Template</h3>
+          <h3>Style Encapsulation</h3>
           
           <div class="demo-code">
             <pre><code data-trim contenteditable style="margin-top: 20px;">
-<template>
-  <style>
-    button {
-      color: tomato;
-    }
-  </style>
-</template>
+&lt;template&gt;
+  &lt;style&gt;
+    h4 { color: white; background: tomato; }
+  &lt;/style&gt;
+
+  &lt;h4&gt;Another H4 Header&lt;/h4&gt;
+&lt;/template&gt;
             </code></pre>
 
             <pre><code data-trim contenteditable style="margin-top: 20px;">
@@ -369,16 +369,91 @@ var template = document.querySelector('template');
 var root = host.createShadowRoot();
 root.appendChild(template.content.cloneNode(true));
             </code></pre>
-            <button class="demo-btn" onclick="demos.shadowRoot();">Run</button>
+            <button class="demo-btn" onclick="demos.styleEncapsulation();">Run</button>
           </div>
 
+          <template>
+            <style>
+              h4 {
+                color: white;
+                background: tomato;
+              }
+            </style>
+            <h4>Another H4 Header</h4>
+          </template>
+
           <div class="widget">
-            <button>I'm a regular button</button>
+            <h4>An H4 Header</h4>
+            <div></div>
+          </div>
+
+        </section>
+
+
+        <!-- :: resetStyleInheritance -->
+        <section id="demo-resetStyleInheritance" class="left-align demo">
+          <p><strong><code>resetStyleInheritance</code></strong> (default: <code>false</code>)</p>
+          <p><code>false</code>: Inheritable styles <strong>will</strong> affect your component.</p>
+          <p><code>true</code>: Inheritable styles <strong>will not</strong> affect your component.</p>
+          <br>
+          <div class="fragment">
+
+            <template>
+              <style>
+                h4 {
+                  color: white;
+                  background: tomato;
+                }
+              </style>
+              <h4>Another H4 Header</h4>
+            </template>
+
+            <div class="widget">
+              <h4>An H4 Header</h4>
+              <div></div>
+            </div>
+
+            <div class="wrap">
+              <button class="right" onclick="demos.resetStyleInheritance();">Toggle</button>
+              <code>resetStyleInheritance: <span id="isStyleInheritance"></span></code>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- :: applyAuthorStyles -->
+        <section id="demo-applyAuthorStyles" class="left-align demo">
+          <p><strong><code>applyAuthorStyles</code></strong> (default: <code>false</code>)</p>
+          <p><code>false</code>: Author styles <strong>will not</strong> affect your component.</p>
+          <p><code>true</code>: Author styles <strong>will</strong> affect your component.</p>
+          <br>
+          <div class="fragment">
+
+            <template>
+              <style>
+                h4 {
+                  color: white;
+                  background: tomato;
+                }
+              </style>
+              <h4>Another H4 Header</h4>
+            </template>
+
+            <div class="widget">
+              <h4>An H4 Header</h4>
+              <div></div>
+            </div>
+
+            <div class="wrap">
+              <button class="right" onclick="demos.applyAuthorStyles();">Toggle</button>
+              <code>applyAuthorStyles: <span id="isAuthorStyles"></span></code>
+            </div>
+            
           </div>
         </section>
 
 
-
+        <!-- :: parts -->
         <section id="demo-parts" style="height: 600px;">
           <div class="demo-code">
             <pre style="margin-bottom: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
@@ -423,6 +498,8 @@ root.appendChild(template.content.cloneNode(true));
             }
           </script>
         </section>
+
+
 
         <section id="demo-content">
           <div class="demo-code">
