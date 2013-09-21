@@ -114,7 +114,7 @@
           <br>
           <h3 class="fragment">1. Create your own HTML Elements</h3>
           <h3 class="fragment">2. Encapsulate your styles</h3>
-          <h3 class="fragment">3. A suite oflifecycle callbacks</h3>
+          <h3 class="fragment">3. Callbacks when things change</h3>
           <aside class="notes">
             <p>Web Components is an umbrella term which encompasses a few different technologies.</p>
             <p>When used in conjunction these technologies allow you to do some pretty cool things.</p>
@@ -190,11 +190,16 @@
           </div>
         </section>
 
-        <!-- <section>
-          <h2>Prerequisite</h2>
-          <p>Enable Flags</p>
-          <p>Show Shadow DOM</p>
-        </section> -->
+        <section>
+          <div style="display: inline-block;" class="left-align">
+            <h3>Templates +</h3>
+            <h3>Shadow DOM</h3>
+            <hr>
+            <h3>Custom Elements</h3>
+            <br>
+            <h4><em>Imports gets everything on the page</em></h4>
+          </div>
+        </section>
         
         <section>
           <h1>Templates</h1>
@@ -281,6 +286,19 @@
           </ul>
         </section>
 
+        <section>
+          <div style="text-align: left; display: inline-block;">
+            <h3 style="margin-bottom: 5px;">Templates</h3>
+            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
+            <h3 style="margin-bottom: 5px;">Shadow DOM</h3>
+            <p style="margin-bottom: 35px;"><em>Encapsulation</em></p>
+            <h3 style="margin-bottom: 5px;">Custom Elements</h3>
+            <p style="margin-bottom: 35px;"><em>API</em></p>
+            <h3 style="margin-bottom: 5px;">Imports</h3>
+            <p><em>Transport</em></p>
+          </div>
+        </section>
+
         <section data-state="blackout">
           <h1 style="color: #FFF;">Shadow DOM</h1>
         </section>
@@ -301,7 +319,7 @@
 
         <section class="left-align">
           <div style="width: 40%; display: inline-block;">
-            <div class="fragment" data-fragment-index="1">
+            <div>
               <p><strong>Shadow Host</strong></p>
               <p><em>The node that contains all of our shadow DOM</em></p>
             </div>
@@ -318,7 +336,7 @@
           </div>
 
           <div style="width: 480px; height: 600px; position: relative; display: inline-block; margin: 0 0 0 80px;">
-            <img style="position: absolute; top: 40px;" class="fragment chromeless marginless" src="./img/shadow-dom1.png" data-fragment-index="1">
+            <img style="position: absolute; top: 40px;" class="chromeless marginless" src="./img/shadow-dom1.png" data-fragment-index="1">
             <img style="position: absolute; top: 40px;" class="fragment chromeless marginless" src="./img/shadow-dom2.png" data-fragment-index="2">
             <img style="position: absolute; top: 40px;" class="fragment chromeless marginless" src="./img/shadow-dom3.png" data-fragment-index="3">
           </div>
@@ -348,7 +366,6 @@
         </section>
 
 
-        <!-- :: style encapsulation -->
         <section id="demo-style-encapsulation" class="demo">
           <h3>Style Encapsulation</h3>
           
@@ -380,9 +397,8 @@
         </section>
 
 
-        <!-- :: resetStyleInheritance -->
         <section id="demo-resetStyleInheritance" class="left-align demo">
-          <p><strong><code>root.resetStyleInheritance</code></strong> (default: <code>false</code>)</p>
+          <p><strong><code>resetStyleInheritance</code></strong> (default: <code>false</code>)</p>
           <p><code>false</code>: Inheritable styles <strong>will</strong> affect your component.</p>
           <p><code>true</code>: Inheritable styles <strong>will not</strong> affect your component.</p>
           <br>
@@ -413,9 +429,8 @@
           </div>
         </section>
 
-        <!-- :: applyAuthorStyles -->
         <section id="demo-applyAuthorStyles" class="left-align demo">
-          <p><strong><code>root.applyAuthorStyles</code></strong> (default: <code>false</code>)</p>
+          <p><strong><code>applyAuthorStyles</code></strong> (default: <code>false</code>)</p>
           <p><code>false</code>: Author styles <strong>will not</strong> affect your component.</p>
           <p><code>true</code>: Author styles <strong>will</strong> affect your component.</p>
           <br>
@@ -447,7 +462,6 @@
         </section>
 
 
-        <!-- :: parts -->
         <section id="demo-parts" class="demo" style="height: 600px;">
           <h3>Styling Parts</h3>
           <div class="demo-code">
@@ -484,8 +498,7 @@
         </section>
 
 
-
-        <section id="demo-content">
+        <section id="demo-insertion-points" class="demo">
           <h3>Insertion Points</h3>
           <div class="demo-code">
             <pre><code data-trim contenteditable style="margin-top: 20px;">
@@ -495,67 +508,50 @@
             </code></pre>
 
             <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;h1&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h1&gt;
+&lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
             </code></pre>
-            <button class="demo-btn" onclick="runContentDemo();">Run</button>
           </div>
 
-          <div class="hidden pokemon">
-            Jigglypuff
+          <div class="widget">
+            <div class="hidden pokemon">
+              Jigglypuff
+            </div>
           </div>
 
-          <template class="pokemon-template">
-            <h1>A Wild <content></content> Appeared!</h1>
+          <template>
+            <h2>A Wild <content></content> Appeared!</h2>
           </template>
 
           <img class="jigglypuff chromeless" src="./img/jigglypuff.png">
-
-          <script>
-            function runContentDemo() {
-              var host = Reveal.getCurrentSlide().querySelector('.pokemon');
-              host.classList.remove('hidden');
-              var root = host.createShadowRoot();
-              var template = Reveal.getCurrentSlide().querySelector('.pokemon-template');
-              root.appendChild(template.content.cloneNode(true));
-              var jigglypuff = Reveal.getCurrentSlide().querySelector('.jigglypuff');
-              setTimeout(function() {
-                jigglypuff.classList.add('in');
-              }, 2000);
-            }
-          </script>
-
-          <aside class="notes">
-            Using the &lt;content&gt; tag we’ve created an insertion point that projects the text from the .pokemon div so it appears within our shadow &lt;h1&gt;. Insertion points are very powerful because they allow us to change the order in which things render without physically altering the source. It also means that we can be selective about what gets rendered.
-
-            You may have noticed that we’re using a template tag instead of building our Shadow DOM entirely in JavaScript. I’ve found that using &lt;template&gt; tags makes the process of working with the Shadow DOM much easier.
-          </aside>
         </section>
 
-        <section id="demo-insertion-points">
+        <section class="left-align">
+          <p><strong>Insertion points</strong> invite content from the host element into the Shadow DOM. Contents which cross the <strong>shadow boundary</strong> are called <strong>distributed nodes.</strong></p>
+        </section>
+
+        <section class="left-align">
+          <p>Specific content can be targeted with the <strong><code>select</code></strong> attribute. </p>
+        </section>
+
+        <section id="demo-select" class="demo">
+          <h3>Select</h3>
           <pre><code data-trim contenteditable style="margin-top: 20px;">
-<div class="bio">
-  <span class="first-name">Rob</span>
-  <span class="last-name">Dodson</span>
-  <span class="city">San Francisco</span>
-  <p>I’m also a writer and occasional daily blogger.</p>
-</div>
+&lt;div class="bio"&gt;
+  &lt;span class="first-name"&gt;Rob&lt;/span&gt;
+  &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
+  &lt;span class="city"&gt;San Francisco&lt;/span&gt;
+  Blah Blah Blah.
+&lt;/div&gt;
           </code></pre>
 
           <pre><code data-trim contenteditable style="margin-top: 20px;">
-<p>Last Name: <content select=".last-name"></content></p>
-<p>First Name: <content select=".first-name"></content></p>
-<p>City: <content select=".city"></content></p>
-<p><content select=""></content></p>
+&lt;p&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/p&gt;
+&lt;p&gt;First Name: &lt;content select=".first-name"&gt;&lt;/content&gt;&lt;/p&gt;
+&lt;p&gt;City: &lt;content select=".city"&gt;&lt;/content&gt;&lt;/p&gt;
+&lt;p&gt;&lt;content select=""&gt;&lt;/content&gt;&lt;/p&gt;
           </code></pre>
 
-          <div id="bio">
-            <span class="first-name">Rob</span>
-            <span class="last-name">Dodson</span>
-            <span class="city">San Francisco</span>
-            <p>I’m also a writer and occasional daily blogger.</p>
-          </div>
-
-          <template id="insertion-template">
+          <template>
             <style>p { margin: 0; text-align: left; }</style>
             <p>Last Name: <content select=".last-name"></content></p>
             <p>First Name: <content select=".first-name"></content></p>
@@ -563,13 +559,14 @@
             <p><content select=""></content></p>
           </template>
 
-          <script>
-            var section = document.querySelector('#demo-insertion-points');
-            var host = section.querySelector('#bio');
-            var root = host.createShadowRoot();
-            var template = section.querySelector('#insertion-template');
-            root.appendChild(template.content.cloneNode(true));
-          </script>
+          <div class="widget expand">
+            <div id="bio">
+              <span class="first-name">Rob</span>
+              <span class="last-name">Dodson</span>
+              <span class="city">San Francisco</span>
+              Blah Blah Blah.
+            </div>
+          </div>
 
           <aside class="notes">
             Dominic&apos;s party invitation
@@ -577,97 +574,90 @@
           </aside>
         </section>
 
-        <section id="retargeted-events">
+        <section>
+          <h2>What About JavaScript?</h2>
+        </section>
+
+        <section id="demo-retargeted-events" class="demo">
           <h3>Events are retargeted</h3>
 
           <pre><code data-trim contenteditable style="margin-top: 20px;">
-<input id="normal-text" type="text" value="I'm normal text">
+<!-- Regular DOM -->
+&lt;input id="normal-text" value="I'm normal text"&gt;
+          </code></pre>
 
-<div id="host">
-  <input id="distributed-text" type="text" value="I'm distributed text">
-</div>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+<!-- Shadow Host -->
+&lt;div id="host"&gt;
+  &lt;input id="distributed-text" value="I'm distributed text"&gt;
+&lt;/div&gt;
+          </code></pre>
 
-<template>
-  <div>
-    <input id="shadow-text" type="text" value="I'm shadow text">
-  </div>
-  <div>
-    <content></content>
-  </div>
-</template>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+<!-- Shadow DOM -->
+&lt;content&gt;&lt;/content&gt;
+&lt;input id="shadow-text" value="I'm shadow text"&gt;
           </code></pre>
           
-          <div class="example">
+          <div class="clickable">
             <input id="normal-text" type="text" value="I'm normal text">
-
-            <div id="host">
-              <input id="distributed-text" type="text" value="I'm distributed text">
-            </div>
-
+            
             <template>
-              <div>
-                <input id="shadow-text" type="text" value="I'm shadow text">
-              </div>
               <div>
                 <content></content>
               </div>
+              <div>
+                <input id="shadow-text" type="text" value="I'm shadow text">
+              </div>
             </template>
+
+            <div class="widget expand">
+              <div id="host">
+                <input id="distributed-text" type="text" value="I'm distributed text">
+              </div>
+            </div>
           </div>
 
-          <script>
-            (function () {
-              var section = document.querySelector('#retargeted-events .example');
-              var host = section.querySelector('#host');
-              var root = host.createShadowRoot();
-              root.applyAuthorStyles = true;
-              var template = section.querySelector('template');
-              root.appendChild(template.content.cloneNode(true));
-
-              var logElement = function(e) {
-                alert('#' + e.target.id + ' clicked!');
-              };
-
-              section.addEventListener('click', logElement);
-
-            }());
-          </script>
         </section>
 
         <section>
-          <h2>Support</h2>
+          <h2>Browser Support</h2>
+          <ul class="unstyled-list">
+            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
+            <li><i class="icon-remove-circle not-supported"></i> Firefox <em>(In Development)</em></li>
+            <li><i class="icon-remove-circle not-supported"></i> Internet Explorer</li>
+            <li><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</li>
+            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
+          </ul>
+        </section>
 
+        <section>
+          <div style="text-align: left; display: inline-block;">
+            <h3 style="margin-bottom: 5px;">Templates</h3>
+            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>API</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
+            <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
+          </div>
         </section>
 
         <section>
           <h1>Custom Elements</h1>
           <p>
-            MailChimp
-            Wufoo
             Stripe
           </p>
           <p>
             Chart.js
-            D3
-            HighCharts?
           </p>
           <p>
-            Two.js
-            Three.js
+            Two.js or Three.js
           </p>
           <p>
             BlueButton?
-            [Pen](http://sofish.github.io/pen/)
-            [grande](https://github.com/mduvall/grande.js)
-            [Moment](https://github.com/moment/moment).. a moment-format tag holding a moment tag?
-            Google Code Prettify
-            Intro.js
-            Select2
-            Async...?
           </p>
-        </section>
-
-        <section>
-          <h2>&lt;twbs-navbar&gt;</h2>
         </section>
 
         <section>

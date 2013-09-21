@@ -92,6 +92,46 @@
   };
   demos.parts();
 
+  demos.insertionPoints = function insertionPoints() {
+    var section = document.querySelector('#demo-insertion-points');
+    var template = section.querySelector('template');
+    var host = section.querySelector('.widget .pokemon');
+    host.classList.remove('hidden');
+    var root = host.createShadowRoot();
+    root.appendChild(template.content.cloneNode(true));
+    // var jigglypuff = section.querySelector('.jigglypuff');
+    // setTimeout(function() {
+    //   jigglypuff.classList.add('in');
+    // }, 2000);
+  };
+  demos.insertionPoints();
+
+  demos.select = function select() {
+    var section = document.querySelector('#demo-select');
+    var template = section.querySelector('template');
+    var host = section.querySelector('#bio');
+    var root = host.createShadowRoot();
+    root.appendChild(template.content.cloneNode(true));
+  };
+  demos.select();
+
+  demos.retargetedEvents = function retargetedEvents() {
+    var section = document.querySelector('#demo-retargeted-events');
+    var clickable = section.querySelector('.clickable');
+    var template = section.querySelector('template');
+    var host = section.querySelector('.widget #host');
+    var root = host.createShadowRoot();
+    root.applyAuthorStyles = true;
+    root.appendChild(template.content.cloneNode(true));
+
+    var logElement = function(e) {
+      alert('#' + e.target.id + ' clicked!');
+    };
+
+    clickable.addEventListener('click', logElement);
+  };
+  demos.retargetedEvents();
+
   window.demos = demos;
 
 }(window.util));
