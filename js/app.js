@@ -115,22 +115,22 @@
   };
   demos.select();
 
-  demos.retargetedEvents = function retargetedEvents() {
-    var section = document.querySelector('#demo-retargeted-events');
-    var clickable = section.querySelector('.clickable');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget #host');
-    var root = host.createShadowRoot();
-    root.applyAuthorStyles = true;
-    root.appendChild(template.content.cloneNode(true));
+  // demos.retargetedEvents = function retargetedEvents() {
+  //   var section = document.querySelector('#demo-retargeted-events');
+  //   var clickable = section.querySelector('.clickable');
+  //   var template = section.querySelector('template');
+  //   var host = section.querySelector('.widget #host');
+  //   var root = host.createShadowRoot();
+  //   root.applyAuthorStyles = true;
+  //   root.appendChild(template.content.cloneNode(true));
 
-    var logElement = function(e) {
-      alert('#' + e.target.id + ' clicked!');
-    };
+  //   var logElement = function(e) {
+  //     alert('#' + e.target.id + ' clicked!');
+  //   };
 
-    clickable.addEventListener('click', logElement);
-  };
-  demos.retargetedEvents();
+  //   clickable.addEventListener('click', logElement);
+  // };
+  // demos.retargetedEvents();
 
   window.demos = demos;
 
@@ -139,13 +139,17 @@
 
 (function () {
   
-  document.addEventListener('keyup', function(e) {
+  document.addEventListener('keydown', function(e) {
     if (e.keyCode === 74) { // j key
       var fragments = Reveal.getCurrentSlide().querySelectorAll('.fragment');
       Array.prototype.forEach.call(fragments, function(fragment) {
         fragment.classList.toggle('force-focus');
       });
     }
-  });
+
+    if (e.target.getAttribute('data-disable-events')) {
+      e.stopImmediatePropagation();
+    }
+  }, true);
 
 }());

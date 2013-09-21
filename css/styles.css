@@ -46,6 +46,10 @@ video {
   width: 600px;
 }
 
+.reveal sup {
+  font-size: 0.6em;
+}
+
 /**
  * Demos
  */
@@ -97,6 +101,24 @@ video {
 input[type="text"] {
   font-size: 20px;
   padding: 3px;
+}
+
+moment-now,
+moment-format,
+moment-parse,
+moment-from {
+  padding: 3px 6px;
+  background: tomato;
+  color: white;
+}
+
+.reveal .mailchimp,
+.reveal .moment {
+  margin: 0 auto 40px;
+}
+
+.reveal .moment {
+  font-size: 34px;
 }
 
 /**
@@ -169,6 +191,11 @@ input[type="text"] {
   margin: 0 !important;
 }
 
+.reveal .embiggen code {
+  font-size: 24px;
+  line-height: 1.3em;
+}
+
 .reveal .flex-container {
   display: flex;
   height: 220px;
@@ -223,7 +250,10 @@ input[type="text"] {
   * currently in focus get an opacity of 30%.
   */
  .reveal .slides section code .fragment,
+ .reveal .slides section .fragment.definition,
  .reveal .slides section code .fragment.visible { opacity: 0.3; }
+
+ .reveal .slides section .fragment.fragment-hidden { opacity: 0; }
 
  .reveal .slides section .fragment.visible.no-burn,
  .reveal .slides section .fragment.visible.focus { opacity: 1; }
@@ -255,6 +285,14 @@ input[type="text"] {
 
 .reveal .contact-info {
   font-size: 26px
+}
+
+.reveal .definition {
+  margin-bottom: 30px;
+}
+
+.reveal .definition:first-child {
+  margin-top: 40px;
 }
 
 /* This style is fudged in here for the applyAuthorStyles demo */

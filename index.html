@@ -39,9 +39,11 @@
     <![endif]-->
 
     <!-- Custom Elements -->
-    <!-- Include Chart.js so our import can use it -->
+    <!-- Include any js libraries that our elements use -->
     <script src="./lib/js/chart.min.js"></script>
-    <link rel="import" href="./imports/chart.html">
+    <script src="./lib/js/moment.js"></script>
+    <!-- Import all of the new tags -->
+    <link rel="import" href="./imports/elements.html">
   </head>
 
   <body>
@@ -114,7 +116,7 @@
           <br>
           <h3 class="fragment">1. Create your own HTML Elements</h3>
           <h3 class="fragment">2. Encapsulate your styles</h3>
-          <h3 class="fragment">3. Callbacks when things change</h3>
+          <h3 class="fragment">3. React with lifecycle callbacks</h3>
           <aside class="notes">
             <p>Web Components is an umbrella term which encompasses a few different technologies.</p>
             <p>When used in conjunction these technologies allow you to do some pretty cool things.</p>
@@ -248,8 +250,8 @@
 &lt;/template&gt;
 
 &lt;script&gt;
-  var template = document.querySelector('#my-widget');
-  template.content.querySelector('img').src = './img/corgi.gif';
+  var template = document.querySelector("#my-widget");
+  template.content.querySelector("img").src = "./img/corgi.gif";
   document.body.appendChild(template.content.cloneNode(true));
 &lt;/script&gt;
             </code></pre>
@@ -313,7 +315,7 @@
           <h3>&lt;video&gt;'s secret DOM</h3>
           <video src="./videos/bunny.webm" controls></video>
           <pre style="text-align: center;"><code data-trim contenteditable style="margin-top: 20px;">
-<video src="./foo.webm" controls></video>
+&lt;video src="./bunny.webm" controls&gt;&lt;/video&gt;
           </code></pre>
         </section>
 
@@ -348,9 +350,9 @@
 <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment" data-fragment-index="1">&lt;div class="widget"&gt;Hello, world!&lt;/div&gt;</span><span class="fragment" data-fragment-index="2">
 &lt;script&gt;
-  var host = document.querySelector('.widget');
+  var host = document.querySelector(".widget");
   var root = host.createShadowRoot();
-  root.textContent = 'Im inside yr div!';
+  root.textContent = "Im inside yr div!";
 &lt;/script&gt;
 </span>
 </code></pre>
@@ -574,27 +576,27 @@
           </aside>
         </section>
 
-        <section>
+        <!-- <section>
           <h2>What About JavaScript?</h2>
-        </section>
+        </section> -->
 
-        <section id="demo-retargeted-events" class="demo">
+        <!-- <section id="demo-retargeted-events" class="demo">
           <h3>Events are retargeted</h3>
 
           <pre><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Regular DOM -->
+// Regular DOM
 &lt;input id="normal-text" value="I'm normal text"&gt;
           </code></pre>
 
           <pre><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Shadow Host -->
+// Shadow Host
 &lt;div id="host"&gt;
   &lt;input id="distributed-text" value="I'm distributed text"&gt;
 &lt;/div&gt;
           </code></pre>
 
           <pre><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Shadow DOM -->
+// Shadow DOM
 &lt;content&gt;&lt;/content&gt;
 &lt;input id="shadow-text" value="I'm shadow text"&gt;
           </code></pre>
@@ -618,7 +620,7 @@
             </div>
           </div>
 
-        </section>
+        </section> -->
 
         <section>
           <h2>Browser Support</h2>
@@ -646,18 +648,181 @@
 
         <section>
           <h1>Custom Elements</h1>
-          <p>
-            Stripe
-          </p>
-          <p>
-            Chart.js
-          </p>
-          <p>
-            Two.js or Three.js
-          </p>
-          <p>
-            BlueButton?
-          </p>
+        </section>
+
+        <section class="left-align">
+          <p>Custom Elements are <strong>new tags</strong> which inherit from <code>HTMLElement</code> and add <strong>enhanced features</strong>.</p>
+        </section>
+
+        <section>
+          <div style="display: inline-block;" class="left-align">
+            <h3>Templates +</h3>
+            <h3>Shadow DOM</h3>
+            <hr>
+            <h3>Custom Elements</h3>
+          </div>
+        </section>
+
+
+        <section>
+          <h3>Basic Custom Element</h3>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+var Widget = document.register("my-widget", {
+  prototype: Object.create(HTMLElement.prototype)
+});
+          </code></pre>
+          <br>
+          <div class="fragment">
+            <h4>Add your element to the page</h4>
+            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment" data-fragment-index="1">var widget = new Widget(); // OR</span>
+<span class="fragment" data-fragment-index="2">var widget = document.createElement("my-widget"); // OR</span>
+<span class="fragment" data-fragment-index="3">&lt;my-widget&gt;&lt;/my-widget&gt;</span>
+            </code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h3>Extending Existing Elements</h3>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+var MyButton = document.register("my-button", {
+  extends: "button",
+  prototype: Object.create(HTMLButtonElement.prototype)
+});
+          </code></pre>
+          <br>
+          <div class="fragment">
+            <h4>Add your element to the page</h4>
+            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment" data-fragment-index="1">var widget = new MyButton(); // OR</span>
+<span class="fragment" data-fragment-index="2">var widget = document.createElement("button", "my-button"); // OR</span>
+<span class="fragment" data-fragment-index="3">&lt;button is="my-button"&gt;&lt;/button&gt;</span>
+            </code></pre>
+          </div>
+        </section>
+
+        <section class="left-align">
+          <h3>Lifecycle Callbacks</h3>
+          <div style="font-size: 30px;">
+            <div class="fragment definition">
+              <p>
+                <strong><code>createdCallback()</code></strong><br>
+                When a new instance is created. Use like a constructor
+              </p>
+            </div>
+            <div class="fragment definition">
+              <p>
+                <strong><code>enteredDocumentCallback()<sup>*</sup></code></strong><br>
+                When an element is added to the page<br>
+                <sup>*</sup><em>renamed to <strong><code>enteredViewCallback</code></strong></em>
+              </p>
+            </div>
+            <div class="fragment definition">
+              <p>
+                <strong><code>leftDocumentCallback()<sup>*</sup></code></strong><br>
+                When an element is removed from the page<br>
+                <sup>*</sup><em>renamed to <strong><code>leftViewCallback</code></strong></em>
+              </p>
+            </div>
+            <div class="fragment definition">
+              <p>
+                <strong><code>attributeChangedCallback(attrName, oldVal, newVal)</code></strong><br>
+                When one of an element's attributes changes
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Template + Shadow DOM</h3>
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+var WidgetProto = Object.create(HTMLElement.prototype);
+
+WidgetProto.createdCallback = function() {
+  // Our old buddies template...
+  var template = document.querySelector("#widget-template");
+
+  // and Shadow DOM!
+  var root = this.createShadowRoot();
+  root.appendChild(template.content.cloneNode(true));
+};
+
+var Widget = document.register("my-widget", {
+  prototype: WidgetProto
+});
+          </code></pre>
+        </section>
+        
+        <section id="mailchimp-demo" style="height: 300px;">
+          <div class="fragment mailchimp" style="width: 50%;">
+            <!-- disable-events is something I added to kill reveal.js key listeners -->
+            <mc-signup data-disable-events="true"
+                       url="http://robdodson.us7.list-manage.com/subscribe/post"
+                       u="5727aa0eb1ccbf4ae68284189"
+                       id="6719a28b56">
+            </mc-signup>
+          </div>
+          <h3>&lt;mc-signup&gt;&lt;/mc-signup&gt;</h3>
+        </section>
+
+        <section style="margin-top: -50px;">
+          <div class="left-align">
+            <div class="moment">
+              Today is: <moment-now></moment-now>
+            </div>
+            <div class="fragment moment" data-fragment-index="2">
+              Or to put it another way:
+              <moment-format tokens="MMMM Do YYYY, h:mm:ss a">
+                <moment-now></moment-now>
+              </moment-format>
+            </div>
+            <div class="fragment moment" data-fragment-index="3">
+              Oct 26, 1985 becomes: <moment-parse>Oct 26, 1985</moment-parse>
+            </div>
+            <div class="fragment moment" data-fragment-index="4">
+              Or just:
+              <moment-format tokens="dddd, MMMM Do">
+                <moment-parse>Oct 26, 1985</moment-parse>
+              </moment-format>
+            </div>
+            <div class="fragment moment" data-fragment-index="5">
+              Btw, that was: 
+              <moment-from>
+                <moment-parse>Oct 26, 1985</moment-parse>
+                <moment-now></moment-now>
+              </moment-from>
+            </div>
+          </div>
+          <div class="embiggen">
+            <div style="position: relative;">
+              <pre style="position: absolute;"><code data-trim contenteditable>
+<moment-now></moment-now>
+              </code></pre>
+
+              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="2"><code data-trim contenteditable>
+<moment-format tokens="MMMM Do YYYY, h:mm:ss a">
+  <moment-now></moment-now>
+</moment-format>
+              </code></pre>
+
+              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="3"><code data-trim contenteditable>
+<moment-parse>Oct 26, 1985</moment-parse>
+              </code></pre>
+
+              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="4"><code data-trim contenteditable>
+<moment-format tokens="dddd, MMMM Do">
+  <moment-parse>Oct 26, 1985</moment-parse>
+</moment-format>
+              </code></pre>
+
+              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="5"><code data-trim contenteditable>
+<moment-from>
+  <moment-parse>Oct 26, 1985</moment-parse>
+  <moment-now></moment-now>
+</moment-from>
+              </code></pre>
+            </div>
+          </div>
         </section>
 
         <section>
@@ -713,12 +878,6 @@
           </script>
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-            Can we use Shadow DOM...?
-          </script>
-        </section>
-
         <section>
           <h1>Thanks!</h1>
           <h3>Rob Dodson / @rob_dodson</h3>
@@ -749,7 +908,7 @@
           { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          // { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
           {
             src: 'plugin/charred-trail/charred-trail.js',
