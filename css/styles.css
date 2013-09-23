@@ -196,6 +196,10 @@ moment-from {
   line-height: 1.3em;
 }
 
+.lighten {
+  color: gray;
+}
+
 .reveal .flex-container {
   display: flex;
   height: 220px;
@@ -249,8 +253,7 @@ moment-from {
   * Standard CSS classes for charred-trail. Visible elements that are not
   * currently in focus get an opacity of 30%.
   */
- .reveal .slides section code .fragment,
- .reveal .slides section .fragment.definition,
+ .reveal .slides section .fragment.burn,
  .reveal .slides section code .fragment.visible { opacity: 0.3; }
 
  .reveal .slides section .fragment.fragment-hidden { opacity: 0; }

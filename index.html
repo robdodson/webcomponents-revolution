@@ -42,8 +42,10 @@
     <!-- Include any js libraries that our elements use -->
     <script src="./lib/js/chart.min.js"></script>
     <script src="./lib/js/moment.js"></script>
-    <!-- Import all of the new tags -->
+    <!-- Import all custom elements -->
     <link rel="import" href="./imports/elements.html">
+    <!-- Specific import for the 'imports' section of the talk -->
+    <link rel="import" href="./imports/blog-post.html">
   </head>
 
   <body>
@@ -83,9 +85,6 @@
           </ul>
 
           <aside class="notes">
-            <p>Hi, I'm Rob Dodson.</p>
-            <p>I'm really excited to talk about Web Components because I think that they're going to completely change the way we build applications. I really think they're going to be as big for the web platform as ajax was a few years ago.</p>
-            <p>Before we get started I want to thank you for coming to my talk and to thank Ann for putting on this conference. It's awesome that we get to come to together to share these things that we're so passionate about.</p>
           </aside>
         </section>
 
@@ -118,7 +117,7 @@
           <h3 class="fragment">2. Encapsulate your styles</h3>
           <h3 class="fragment">3. React with lifecycle callbacks</h3>
           <aside class="notes">
-            <p>Web Components is an umbrella term which encompasses a few different technologies.</p>
+            <p>"Umbrella" term which encompasses a few different technologies.</p>
             <p>When used in conjunction these technologies allow you to do some pretty cool things.</p>
           </aside>
         </section>
@@ -213,21 +212,18 @@
 
         <section class="left-align">
           If you've used mustache or handlebars it's the same concept. <strong>But now it has its own tag.</strong>
-          <aside class="notes">
-            Show of hands, how many of you have used mustache or handlebars?
-          </aside>
         </section>
 
         <section>
           <h3>Template Basics</h3>
 <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment" data-fragment-index="1">&lt;template id="my-widget"&gt;</span>
-  <span class="fragment" data-fragment-index="2">&lt;p&gt;Once upon a time...&lt;/p&gt;</span>
-  <span class="fragment" data-fragment-index="3">&lt;img src=""/&gt; &lt;!-- Fill me in when you're ready --&gt;</span>
-  <span class="fragment" data-fragment-index="4">&lt;script&gt;
+<span class="fragment burn" data-fragment-index="1">&lt;template id="my-widget"&gt;</span>
+  <span class="fragment burn" data-fragment-index="2">&lt;p&gt;Once upon a time...&lt;/p&gt;</span>
+  <span class="fragment burn" data-fragment-index="3">&lt;img src=""/&gt; &lt;!-- Fill me in when you're ready --&gt;</span>
+  <span class="fragment burn" data-fragment-index="4">&lt;script&gt;
     alert("I'm chillin."); // Totally inert!
   &lt;/script&gt;</span>
-<span class="fragment" data-fragment-index="1">&lt;/template&gt;</span>
+<span class="fragment burn" data-fragment-index="1">&lt;/template&gt;</span>
 </code></pre>
         </section>
 
@@ -304,19 +300,19 @@
         <section data-state="blackout">
           <h1 style="color: #FFF;">Shadow DOM</h1>
         </section>
-
-        <section class="left-align">
-          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</p>
-
-          <p>It is <strong>the same technology used by browser makers</strong> to implement tags like <strong>&lt;video&gt;</strong> and <strong>&lt;textarea&gt;</strong>.</p>
-        </section>
-
+        
         <section>
           <h3>&lt;video&gt;'s secret DOM</h3>
           <video src="./videos/bunny.webm" controls></video>
           <pre style="text-align: center;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;video src="./bunny.webm" controls&gt;&lt;/video&gt;
           </code></pre>
+        </section>
+
+        <section class="left-align">
+          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</p>
+
+          <p>It is <strong>the same technology used by browser makers</strong> to implement tags like <strong>&lt;video&gt;</strong> and <strong>&lt;textarea&gt;</strong>.</p>
         </section>
 
         <section class="left-align">
@@ -345,10 +341,10 @@
         </section>
 
         <section class="demo">
-          <h3>Our first shadow root</h3>
+          <h3>Our first shadow dom</h3>
           <div class="demo-code">
 <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment" data-fragment-index="1">&lt;div class="widget"&gt;Hello, world!&lt;/div&gt;</span><span class="fragment" data-fragment-index="2">
+<span class="fragment burn" data-fragment-index="1">&lt;div class="widget"&gt;Hello, world!&lt;/div&gt;</span><span class="fragment burn" data-fragment-index="2">
 &lt;script&gt;
   var host = document.querySelector(".widget");
   var root = host.createShadowRoot();
@@ -360,10 +356,9 @@
           </div>
 
           <div class="widget expand">Hello, world!</div>
+
           <aside class="notes">
             Inspect with dev tools
-
-            The takeaway is that the content inside of the shadow root is what gets rendered.
           </aside>
         </section>
 
@@ -373,11 +368,22 @@
           
           <div class="demo-code">
             <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;style&gt;
-  h4 { color: white; background: tomato; }
-&lt;/style&gt;
+&lt;template&gt;
+  &lt;style&gt;
+    h4 { color: white; background: tomato; }
+  &lt;/style&gt;
 
-&lt;h4&gt;Another H4 Header&lt;/h4&gt;
+  &lt;h4&gt;Another H4 Header&lt;/h4&gt;
+&lt;/template&gt;
+            </code></pre>
+
+            <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;script&gt;
+  var template = document.querySelector("template");
+  var host = document.querySelector(".widget");
+  var root = host.createShadowRoot();
+  root.appendChild(template.content.cloneNode(true));
+&lt;/script&gt;
             </code></pre>
           </div>
 
@@ -392,9 +398,7 @@
           </template>
 
           <h4>An H4 Header</h4>
-          <div class="widget">
-            <div></div>
-          </div>
+          <div class="widget"></div>
 
         </section>
 
@@ -418,9 +422,7 @@
 
             <div class="center-align">
               <h4>An H4 Header</h4>
-              <div class="widget">
-                <div></div>
-              </div>
+              <div class="widget"></div>
             </div>
 
             <div class="wrap">
@@ -450,9 +452,7 @@
 
             <div class="center-align">
               <h4>An H4 Header</h4>
-              <div class="widget">
-                <div></div>
-              </div>
+              <div class="widget"></div>
             </div>
 
             <div class="wrap">
@@ -461,6 +461,12 @@
             </div>
             
           </div>
+          <aside class="notes">
+            <p>
+              These are good for broad changes but you probably also want
+              to be able to expose specific elements for the user to style
+            </p>
+          </aside>
         </section>
 
 
@@ -468,8 +474,7 @@
           <h3>Styling Parts</h3>
           <div class="demo-code">
             <pre style="margin-bottom: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;div class="blog-post"&gt;&lt;/div&gt; <!-- Our shadow host -->
-
+<!-- Shadow DOM -->
 &lt;template&gt;
   &lt;h3 part="heading"&gt;Interesting Article&lt;/h3&gt;
   &lt;p part="article"&gt;Article copy is special!&lt;/p&gt;
@@ -477,16 +482,24 @@
             </code></pre>
 
             <pre style="margin-bottom: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
+<!-- Parent document -->
 &lt;style&gt;
-  .blog-post::part(heading) { font-family: Courier; }
-  .blog-post::part(article) { font-style: italic; }
+  .widget::part(heading) { font-family: Courier; }
+  .widget::part(article) { font-style: italic; }
 &lt;/style&gt;
             </code></pre>
+            <aside class="notes">
+              <p>part attribute and part pseudo selector</p>
+
+              <p>previously called "pseudo"</p>
+
+              <p>kind of like getters for CSS</p>
+            </aside>
           </div>
 
           <style>
-            .blog-post::part(heading) { font-family: Courier; }
-            .blog-post::part(article) { font-style: italic; }
+            .widget::part(heading) { font-family: Courier; }
+            .widget::part(article) { font-style: italic; }
           </style>
 
           <template>
@@ -494,9 +507,12 @@
             <p part="article">Article copy is special!</p>
           </template>
 
-          <div class="widget">
-            <div class="blog-post"></div>
-          </div>
+          <div class="widget"></div>
+        </section>
+
+
+        <section class="left-align">
+          <p><strong>Insertion points</strong> invite content from the host element into the Shadow DOM. Contents which cross the <strong>shadow boundary</strong> are called <strong>distributed nodes.</strong></p>
         </section>
 
 
@@ -504,13 +520,17 @@
           <h3>Insertion Points</h3>
           <div class="demo-code">
             <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;div class="pokemon"&gt;
+<!-- Parent document -->
+&lt;div class="widget"&gt;
   Jigglypuff
 &lt;/div&gt;
             </code></pre>
 
             <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
+<!-- Shadow DOM -->
+&lt;template&gt;
+  &lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
+&lt;/template&gt;
             </code></pre>
           </div>
 
@@ -525,49 +545,53 @@
           </template>
 
           <img class="jigglypuff chromeless" src="./img/jigglypuff.png">
-        </section>
 
-        <section class="left-align">
-          <p><strong>Insertion points</strong> invite content from the host element into the Shadow DOM. Contents which cross the <strong>shadow boundary</strong> are called <strong>distributed nodes.</strong></p>
+          <aside class="notes">
+            A single content tag is kind of like a catch-all
+          </aside>
         </section>
 
         <section class="left-align">
           <p>Specific content can be targeted with the <strong><code>select</code></strong> attribute. </p>
+          <ul>
+            <li class="fragment">Uses CSS selectors, just like jQuery or <code>querySelector</code></li>
+            <li class="fragment">Content is selected one time, and that's it.</li>
+          </ul>
+          <aside class="notes">
+            <p>f: Use CSS selector</p>
+            <p>f: Party invitation</p>
+          </aside>
         </section>
 
         <section id="demo-select" class="demo">
           <h3>Select</h3>
           <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;div class="bio"&gt;
+<!-- Parent document -->
+&lt;div class="widget"&gt;
   &lt;span class="first-name"&gt;Rob&lt;/span&gt;
   &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
-  &lt;span class="city"&gt;San Francisco&lt;/span&gt;
   Blah Blah Blah.
 &lt;/div&gt;
           </code></pre>
 
           <pre><code data-trim contenteditable style="margin-top: 20px;">
+<!-- Shadow DOM -->
 &lt;p&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/p&gt;
 &lt;p&gt;First Name: &lt;content select=".first-name"&gt;&lt;/content&gt;&lt;/p&gt;
-&lt;p&gt;City: &lt;content select=".city"&gt;&lt;/content&gt;&lt;/p&gt;
 &lt;p&gt;&lt;content select=""&gt;&lt;/content&gt;&lt;/p&gt;
           </code></pre>
 
           <template>
-            <style>p { margin: 0; text-align: left; }</style>
+            <style>p { margin: 0 0 10px; }</style>
             <p>Last Name: <content select=".last-name"></content></p>
             <p>First Name: <content select=".first-name"></content></p>
-            <p>City: <content select=".city"></content></p>
             <p><content select=""></content></p>
           </template>
 
           <div class="widget expand">
-            <div id="bio">
-              <span class="first-name">Rob</span>
-              <span class="last-name">Dodson</span>
-              <span class="city">San Francisco</span>
-              Blah Blah Blah.
-            </div>
+            <span class="first-name">Rob</span>
+            <span class="last-name">Dodson</span>
+            Blah Blah Blah.
           </div>
 
           <aside class="notes">
@@ -650,17 +674,19 @@
           <h1>Custom Elements</h1>
         </section>
 
+
         <section class="left-align">
           <p>Custom Elements are <strong>new tags</strong> which inherit from <code>HTMLElement</code> and add <strong>enhanced features</strong>.</p>
         </section>
 
+
         <section>
-          <div style="display: inline-block;" class="left-align">
-            <h3>Templates +</h3>
-            <h3>Shadow DOM</h3>
-            <hr>
-            <h3>Custom Elements</h3>
-          </div>
+          <p style="font-size: 32px;"><code>document.register('tag-name', { prototype: proto })</code></p>
+          <br>
+          <ul>
+            <li>Tag name <strong>must</strong> contain a dash</li>
+            <li>Prototype <strong>must</strong> inherit from <strong><code>HTMLElement</code></strong></li>
+          </ul>
         </section>
 
 
@@ -675,12 +701,13 @@ var Widget = document.register("my-widget", {
           <div class="fragment">
             <h4>Add your element to the page</h4>
             <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment" data-fragment-index="1">var widget = new Widget(); // OR</span>
-<span class="fragment" data-fragment-index="2">var widget = document.createElement("my-widget"); // OR</span>
-<span class="fragment" data-fragment-index="3">&lt;my-widget&gt;&lt;/my-widget&gt;</span>
+<span class="fragment burn" data-fragment-index="1">var widget = new Widget(); // OR</span>
+<span class="fragment burn" data-fragment-index="2">var widget = document.createElement("my-widget"); // OR</span>
+<span class="fragment burn" data-fragment-index="3">&lt;my-widget&gt;&lt;/my-widget&gt;</span>
             </code></pre>
           </div>
         </section>
+
 
         <section>
           <h3>Extending Existing Elements</h3>
@@ -694,37 +721,48 @@ var MyButton = document.register("my-button", {
           <div class="fragment">
             <h4>Add your element to the page</h4>
             <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment" data-fragment-index="1">var widget = new MyButton(); // OR</span>
-<span class="fragment" data-fragment-index="2">var widget = document.createElement("button", "my-button"); // OR</span>
-<span class="fragment" data-fragment-index="3">&lt;button is="my-button"&gt;&lt;/button&gt;</span>
+<span class="fragment burn" data-fragment-index="1">var widget = new MyButton(); // OR</span>
+<span class="fragment burn" data-fragment-index="2">var widget = document.createElement("button", "my-button"); // OR</span>
+<span class="fragment burn" data-fragment-index="3">&lt;button is="my-button"&gt;&lt;/button&gt;</span>
             </code></pre>
           </div>
         </section>
 
+
+        <section>
+          <div style="display: inline-block;" class="left-align">
+            <h3>Templates +</h3>
+            <h3>Shadow DOM</h3>
+            <hr>
+            <h3>Custom Elements</h3>
+          </div>
+        </section>
+
+
         <section class="left-align">
           <h3>Lifecycle Callbacks</h3>
           <div style="font-size: 30px;">
-            <div class="fragment definition">
+            <div class="fragment burn">
               <p>
                 <strong><code>createdCallback()</code></strong><br>
                 When a new instance is created. Use like a constructor
               </p>
             </div>
-            <div class="fragment definition">
+            <div class="fragment burn">
               <p>
                 <strong><code>enteredDocumentCallback()<sup>*</sup></code></strong><br>
                 When an element is added to the page<br>
                 <sup>*</sup><em>renamed to <strong><code>enteredViewCallback</code></strong></em>
               </p>
             </div>
-            <div class="fragment definition">
+            <div class="fragment burn">
               <p>
                 <strong><code>leftDocumentCallback()<sup>*</sup></code></strong><br>
                 When an element is removed from the page<br>
                 <sup>*</sup><em>renamed to <strong><code>leftViewCallback</code></strong></em>
               </p>
             </div>
-            <div class="fragment definition">
+            <div class="fragment burn">
               <p>
                 <strong><code>attributeChangedCallback(attrName, oldVal, newVal)</code></strong><br>
                 When one of an element's attributes changes
@@ -733,16 +771,23 @@ var MyButton = document.register("my-button", {
           </div>
         </section>
 
-        <section>
-          <h3>Template + Shadow DOM</h3>
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+
+        <section id="demo-template-shadow-dom" class="demo">
+          <pre class="fragment burn"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;template id="widget-template"&gt;
+  &lt;style&gt;...&lt;/style&gt;
+  &lt;div&gt;
+    &lt;h4&gt;I am a widget!&lt;/h4&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+          </code></pre>
+
+          <pre class="fragment burn"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+var template = document.querySelector("#widget-template");
+
 var WidgetProto = Object.create(HTMLElement.prototype);
 
 WidgetProto.createdCallback = function() {
-  // Our old buddies template...
-  var template = document.querySelector("#widget-template");
-
-  // and Shadow DOM!
   var root = this.createShadowRoot();
   root.appendChild(template.content.cloneNode(true));
 };
@@ -751,8 +796,16 @@ var Widget = document.register("my-widget", {
   prototype: WidgetProto
 });
           </code></pre>
+          
+          <div class="widget"><my-widget></my-widget></div>
         </section>
-        
+
+
+        <section>
+          <h3>Insertion Points</h3>
+        </section>
+
+
         <section id="mailchimp-demo" style="height: 300px;">
           <div class="fragment mailchimp" style="width: 50%;">
             <!-- disable-events is something I added to kill reveal.js key listeners -->
@@ -764,6 +817,12 @@ var Widget = document.register("my-widget", {
           </div>
           <h3>&lt;mc-signup&gt;&lt;/mc-signup&gt;</h3>
         </section>
+
+
+        <section>
+          <h3>&lt;file-csv&gt;&lt;/file-csv&gt;</h3>
+        </section>
+
 
         <section style="margin-top: -50px;">
           <div class="left-align">
@@ -825,58 +884,134 @@ var Widget = document.register("my-widget", {
           </div>
         </section>
 
+
+        <section>
+          <h3>Goodbye &lt;element&gt;... for now</h3>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+<!-- Do not use! -->
+&lt;element name="my-widget"&gt;
+  ...
+&lt;/element&gt;
+          </code></pre>
+        </section>
+
+
+        <section>
+          <h2>Browser Support</h2>
+          <ul class="unstyled-list">
+            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
+            <li><i class="icon-remove-circle not-supported"></i> Firefox <em>(In Development)</em></li>
+            <li><i class="icon-remove-circle not-supported"></i> Internet Explorer</li>
+            <li><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</li>
+            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <div style="text-align: left; display: inline-block;">
+            <h3 style="margin-bottom: 5px;">Templates</h3>
+            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>API</em></p>
+            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
+            <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
+          </div>
+        </section>
+
+
         <section>
           <h1>Imports</h1>
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-            Imports are a new type of link tag which should be familiar to you since that’s also how we load our stylesheets.
 
-            ```
-            <link rel="import" href="/path/to/some/import.html">
-            ```
-          </script>
+        <section class="left-align">
+          <p>Imports allow you to <strong>load additional documents</strong> into your page without having to write any ajax.</p>
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-            ```
-            <head>
-              <meta charset="utf-8">
-              <title>Basic HTML Imports</title>
-              <!-- Pull in our blog post example -->
-              <link rel="import" href="/imports/blog-post.html">
-            </head>
-            <body>
-              <p>Hello World!</p>
-            </body>
-            ```
 
-            ```
-            <div id="blog-post">
-              <h1>Awesome header</h1>
-              <p>Here is some really interesting paragraph content.</p>
-            </div>
-            ```
-          </script>
+        <section>
+          <p>Uses <code>&lt;link&gt;</code> tag, just like stylesheets.</p>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;link rel="import" href="/path/to/some/import.html"&gt;
+          </code></pre>
+          <p>Only difference is <code>rel="import"</code></p>
         </section>
 
-        <section data-markdown>
-          <script type="text/template">
-            ```
-            <body>
-              <p>Hello World!</p>
 
-              <script>
-                var link = document.querySelector('link[rel=import]');
-                var content = link.import.querySelector('#blog-post');
-                document.body.appendChild(content.cloneNode(true));
-              </script>
-            </body>
-            ```
-          </script>
+        <section>
+          <p>custo element is already in imported document</p>
         </section>
+
+
+        <section id="demo-basic-import" class="demo">
+
+<p class="left-align" style="font-size: 28px;"><code>imports/blog-post.html</code></p>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;template id="blog-post"&gt;
+  &lt;h1&gt;Awesome header&lt;/h1&gt;
+  &lt;p&gt;Here is some really interesting paragraph content.&lt;/p&gt;
+&lt;/template&gt;
+          </code></pre>
+
+<p class="left-align" style="font-size: 28px;"><code>index.html</code></p>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;head&gt;
+  &lt;link rel="import" href="./imports/blog-post.html"&gt;
+&lt;/head&gt;
+          </code></pre>
+
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+var link = document.querySelector('link[rel=import]');
+var template = link.import.querySelector('#blog-post');
+document.body.appendChild(template.content.cloneNode(true));
+          </code></pre>
+
+          <div class="widget expand"></div>
+        </section>
+
+
+        <section>
+          <div style="display: inline-block;" class="left-align">
+            <h3>Templates +</h3>
+            <h3>Shadow DOM</h3>
+            <hr>
+            <h3>Custom Elements</h3>
+            <br>
+            <h4><em>Imports gets everything on the page</em></h4>
+          </div>
+        </section>
+
+
+        <section>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;template id="chart-pie"&gt;
+  &lt;canvas class="myChart" width="200" height="200"&gt;&lt;/canvas&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  // thisDoc refers to the "importee", which is chart.html
+  var thisDoc = document.currentScript.ownerDocument;
+
+  // thatDoc refers to the "importer", which is index.html
+  var thatDoc = document;
+
+  var template = thisDoc.querySelector('#chart-pie');
+
+  var ChartPieProto = Object.create(HTMLElement.prototype);
+  ChartPieProto.createdCallback = function() {
+    var root = this.createShadowRoot();
+    var clone = template.content.cloneNode(true);
+    root.appendChild(clone);
+  };
+
+  var ChartPie = thatDoc.register('chart-pie', {prototype: ChartPieProto});
+&lt;/script&gt;
+          </code></pre>
+        </section>
+
 
         <section>
           <h1>Thanks!</h1>

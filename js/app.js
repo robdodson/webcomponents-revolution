@@ -47,7 +47,7 @@
   demos.styleEncapsulation = function styleEncapsulation() {
     var section = document.querySelector('#demo-style-encapsulation');
     var template = section.querySelector('template');
-    var host = section.querySelector('.widget div');
+    var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
     root.appendChild(template.content.cloneNode(true));
   };
@@ -58,7 +58,7 @@
     var section = document.querySelector('#demo-resetStyleInheritance');
     var output = section.querySelector('#isStyleInheritance');
     var template = section.querySelector('template');
-    var host = section.querySelector('.widget div');
+    var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
     util.emptyNode(root);
     this.doResetStyles = !this.doResetStyles;
@@ -73,7 +73,7 @@
     var section = document.querySelector('#demo-applyAuthorStyles');
     var output = section.querySelector('#isAuthorStyles');
     var template = section.querySelector('template');
-    var host = section.querySelector('.widget div');
+    var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
     util.emptyNode(root);
     this.doAuthorStyles = !this.doAuthorStyles;
@@ -86,7 +86,7 @@
   demos.parts = function parts() {
     var section = document.querySelector('#demo-parts');
     var template = section.querySelector('template');
-    var host = section.querySelector('.widget .blog-post');
+    var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
     root.appendChild(template.content.cloneNode(true));
   };
@@ -109,7 +109,7 @@
   demos.select = function select() {
     var section = document.querySelector('#demo-select');
     var template = section.querySelector('template');
-    var host = section.querySelector('#bio');
+    var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
     root.appendChild(template.content.cloneNode(true));
   };
@@ -131,6 +131,15 @@
   //   clickable.addEventListener('click', logElement);
   // };
   // demos.retargetedEvents();
+
+  demos.basicImports = function() {
+    var section = document.querySelector('#demo-basic-import');
+    var link = document.querySelector('link[href="./imports/blog-post.html"]');
+    var template = link.import.querySelector('#blog-post');
+    var host = section.querySelector('.widget');
+    host.appendChild(template.content.cloneNode(true));
+  };
+  demos.basicImports();
 
   window.demos = demos;
 
