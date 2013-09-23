@@ -933,20 +933,31 @@ var Widget = document.register("my-widget", {
 
 
         <section>
-          <p>Uses <code>&lt;link&gt;</code> tag, just like stylesheets.</p>
           <pre><code data-trim contenteditable style="margin-top: 20px;">
 &lt;link rel="import" href="/path/to/some/import.html"&gt;
           </code></pre>
-          <p>Only difference is <code>rel="import"</code></p>
+          <ul>
+            <li>Uses <code>link</code> tag, just like a styesheet</li>
+            <li>New <code>rel</code> type of <code>import</code></li>
+          </ul>
         </section>
 
 
         <section>
-          <p>custo element is already in imported document</p>
+          <h3>Importing Custom Elements</h3>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+&lt;head&gt;
+  &lt;link rel="import" href="./imports/chart.html"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;chart-pie&gt;&lt;/chart-pie&gt; <!-- ready to rock -->
+&lt;/body&gt;
+          </code></pre>
+            <p><em>No need to check if the import is loaded</em></p>
         </section>
 
 
-        <section id="demo-basic-import" class="demo">
+        <!-- <section id="demo-basic-import" class="demo">
 
 <p class="left-align" style="font-size: 28px;"><code>imports/blog-post.html</code></p>
           <pre><code data-trim contenteditable style="margin-top: 20px;">
@@ -970,44 +981,35 @@ document.body.appendChild(template.content.cloneNode(true));
           </code></pre>
 
           <div class="widget expand"></div>
-        </section>
+        </section> -->
 
 
         <section>
-          <div style="display: inline-block;" class="left-align">
-            <h3>Templates +</h3>
-            <h3>Shadow DOM</h3>
-            <hr>
-            <h3>Custom Elements</h3>
-            <br>
-            <h4><em>Imports gets everything on the page</em></h4>
-          </div>
-        </section>
-
-
-        <section>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
+          <h3>The import</h3>
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;template id="chart-pie"&gt;
-  &lt;canvas class="myChart" width="200" height="200"&gt;&lt;/canvas&gt;
+  ...
 &lt;/template&gt;
 
 &lt;script&gt;
-  // thisDoc refers to the "importee", which is chart.html
-  var thisDoc = document.currentScript.ownerDocument;
+  <span class="fragment burn" data-fragment-index="1">// thisDoc refers to the "importee", which is chart.html
+  var thisDoc = document.currentScript.ownerDocument;</span>
 
-  // thatDoc refers to the "importer", which is index.html
-  var thatDoc = document;
+  <span class="fragment burn" data-fragment-index="2">// thatDoc refers to the "importer", which is index.html
+  var thatDoc = document;</span>
 
-  var template = thisDoc.querySelector('#chart-pie');
+  <span class="fragment burn" data-fragment-index="3">// use thisDoc to find our template
+  var template = thisDoc.querySelector("#chart-pie");</span>
 
-  var ChartPieProto = Object.create(HTMLElement.prototype);
+  <span class="fragment burn" data-fragment-index="4">var ChartPieProto = Object.create(HTMLElement.prototype);
   ChartPieProto.createdCallback = function() {
-    var root = this.createShadowRoot();
-    var clone = template.content.cloneNode(true);
-    root.appendChild(clone);
-  };
+    ...
+  };</span>
 
-  var ChartPie = thatDoc.register('chart-pie', {prototype: ChartPieProto});
+  <span class="fragment burn" data-fragment-index="5">// use thatDoc to register our element
+  var ChartPie = thatDoc.register("chart-pie", {
+    prototype: ChartPieProto
+  });</span>
 &lt;/script&gt;
           </code></pre>
         </section>

@@ -132,14 +132,14 @@
   // };
   // demos.retargetedEvents();
 
-  demos.basicImports = function() {
-    var section = document.querySelector('#demo-basic-import');
-    var link = document.querySelector('link[href="./imports/blog-post.html"]');
-    var template = link.import.querySelector('#blog-post');
-    var host = section.querySelector('.widget');
-    host.appendChild(template.content.cloneNode(true));
-  };
-  demos.basicImports();
+  // demos.basicImports = function() {
+  //   var section = document.querySelector('#demo-basic-import');
+  //   var link = document.querySelector('link[href="./imports/blog-post.html"]');
+  //   var template = link.import.querySelector('#blog-post');
+  //   var host = section.querySelector('.widget');
+  //   host.appendChild(template.content.cloneNode(true));
+  // };
+  // demos.basicImports();
 
   window.demos = demos;
 

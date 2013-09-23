@@ -249,19 +249,22 @@ moment-from {
    background: none;
  }
 
- /**
-  * Standard CSS classes for charred-trail. Visible elements that are not
-  * currently in focus get an opacity of 30%.
-  */
- .reveal .slides section .fragment.burn,
- .reveal .slides section code .fragment.visible { opacity: 0.3; }
+/**
+ * Standard CSS classes for charred-trail. Visible elements that are not
+ * currently in focus get an opacity of 30%.
+ */
 
- .reveal .slides section .fragment.fragment-hidden { opacity: 0; }
+.reveal .slides section .fragment.fragment-hidden { opacity: 0; }
+.reveal .slides section .fragment.burn { opacity: 0.3; }
+.reveal .slides section .fragment.visible.no-burn,
+.reveal .slides section .fragment.visible.focus { opacity: 1; }
+.reveal .slides section code .fragment.force-focus { opacity: 1 !important; }
 
- .reveal .slides section .fragment.visible.no-burn,
- .reveal .slides section .fragment.visible.focus { opacity: 1; }
-
- .reveal .slides section code .fragment.force-focus { opacity: 1 !important; }
+/*.reveal .slides section .fragment.fragment-hidden { opacity: 0; }
+.reveal .slides section .fragment.burn { opacity: 1; background: rgba(0, 0, 0, 0); }
+.reveal .slides section .fragment.visible.no-burn,
+.reveal .slides section .fragment.visible.focus { background: rgb(0, 200, 0); }
+.reveal .slides section code .fragment.force-focus { opacity: 1 !important; }*/
 
 .reveal i {
   font-family: "FontAwesome";
