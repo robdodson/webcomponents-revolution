@@ -30,13 +30,13 @@
 				border: none;
 
 				-webkit-transform-origin: 0 0;
-				   -moz-transform-origin: 0 0;
+					 -moz-transform-origin: 0 0;
 					-ms-transform-origin: 0 0;
 					 -o-transform-origin: 0 0;
 						transform-origin: 0 0;
 
 				-webkit-transform: scale(0.5);
-				   -moz-transform: scale(0.5);
+					 -moz-transform: scale(0.5);
 					-ms-transform: scale(0.5);
 					 -o-transform: scale(0.5);
 						transform: scale(0.5);
@@ -56,13 +56,13 @@
 				border: none;
 
 				-webkit-transform-origin: 0 0;
-				   -moz-transform-origin: 0 0;
+					 -moz-transform-origin: 0 0;
 					-ms-transform-origin: 0 0;
 					 -o-transform-origin: 0 0;
 						transform-origin: 0 0;
 
 				-webkit-transform: scale(0.35);
-				   -moz-transform: scale(0.35);
+					 -moz-transform: scale(0.35);
 					-ms-transform: scale(0.35);
 					 -o-transform: scale(0.35);
 						transform: scale(0.35);
@@ -105,9 +105,9 @@
 				opacity: 0;
 
 				-webkit-transition: opacity 0.4s;
-				   -moz-transition: opacity 0.4s;
-				     -o-transition: opacity 0.4s;
-				        transition: opacity 0.4s;
+					 -moz-transition: opacity 0.4s;
+						 -o-transition: opacity 0.4s;
+								transition: opacity 0.4s;
 			}
 
 			.elapsed,
@@ -238,6 +238,32 @@
 					currentSlide.contentWindow.Reveal.addEventListener( 'slidechanged', synchronizeMainWindow );
 					currentSlide.contentWindow.Reveal.addEventListener( 'fragmentshown', synchronizeMainWindow );
 					currentSlide.contentWindow.Reveal.addEventListener( 'fragmenthidden', synchronizeMainWindow );
+
+
+
+					// Run demo from the notes plugin
+					window.addEventListener('keydown', runDemo);
+					currentSlide.contentWindow.addEventListener('keydown', runDemo);
+
+					function runDemo(e) {
+						if (e.keyCode === 13) { // enter key
+							
+							var section;
+							var btn;
+
+							if (currentSlide) {
+								section = currentSlide.contentWindow.Reveal.getCurrentSlide();
+								btn = section.querySelector('.demo-btn');
+								btn.click();
+							}
+
+							if (window.opener) {
+								section = window.opener.Reveal.getCurrentSlide();
+								btn = section.querySelector('.demo-btn');
+								btn.click();
+							}
+						}
+					}
 
 				}
 				else {

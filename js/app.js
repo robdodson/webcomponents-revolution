@@ -149,6 +149,13 @@
 (function () {
   
   document.addEventListener('keydown', function(e) {
+    // Kill keyboard events on slides with text input
+    if (e.target.getAttribute('data-disable-events')) {
+      e.stopImmediatePropagation();
+      return;
+    }
+
+    // Make all fragments visible
     if (e.keyCode === 74) { // j key
       var fragments = Reveal.getCurrentSlide().querySelectorAll('.fragment');
       Array.prototype.forEach.call(fragments, function(fragment) {
@@ -156,9 +163,6 @@
       });
     }
 
-    if (e.target.getAttribute('data-disable-events')) {
-      e.stopImmediatePropagation();
-    }
   }, true);
 
 }());

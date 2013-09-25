@@ -70,7 +70,11 @@
             -webkit-transform: rotate(-10deg);
           "><span style="font-size: 140px">R</span><span style="font-size: 142px">e</span><span style="font-size: 144px">v</span><span style="font-size: 146px">o</span><span style="font-size: 148px">l</span><span style="font-size: 150px">u</span><span style="font-size: 152px">t</span><span style="font-size: 154px">i</span><span style="font-size: 156px">o</span><span style="font-size: 158px">n</span><span style="font-size: 160px">!</span></h1>
           <aside class="notes">
-            Thank you all for being here!
+            <p>Really excited to talk about web components...</p>
+
+            <p>Thank you Ann! There's a lot of work that goes into this conference.</p>
+
+            <p>Thank you guys.</p>
           </aside>
         </section>
 
@@ -85,6 +89,9 @@
           </ul>
 
           <aside class="notes">
+            <p>Freelance front-end developer</p>
+            <p>I blog at...</p>
+            <p>We're going to cover a lot of material...</p>
           </aside>
         </section>
 
@@ -95,19 +102,33 @@
             <li>The Specs</li>
             <li>Using Web Components Today!</li>
           </ul>
+
+          <aside class="notes">
+            <p>What are web components...</p>
+            <p>The 4 underlying technologies that <strong>collectively</strong> make up web components</p>
+            <p>Tools that we can use to start experimenting...</p>
+          </aside>
         </section>
 
         <section>
           <h2 class="blink" style="font-size: 95px;"><i class="icon-warning-sign"></i> Code Ahead!</h2>
           <img width="70%" class="chromeless" src="./img/wrestler.gif">
           <aside class="notes">
-            Some of the syntax and property names may change!
+            <p>A ton of code...</p>
+            <p>We will mess with your head...</p>
+            <p>Some of the syntax and property names may change!</p>
+            <p>One of the reasons focused on the basics is because material is outdated...</p>
           </aside>
         </section>
 
         <section>
           <h2><i class="icon-heart"></i> Web Components</h2>
           <img width="80%" class="chromeless" src="./img/jake.gif">
+          <aside class="notes">
+            <p>If you can hang in there...</p>
+            <p>Fundamentally change the way we build web applications</p>
+            <p>We're finally going to get a lot of things...</p>
+          </aside>
         </section>
 
         <section style="text-align: left;">
@@ -117,45 +138,64 @@
           <h3 class="fragment">2. Encapsulate your styles</h3>
           <h3 class="fragment">3. React with lifecycle callbacks</h3>
           <aside class="notes">
-            <p>"Umbrella" term which encompasses a few different technologies.</p>
-            <p>When used in conjunction these technologies allow you to do some pretty cool things.</p>
+            <p>"Umbrella" term</p>
+            <p>A few different technologies, making their way through the W3C</p>
+            <p>Collectively, let us do cool stuff...</p>
           </aside>
         </section>
 
         <section id="chart-demo" style="height: 300px;">
           <h3>&lt;chart-pie&gt;&lt;/chart-pie&gt;</h3>
           <div class="fragment" data-pie="true"></div>
+          <aside class="notes">
+            <p>To give you an example...</p>
+            <p>Imagine you're building a data viz library</p>
+            <p>The way we do this today...</p>
+            <p>Exposes a more declarative approach to web development</p>
+            <p>Previously not possible without the use of iframes...but iframes are wonky</p>
+          </aside>
         </section>
 
         <section>
           <h2>Why Web Components?</h2>
           <aside class="notes">
-            <p>Writing a ton of boilerplate</p>
-            <p>Difficult to share our components</p>
-            <p>Standards are slow</p>
+            <p>That's cool but so what?</p>
+            <p>I'm getting by fine with JavaScript and CSS</p>
           </aside>
         </section>
 
-        <!-- <section>
+        <section>
           <h3>Writing a ton of boilerplate</h3>
+          <aside class="notes">
+            <p>Especially if you're using a UI framework like Bootstrap</p>
+            <p>Copy/paste is bad</p>
+            <p>Spending more time focusing on application code</p>
+          </aside>
         </section>
 
         <section>
-          <h3>We're still not modular</h3>
+          <h3>Sharing is Tough</h3>
+          <aside class="notes">
+            <p>If you're writing a UI library...</p>
+            <p>Upgrading is difficult because you need to change markup and CSS</p>
+            <p>Teams work on CSS can conflict often</p>
+          </aside>
         </section>
 
         <section>
           <h3>Standards are slow</h3>
           <aside class="notes">
-            <p>The video tag was proposed in 2007 and I bet there are people in here who still haven't or can't use it.</p>
+            <p>To give you an example, the video tag was proposed in 2007...</p>
+            <p>We need to speed that up!</p>
+            <p>It shouldn't take years to add something to the web platform.</p>
           </aside>
-        </section> -->
+        </section>
 
         <section class="left-align">
           <p>We want to build <strong>applications</strong> but we're using tools designed for <strong>static documents.</strong></p>
 
           <aside class="notes">
-            <p>If we're trying to compete with native options like iOS we're going to have to stop hacking our way around problems.</p>
+            <p>What we need...</p>
           </aside>
         </section>
 
@@ -163,8 +203,9 @@
           <h3>We Need to <a href="http://extensiblewebmanifesto.org/">Extend the Browser</a></h3>
 
           <aside class="notes">
-            <p>We need to shorten the loop from spec proposal, to implementation, to developer adoption.</p>
-            <p>And that's where Web Components come in</p>
+            <p>Some smart people like Brendan Eich and Yehuda Katz got together...</p>
+            <p>Augmenting the web platform by adding new tags and APIs...</p>
+            <p>Take the standardization process and reduce it from years to months</p>
           </aside>
         </section>
 
@@ -172,10 +213,19 @@
           <p>
             Web Components use the same tools that the browser makers use. As a result <strong>it's only a short hop from web component to new standard.</strong>
           </p>
+          <aside class="notes">
+            <p>pie-chart tag...</p>
+            <p>You can see why this could be a big deal...</p>
+            <p>Web Components Revolution...</p>
+          </aside>
         </section>
 
         <section class="left-align">
           <h1 style="font-size: 3.5em;">Web Components <i class="icon-umbrella"></i></h1>
+          <aside class="notes">
+            <p>There's actually 4 technologies that make up web components</p>
+            <p>And we're going to go through each of them</p>
+          </aside>
         </section>
 
         <section>
@@ -185,10 +235,15 @@
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
             <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>API</em></p>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>The Tag</em></p>
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
             <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
           </div>
+          <aside class="notes">
+            <p>Templates: Just like mustache</p>
+            <p>Shadow DOM: Some things public and other things private</p>
+            <p>Custom Elements: The interface</p>
+          </aside>
         </section>
 
         <section>
@@ -255,7 +310,7 @@
           </div>
 
           <template id="my-widget">
-            <img class="chromeless" width="350" src=""/>
+            <img class="chromeless" width="300" src=""/>
             <p>Templates. Full of WIN!</p>
             <script>
               alert("I'm alive!");
@@ -291,7 +346,7 @@
             <h3 style="margin-bottom: 5px;">Shadow DOM</h3>
             <p style="margin-bottom: 35px;"><em>Encapsulation</em></p>
             <h3 style="margin-bottom: 5px;">Custom Elements</h3>
-            <p style="margin-bottom: 35px;"><em>API</em></p>
+            <p style="margin-bottom: 35px;"><em>The Tag</em></p>
             <h3 style="margin-bottom: 5px;">Imports</h3>
             <p><em>Transport</em></p>
           </div>
@@ -301,18 +356,25 @@
           <h1 style="color: #FFF;">Shadow DOM</h1>
         </section>
         
+        <section class="left-align">
+          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</p>
+
+          <p>It is <strong>the same technology used by browser makers</strong> to implement tags like <strong>&lt;video&gt;</strong> and <strong>&lt;textarea&gt;</strong>.</p>
+
+          <aside class="notes">
+            <p>Take some HTML and CSS nodes, bundle them together</p>
+            <p>Styles are scoped to the node</p>
+            <p>HTML cannot be traversed by external javascript</p>
+            <p>Same tech as browser makers</p>
+          </aside>
+        </section>
+        
         <section>
           <h3>&lt;video&gt;'s secret DOM</h3>
           <video src="./videos/bunny.webm" controls></video>
           <pre style="text-align: center;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;video src="./bunny.webm" controls&gt;&lt;/video&gt;
           </code></pre>
-        </section>
-
-        <section class="left-align">
-          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</p>
-
-          <p>It is <strong>the same technology used by browser makers</strong> to implement tags like <strong>&lt;video&gt;</strong> and <strong>&lt;textarea&gt;</strong>.</p>
         </section>
 
         <section class="left-align">
@@ -357,6 +419,8 @@
 
           <div class="widget expand">Hello, world!</div>
 
+          <p class="fragment" data-fragment-index="3">Only <strong>descendants of the Shadow Root</strong> will be rendered.</p>
+
           <aside class="notes">
             Inspect with dev tools
           </aside>
@@ -373,7 +437,7 @@
     h4 { color: white; background: tomato; }
   &lt;/style&gt;
 
-  &lt;h4&gt;Another H4 Header&lt;/h4&gt;
+  &lt;h4&gt;A Shadow H4 Header&lt;/h4&gt;
 &lt;/template&gt;
             </code></pre>
 
@@ -394,7 +458,7 @@
                 background: tomato;
               }
             </style>
-            <h4>Another H4 Header</h4>
+            <h4>A Shadow H4 Header</h4>
           </template>
 
           <h4>An H4 Header</h4>
@@ -417,7 +481,7 @@
                   background: tomato;
                 }
               </style>
-              <h4>Another H4 Header</h4>
+              <h4>A Shadow H4 Header</h4>
             </template>
 
             <div class="center-align">
@@ -447,7 +511,7 @@
                   background: tomato;
                 }
               </style>
-              <h4>Another H4 Header</h4>
+              <h4>A Shadow H4 Header</h4>
             </template>
 
             <div class="center-align">
@@ -664,7 +728,7 @@
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
             <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>API</em></p>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>The Tag</em></p>
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
             <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
           </div>
@@ -916,7 +980,7 @@ var Widget = document.register("my-widget", {
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
             <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>API</em></p>
+            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>The Tag</em></p>
             <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
             <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
           </div>
