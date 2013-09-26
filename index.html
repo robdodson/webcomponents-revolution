@@ -1106,11 +1106,20 @@ document.body.appendChild(template.content.cloneNode(true));
         </section>
 
 
-        <!-- <section>
-          <img class="chromeless" src="./img/architecture-diagram.png">
-        </section> -->
+        <section class="left-align">
+          <p>A collection of <strong>polyfills</strong> which let us use Web Components in <strong>all modern browsers.</strong></p>
 
-        <section>
+          <ul class="unstyled-list fragment">
+            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
+            <li><i class="icon-ok-circle supported"></i> Firefox</li>
+            <li><i class="icon-ok-circle supported"></i> Internet Explorer 10+</li>
+            <li><i class="icon-ok-circle supported"></i> Safari 6+ / Mobile Safari</li>
+            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
+          </ul>
+        </section>
+
+        <section class="demo">
+          <h3>Basic Polymer Element</h3>
           <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="1">&lt;script src="polymer.js"&gt;&lt;/script&gt;</span>
           </code></pre>
@@ -1118,7 +1127,7 @@ document.body.appendChild(template.content.cloneNode(true));
           <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="2">&lt;polymer-element name="my-element"&gt;</span>
   <span class="fragment burn" data-fragment-index="3">&lt;template&gt;
-    Hello, I'm a Polymer element
+    Hello, I'm a &lt;strong&gt;Polymer&lt;/strong&gt; element
   &lt;/template&gt;</span>
   <span class="fragment burn" data-fragment-index="4">&lt;script&gt;Polymer("my-element");&lt;/script&gt;</span>
 <span class="fragment burn" data-fragment-index="2">&lt;/polymer-element&gt;</span>
@@ -1128,6 +1137,10 @@ document.body.appendChild(template.content.cloneNode(true));
 <span class="fragment burn" data-fragment-index="5">&lt;!-- Ready to rock! --&gt;
 &lt;my-element&gt;&lt;/my-element&gt;</span>
           </code></pre>
+
+          <div class="widget expand">
+            <my-element></my-element>
+          </div>
         </section>
 
 
@@ -1148,9 +1161,7 @@ document.body.appendChild(template.content.cloneNode(true));
           <h1>Thanks!</h1>
           <h3>Rob Dodson / @rob_dodson</h3>
         </section>
-
       </div>
-
     </div>
 
     <script src="js/reveal.js"></script>

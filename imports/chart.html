@@ -47,11 +47,7 @@
       root.appendChild(clone);
     };
 
-    // Including polymer.js causes this section to error because the imports run twice
-    // Only thing to do is to wrap it in a try/catch
-    try {
-      var ChartPie = document.register('chart-pie', { prototype: ChartPieProto });
-    } catch(e) {}
+    var ChartPie = document.register('chart-pie', { prototype: ChartPieProto });
     
     // Now that the element is registered it can be instantiated
     // in a few ways:
