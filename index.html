@@ -42,8 +42,13 @@
     <!-- Include any js libraries that our elements use -->
     <script src="./lib/js/chart.min.js"></script>
     <script src="./lib/js/moment.js"></script>
+    <script src="./lib/js/polymer.min.js"></script>
     <!-- Import all custom elements -->
-    <link rel="import" href="./imports/elements.html">
+    <link rel="import" href="./imports/chart.html">
+    <link rel="import" href="./imports/mailchimp.html">
+    <link rel="import" href="./imports/moment.html">
+    <link rel="import" href="./imports/demos.html">
+    <link rel="import" href="./imports/polymer-elements.html">
     <!-- Specific import for the 'imports' section of the talk -->
     <link rel="import" href="./imports/blog-post.html">
   </head>
@@ -576,7 +581,7 @@
 
 
         <section class="left-align">
-          <p><strong>Insertion points</strong> invite content from the host element into the Shadow DOM. Contents which cross the <strong>shadow boundary</strong> are called <strong>distributed nodes.</strong></p>
+          <p><strong>Insertion points</strong> invite content from the host element into the Shadow DOM.</p>
         </section>
 
 
@@ -632,9 +637,10 @@
           <pre><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Parent document -->
 &lt;div class="widget"&gt;
+  Hello
   &lt;span class="first-name"&gt;Rob&lt;/span&gt;
   &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
-  Blah Blah Blah.
+  World
 &lt;/div&gt;
           </code></pre>
 
@@ -653,15 +659,19 @@
           </template>
 
           <div class="widget expand">
+            Hello
             <span class="first-name">Rob</span>
             <span class="last-name">Dodson</span>
-            Blah Blah Blah.
+            World
           </div>
 
           <aside class="notes">
             Dominic&apos;s party invitation
-            Eric&apos;s visualizer
           </aside>
+        </section>
+
+        <section>
+          <img src="./img/shadow-dom-viz.png">
         </section>
 
         <!-- <section>
@@ -1049,7 +1059,7 @@ document.body.appendChild(template.content.cloneNode(true));
         </section> -->
 
 
-        <section>
+        <!-- <section>
           <h3>The import</h3>
           <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;template id="chart-pie"&gt;
@@ -1077,16 +1087,60 @@ document.body.appendChild(template.content.cloneNode(true));
   });</span>
 &lt;/script&gt;
           </code></pre>
+        </section> -->
+
+
+        <section>
+          <h3>Requirements</h3>
+          <p>
+            Use Chrome Canary, turn on:
+            Enable Experimental WebKit features in about:flags
+            Enable experimental JavaScript in about:flags
+            Enable Show Shadow DOM in DevTools
+          </p>
         </section>
 
 
         <section>
-          <h1>Polymer</i></h1>
+          <h1>Polymer</h1>
         </section>
 
 
-        <section>
+        <!-- <section>
           <img class="chromeless" src="./img/architecture-diagram.png">
+        </section> -->
+
+        <section>
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="1">&lt;script src="polymer.js"&gt;&lt;/script&gt;</span>
+          </code></pre>
+
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="2">&lt;polymer-element name="my-element"&gt;</span>
+  <span class="fragment burn" data-fragment-index="3">&lt;template&gt;
+    Hello, I'm a Polymer element
+  &lt;/template&gt;</span>
+  <span class="fragment burn" data-fragment-index="4">&lt;script&gt;Polymer("my-element");&lt;/script&gt;</span>
+<span class="fragment burn" data-fragment-index="2">&lt;/polymer-element&gt;</span>
+          </code></pre>
+
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="5">&lt;!-- Ready to rock! --&gt;
+&lt;my-element&gt;&lt;/my-element&gt;</span>
+          </code></pre>
+        </section>
+
+
+        <section>
+          <h3>Links!</h3>
+          <ul>
+            <li><a href="http://ebidel.github.io/webcomponents/">Web Components Resources</a></li>
+            <li><a href="http://www.polymer-project.org/">Polymer</a></li>
+            <li><a href="http://www.x-tags.org/">X-Tags</a></li>
+            <li><a href="http://mozilla.github.io/brick/">Brick</a></li>
+            <li><a href="http://customelements.io/">CustomElements.io</a></li>
+            <li><a href="http://www.chromestatus.com/features">Chromium Dashboard</a></li>
+          </ul>
         </section>
 
 
@@ -1131,8 +1185,8 @@ document.body.appendChild(template.content.cloneNode(true));
       });
 
     </script>
-
+    
     <script src="./js/app.js"></script>
-
+    
   </body>
 </html>

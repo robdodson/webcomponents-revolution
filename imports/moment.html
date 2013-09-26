@@ -1,11 +1,5 @@
 <script>
   (function (window, moment, undefined) {
-    // thisDoc refers to the "importee", which is chart.html
-    var thisDoc = document.currentScript.ownerDocument;
-
-    // thatDoc refers to the "importer", which is index.html
-    var thatDoc = document;
-
     var MomentProto = Object.create(HTMLElement.prototype);
 
     MomentProto.init = function(str) {
@@ -33,7 +27,7 @@
       this.root.textContent = this.getMoment();
     };
 
-    var MomentNow = thatDoc.register('moment-now', { prototype: MomentNowProto });
+    var MomentNow = document.register('moment-now', { prototype: MomentNowProto });
 
 
     /**
@@ -48,7 +42,7 @@
       this.root.textContent = this.getMoment();
     };
 
-    var MomentParse = thatDoc.register('moment-parse', { prototype: MomentParseProto });
+    var MomentParse = document.register('moment-parse', { prototype: MomentParseProto });
 
 
     /**
@@ -64,7 +58,7 @@
       this.root.textContent = this.getMoment().format(tokens);
     };
 
-    var MomentFormat = thatDoc.register('moment-format', { prototype: MomentFormatProto });
+    var MomentFormat = document.register('moment-format', { prototype: MomentFormatProto });
 
 
     /**
@@ -80,7 +74,7 @@
       this.root.textContent = this.getMoment().from(from);
     };
 
-    var MomentFrom = thatDoc.register('moment-from', { prototype: MomentFromProto });
+    var MomentFrom = document.register('moment-from', { prototype: MomentFromProto });
     
   }(window, moment));
 </script>

@@ -91,14 +91,9 @@
 
 <script>
   (function () {
-    // thisDoc refers to the "importee", which is mailchimp.html
-    var thisDoc = document.currentScript.ownerDocument;
-
-    // thatDoc refers to the "importer", which is index.html
-    var thatDoc = document;
-
+    var link = document.querySelector('link[href$="mailchimp.html"');
     // Grab our template
-    var template = thisDoc.querySelector('#mc-template');
+    var template = link.import.querySelector('#mc-template');
 
     // Helper for encoding query params
     var encodeData = function encodeData(data) {
@@ -127,7 +122,7 @@
       this.root.appendChild(clone);
     };
 
-    var MailChimp = thatDoc.register('mc-signup', { prototype: MailChimpProto });
+    var MailChimp = document.register('mc-signup', { prototype: MailChimpProto });
 
   }());
 </script>

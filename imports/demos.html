@@ -7,16 +7,12 @@
 
 <script>
   (function () {
-    // thisDoc refers to the "importee", which is chart.html
-    var thisDoc = document.currentScript.ownerDocument;
-
-    // thatDoc refers to the "importer", which is index.html
-    var thatDoc = document;
+    var link = document.querySelector('link[href$="demos.html"');
+    var template = link.import.querySelector("#widget-template");
 
     var WidgetProto = Object.create(HTMLElement.prototype);
 
     WidgetProto.createdCallback = function() {
-      var template = thisDoc.querySelector("#widget-template");
       var root = this.createShadowRoot();
       root.appendChild(template.content.cloneNode(true));
     };

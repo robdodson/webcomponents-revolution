@@ -9,13 +9,8 @@
 
 <script>
   (function () {
-    // thisDoc refers to the "importee", which is chart.html
-    var thisDoc = document.currentScript.ownerDocument;
-
-    // thatDoc refers to the "importer", which is index.html
-    var thatDoc = document;
-
-    var template = thisDoc.querySelector('#chart-pie');
+    var link = document.querySelector('link[href$="chart.html"');
+    var template = link.import.querySelector('#chart-pie');
 
     // Make sure you extend an existing HTMLElement prototype
     var ChartPieProto = Object.create(HTMLElement.prototype);
@@ -52,7 +47,11 @@
       root.appendChild(clone);
     };
 
-    var ChartPie = thatDoc.register('chart-pie', {prototype: ChartPieProto});
+    // Including polymer.js causes this section to error because the imports run twice
+    // Only thing to do is to wrap it in a try/catch
+    try {
+      var ChartPie = document.register('chart-pie', { prototype: ChartPieProto });
+    } catch(e) {}
     
     // Now that the element is registered it can be instantiated
     // in a few ways:
@@ -60,7 +59,5 @@
     // ex1: var chartPie = new ChartPie();
     // ex2: var chartPie = document.createElement('chart-pie');
     // ex3: <chart-pie></chart-pie>
-
-    window.ChartPie = ChartPie;
   }());
 </script>
