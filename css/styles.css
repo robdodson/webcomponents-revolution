@@ -121,6 +121,18 @@ moment-from {
   font-size: 34px;
 }
 
+/* This style is fudged in here for the applyAuthorStyles demo */
+h4 {
+  margin: 20px 0;
+  color: #333333;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 200;
+  line-height: 0.9em;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
 /**
  * Voices
  */
@@ -132,6 +144,10 @@ moment-from {
 /**
  * Helpers
  */
+
+.faded {
+  opacity: 0.3;
+}
 
 .left-align {
   text-align: left;
@@ -211,20 +227,6 @@ moment-from {
   align-content: stretch;
 }
 
-.foo {
-  height: 100%;
-  width: 48%;
-}
-
-.foo pre {
-  width: 100%;
-  height: 100%;
-}
-
-.foo code {
-  height: 97%;
-}
-
 /**
  * Extensions
  */
@@ -255,9 +257,14 @@ moment-from {
  */
 
 .reveal .slides section .fragment.fragment-hidden { opacity: 0; }
+
+.reveal .slides section .fragment.burn.fade-out.visible,
 .reveal .slides section .fragment.burn { opacity: 0.3; }
+
+.reveal .slides section .fragment.burn.fade-out,
 .reveal .slides section .fragment.visible.no-burn,
 .reveal .slides section .fragment.visible.focus { opacity: 1; }
+
 .reveal .slides section code .fragment.force-focus { opacity: 1 !important; }
 
 /*.reveal .slides section .fragment.fragment-hidden { opacity: 0; }
@@ -301,16 +308,18 @@ moment-from {
   margin-top: 40px;
 }
 
-/* This style is fudged in here for the applyAuthorStyles demo */
-h4 {
-  margin: 20px 0;
-  color: #333333;
-  font-family: "Quicksand", sans-serif;
-  font-weight: 200;
-  line-height: 0.9em;
-  letter-spacing: -0.08em;
-  text-transform: uppercase;
-  text-shadow: none;
+.reveal .spec-list {
+  text-align: left;
+  display: inline-block;
+}
+.reveal .spec-list .spec-name {
+  margin-bottom: 5px;
+}
+.reveal .spec-list .spec-definition {
+  margin-bottom: 35px;
+}
+.reveal .spec-list .spec-definition:last-child {
+  margin-bottom: 0;
 }
 
 /**

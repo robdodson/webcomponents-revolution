@@ -4,3 +4,26 @@
   </template>
   <script>Polymer("my-element");</script>
 </polymer-element>
+
+<polymer-element name="color-picker">
+  <template>
+    <style>
+    :host {
+      display: inline-block;
+      padding-bottom: 30px;
+    }
+    input {
+      font-size: 30px;
+    }
+    </style>
+    <p>My favorite color is
+      <span style="background: {{ color }}">{{ color }}</span>
+    </p>
+    <input type="text" value="{{ color }}">
+  </template>
+  <script>
+    Polymer("color-picker", {
+      color: "Tomato"
+    });
+  </script>
+</polymer-element>

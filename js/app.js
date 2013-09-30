@@ -41,7 +41,7 @@
     var section = Reveal.getCurrentSlide();
     var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
-    root.textContent = 'Im inside yr div!';
+    root.innerHTML = '<span>I\'m <em>inside</em> yr div!</span>';
   };
 
   demos.styleEncapsulation = function styleEncapsulation() {

@@ -46,6 +46,7 @@
     <!-- Import all custom elements -->
     <link rel="import" href="./imports/chart.html">
     <link rel="import" href="./imports/mailchimp.html">
+    <link rel="import" href="./imports/google-analytics.html">
     <link rel="import" href="./imports/moment.html">
     <link rel="import" href="./imports/demos.html">
     <link rel="import" href="./imports/polymer-elements.html">
@@ -169,38 +170,38 @@
           </aside>
         </section>
 
-        <section>
+        <!-- <section>
           <h3>Writing a ton of boilerplate</h3>
           <aside class="notes">
             <p>Especially if you're using a UI framework like Bootstrap</p>
             <p>Copy/paste is bad</p>
             <p>Spending more time focusing on application code</p>
           </aside>
-        </section>
+        </section> -->
 
-        <section>
+        <!-- <section>
           <h3>Sharing is Tough</h3>
           <aside class="notes">
             <p>If you're writing a UI library...</p>
             <p>Upgrading is difficult because you need to change markup and CSS</p>
             <p>Teams work on CSS can conflict often</p>
           </aside>
-        </section>
+        </section> -->
 
-        <section>
+        <!-- <section>
           <h3>Standards are slow</h3>
           <aside class="notes">
             <p>To give you an example, the video tag was proposed in 2007...</p>
             <p>We need to speed that up!</p>
             <p>It shouldn't take years to add something to the web platform.</p>
           </aside>
-        </section>
+        </section> -->
 
         <section class="left-align">
           <p>We want to build <strong>applications</strong> but we're using tools designed for <strong>static documents.</strong></p>
 
           <aside class="notes">
-            <p>What we need...</p>
+            <p>iOS and Android SDKs</p>
           </aside>
         </section>
 
@@ -234,15 +235,15 @@
         </section>
 
         <section>
-          <div style="text-align: left; display: inline-block;">
-            <h3 style="margin-bottom: 5px;">Templates</h3>
-            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>The Tag</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
-            <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
+          <div class="spec-list">
+            <h3 class="spec-name">Templates</h3>
+            <p class="spec-definition"><em>Scaffolding</em></p>
+            <h3 class="spec-name fragment" data-fragment-index="1">Shadow DOM</h3>
+            <p class="spec-definition fragment" data-fragment-index="1"><em>Encapsulation</em></p>
+            <h3 class="spec-name fragment" data-fragment-index="2">Custom Elements</h3>
+            <p class="spec-definition fragment" data-fragment-index="2"><em>The Tag</em></p>
+            <h3 class="spec-name fragment" data-fragment-index="3">Imports</h3>
+            <p class="spec-definition fragment" data-fragment-index="3"><em>Packaging</em></p>
           </div>
           <aside class="notes">
             <p>Templates: Just like mustache</p>
@@ -297,25 +298,25 @@
           <h3>Using Templates</h3>
           <div class="demo-code">
             <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;template id="my-widget"&gt;
+<span class="fragment burn" data-fragment-index="1">&lt;template id="my-widget"&gt;
   &lt;img src=""/&gt;
   &lt;p&gt;Templates. Full of WIN!&lt;/p&gt;
   &lt;script&gt;
     alert("I'm alive!")
   &lt;/script&gt;
-&lt;/template&gt;
+&lt;/template&gt;</span>
 
-&lt;script&gt;
+<span class="fragment burn" data-fragment-index="2">&lt;script&gt;
   var template = document.querySelector("#my-widget");
   template.content.querySelector("img").src = "./img/corgi.gif";
   document.body.appendChild(template.content.cloneNode(true));
-&lt;/script&gt;
+&lt;/script&gt;</span>
             </code></pre>
             <button class="demo-btn" onclick="demos.template();">Run</button>
           </div>
 
           <template id="my-widget">
-            <img class="chromeless" width="300" src=""/>
+            <img class="chromeless marginless" width="300" src=""/>
             <p>Templates. Full of WIN!</p>
             <script>
               alert("I'm alive!");
@@ -345,19 +346,20 @@
         </section>
 
         <section>
-          <div style="text-align: left; display: inline-block;">
-            <h3 style="margin-bottom: 5px;">Templates</h3>
-            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
-            <h3 style="margin-bottom: 5px;">Shadow DOM</h3>
-            <p style="margin-bottom: 35px;"><em>Encapsulation</em></p>
-            <h3 style="margin-bottom: 5px;">Custom Elements</h3>
-            <p style="margin-bottom: 35px;"><em>The Tag</em></p>
-            <h3 style="margin-bottom: 5px;">Imports</h3>
-            <p><em>Transport</em></p>
+          <div class="spec-list">
+            <h3 class="spec-name fragment burn fade-out" data-fragment-index="1">Templates</h3>
+            <p class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>Scaffolding</em></p>
+            <h3 class="spec-name fragment burn" data-fragment-index="1">Shadow DOM</h3>
+            <p class="spec-definition fragment burn" data-fragment-index="1"><em>Encapsulation</em></p>
+            <h3 class="spec-name faded">Custom Elements</h3>
+            <p class="spec-definition faded"><em>The Tag</em></p>
+            <h3 class="spec-name faded">Imports</h3>
+            <p class="spec-definition faded"><em>Packaging</em></p>
           </div>
         </section>
 
         <section data-state="blackout">
+          <img class="chromeless" width="100%" src="./img/jurassic.gif">
           <h1 style="color: #FFF;">Shadow DOM</h1>
         </section>
         
@@ -407,6 +409,15 @@
           </div>
         </section>
 
+        <section>
+          <p><code>element.createShadowRoot()</code></p>
+          <br>
+          <ul>
+            <li>Returns a <strong>shadow root</strong></li>
+            <li>Renders the element as a <strong>shadow host</strong></li>
+          </ul>
+        </section>
+
         <section class="demo">
           <h3>Our first shadow dom</h3>
           <div class="demo-code">
@@ -415,7 +426,7 @@
 &lt;script&gt;
   var host = document.querySelector(".widget");
   var root = host.createShadowRoot();
-  root.textContent = "Im inside yr div!";
+  root.innerHTML = "&lt;span&gt;I'm &lt;em&gt;inside&lt;/em&gt; yr div!&lt;/span&gt;";
 &lt;/script&gt;
 </span>
 </code></pre>
@@ -436,23 +447,23 @@
           <h3>Style Encapsulation</h3>
           
           <div class="demo-code">
-            <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;template&gt;
-  &lt;style&gt;
+            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="1">&lt;template&gt;</span>
+  <span class="fragment burn" data-fragment-index="2">&lt;style&gt;
     h4 { color: white; background: tomato; }
-  &lt;/style&gt;
+  &lt;/style&gt;</span>
 
-  &lt;h4&gt;A Shadow H4 Header&lt;/h4&gt;
-&lt;/template&gt;
+  <span class="fragment burn" data-fragment-index="3">&lt;h4&gt;A Shadow H4 Header&lt;/h4&gt;</span>
+<span class="fragment burn" data-fragment-index="1">&lt;/template&gt;</span>
             </code></pre>
 
-            <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;script&gt;
+            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="4">&lt;script&gt;
   var template = document.querySelector("template");
   var host = document.querySelector(".widget");
   var root = host.createShadowRoot();
   root.appendChild(template.content.cloneNode(true));
-&lt;/script&gt;
+&lt;/script&gt;</span>
             </code></pre>
           </div>
 
@@ -466,41 +477,19 @@
             <h4>A Shadow H4 Header</h4>
           </template>
 
-          <h4>An H4 Header</h4>
-          <div class="widget"></div>
-
-        </section>
-
-
-        <section id="demo-resetStyleInheritance" class="left-align demo">
-          <p><strong><code>resetStyleInheritance</code></strong> (default: <code>false</code>)</p>
-          <p><code>false</code>: Inheritable styles <strong>will</strong> affect your component.</p>
-          <p><code>true</code>: Inheritable styles <strong>will not</strong> affect your component.</p>
-          <br>
           <div class="fragment">
-
-            <template>
-              <style>
-                h4 {
-                  color: white;
-                  background: tomato;
-                }
-              </style>
-              <h4>A Shadow H4 Header</h4>
-            </template>
-
-            <div class="center-align">
-              <h4>An H4 Header</h4>
-              <div class="widget"></div>
-            </div>
-
-            <div class="wrap">
-              <button class="right" onclick="demos.resetStyleInheritance();">Toggle</button>
-              <code>root.resetStyleInheritance: <span id="isStyleInheritance"></span></code>
-            </div>
-
+            <h4>An H4 Header</h4>
+            <div class="widget"></div>
           </div>
         </section>
+
+
+        <section>
+          <h2 class="blink" style="color: violet; font-weight: bold;"><em>ZOMG PROTECTED C$$</em></h2>
+          <img width="50%" class="chromeless" src="./img/colbert.gif">
+          <p><em>(worth the price of admission)</em></p>
+        </section>
+
 
         <section id="demo-applyAuthorStyles" class="left-align demo">
           <p><strong><code>applyAuthorStyles</code></strong> (default: <code>false</code>)</p>
@@ -538,6 +527,36 @@
           </aside>
         </section>
 
+
+        <section id="demo-resetStyleInheritance" class="left-align demo">
+          <p><strong><code>resetStyleInheritance</code></strong> (default: <code>false</code>)</p>
+          <p><code>false</code>: Inheritable styles <strong>will</strong> affect your component.</p>
+          <p><code>true</code>: Inheritable styles <strong>will not</strong> affect your component.</p>
+          <br>
+          <div class="fragment">
+
+            <template>
+              <style>
+                h4 {
+                  color: white;
+                  background: tomato;
+                }
+              </style>
+              <h4>A Shadow H4 Header</h4>
+            </template>
+
+            <div class="center-align">
+              <h4>An H4 Header</h4>
+              <div class="widget"></div>
+            </div>
+
+            <div class="wrap">
+              <button class="right" onclick="demos.resetStyleInheritance();">Toggle</button>
+              <code>root.resetStyleInheritance: <span id="isStyleInheritance"></span></code>
+            </div>
+
+          </div>
+        </section>
 
         <section id="demo-parts" class="demo" style="height: 600px;">
           <h3>Styling Parts</h3>
@@ -585,21 +604,26 @@
         </section>
 
 
+        <section>
+          content tag
+        </section>
+
+
         <section id="demo-insertion-points" class="demo">
           <h3>Insertion Points</h3>
           <div class="demo-code">
-            <pre><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Parent document -->
-&lt;div class="widget"&gt;
-  Jigglypuff
-&lt;/div&gt;
-            </code></pre>
-
             <pre><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Shadow DOM -->
 &lt;template&gt;
   &lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
 &lt;/template&gt;
+            </code></pre>
+
+            <pre><code data-trim contenteditable style="margin-top: 20px;">
+<!-- Parent document -->
+&lt;div class="widget"&gt;
+  Jigglypuff
+&lt;/div&gt;
             </code></pre>
           </div>
 
@@ -622,14 +646,7 @@
 
         <section class="left-align">
           <p>Specific content can be targeted with the <strong><code>select</code></strong> attribute. </p>
-          <ul>
-            <li class="fragment">Uses CSS selectors, just like jQuery or <code>querySelector</code></li>
-            <li class="fragment">Content is selected one time, and that's it.</li>
-          </ul>
-          <aside class="notes">
-            <p>f: Use CSS selector</p>
-            <p>f: Party invitation</p>
-          </aside>
+          <p><code>&lt;content select=".foo"&gt;&lt;/content&gt;</code></p>
         </section>
 
         <section id="demo-select" class="demo">
@@ -637,10 +654,9 @@
           <pre><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Parent document -->
 &lt;div class="widget"&gt;
-  Hello
+  Hello World
   &lt;span class="first-name"&gt;Rob&lt;/span&gt;
   &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
-  World
 &lt;/div&gt;
           </code></pre>
 
@@ -732,18 +748,17 @@
         </section>
 
         <section>
-          <div style="text-align: left; display: inline-block;">
-            <h3 style="margin-bottom: 5px;">Templates</h3>
-            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>The Tag</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
-            <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
+          <div class="spec-list">
+            <h3 class="spec-name faded">Templates</h3>
+            <p class="spec-definition faded"><em>Scaffolding</em></p>
+            <h3 class="spec-name fragment burn fade-out" data-fragment-index="1">Shadow DOM</h3>
+            <p class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>Encapsulation</em></p>
+            <h3 class="spec-name fragment burn" data-fragment-index="1">Custom Elements</h3>
+            <p class="spec-definition fragment burn" data-fragment-index="1"><em>The Tag</em></p>
+            <h3 class="spec-name faded">Imports</h3>
+            <p class="spec-definition faded"><em>Packaging</em></p>
           </div>
         </section>
-
 
         <section>
           <h1>Custom Elements</h1>
@@ -752,6 +767,16 @@
 
         <section class="left-align">
           <p>Custom Elements are <strong>new tags</strong> which inherit from <code>HTMLElement</code> and add <strong>enhanced features</strong>.</p>
+        </section>
+
+
+        <section>
+          <div style="display: inline-block;" class="left-align">
+            <h3>Templates +</h3>
+            <h3>Shadow DOM</h3>
+            <hr>
+            <h3>Custom Elements</h3>
+          </div>
         </section>
 
 
@@ -765,52 +790,41 @@
         </section>
 
 
-        <section>
-          <h3>Basic Custom Element</h3>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
-var Widget = document.register("my-widget", {
-  prototype: Object.create(HTMLElement.prototype)
-});
+        <section class="demo">
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn">&lt;template id="widget-template"&gt;
+  &lt;style&gt;...&lt;/style&gt;
+  &lt;div&gt;
+    &lt;h4&gt;I am a widget!&lt;/h4&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</span>
           </code></pre>
-          <br>
-          <div class="fragment">
+
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn">var template = document.querySelector("#widget-template");</span>
+
+<span class="fragment burn">var WidgetProto = Object.create(HTMLElement.prototype);</span>
+
+<span class="fragment burn">WidgetProto.createdCallback = function() {
+  var root = this.createShadowRoot();
+  root.appendChild(template.content.cloneNode(true));
+};</span>
+
+<span class="fragment burn">var Widget = document.register("my-widget", {
+  prototype: WidgetProto
+});</span>
+          </code></pre>
+          
+          <!-- <div class="fragment">
             <h4>Add your element to the page</h4>
             <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="1">var widget = new Widget(); // OR</span>
 <span class="fragment burn" data-fragment-index="2">var widget = document.createElement("my-widget"); // OR</span>
 <span class="fragment burn" data-fragment-index="3">&lt;my-widget&gt;&lt;/my-widget&gt;</span>
             </code></pre>
-          </div>
-        </section>
+          </div> -->
 
-
-        <section>
-          <h3>Extending Existing Elements</h3>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
-var MyButton = document.register("my-button", {
-  extends: "button",
-  prototype: Object.create(HTMLButtonElement.prototype)
-});
-          </code></pre>
-          <br>
-          <div class="fragment">
-            <h4>Add your element to the page</h4>
-            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn" data-fragment-index="1">var widget = new MyButton(); // OR</span>
-<span class="fragment burn" data-fragment-index="2">var widget = document.createElement("button", "my-button"); // OR</span>
-<span class="fragment burn" data-fragment-index="3">&lt;button is="my-button"&gt;&lt;/button&gt;</span>
-            </code></pre>
-          </div>
-        </section>
-
-
-        <section>
-          <div style="display: inline-block;" class="left-align">
-            <h3>Templates +</h3>
-            <h3>Shadow DOM</h3>
-            <hr>
-            <h3>Custom Elements</h3>
-          </div>
+          <div class="widget"><my-widget></my-widget></div>
         </section>
 
 
@@ -847,32 +861,22 @@ var MyButton = document.register("my-button", {
         </section>
 
 
-        <section id="demo-template-shadow-dom" class="demo">
-          <pre class="fragment burn"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;template id="widget-template"&gt;
-  &lt;style&gt;...&lt;/style&gt;
-  &lt;div&gt;
-    &lt;h4&gt;I am a widget!&lt;/h4&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-          </code></pre>
-
-          <pre class="fragment burn"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-var template = document.querySelector("#widget-template");
-
-var WidgetProto = Object.create(HTMLElement.prototype);
-
-WidgetProto.createdCallback = function() {
-  var root = this.createShadowRoot();
-  root.appendChild(template.content.cloneNode(true));
-};
-
-var Widget = document.register("my-widget", {
-  prototype: WidgetProto
+        <section>
+          <h3>Extending Existing Elements</h3>
+          <pre><code data-trim contenteditable style="margin-top: 20px;">
+var MyButton = document.register("my-button", {
+  extends: "button",
+  prototype: Object.create(HTMLButtonElement.prototype)
 });
           </code></pre>
-          
-          <div class="widget"><my-widget></my-widget></div>
+          <div class="fragment">
+            <h4>Add your element to the page</h4>
+            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="1">var widget = new MyButton(); // OR</span>
+<span class="fragment burn" data-fragment-index="2">var widget = document.createElement("button", "my-button"); // OR</span>
+<span class="fragment burn" data-fragment-index="3">&lt;button is="my-button"&gt;&lt;/button&gt;</span>
+            </code></pre>
+          </div>
         </section>
 
 
@@ -881,8 +885,10 @@ var Widget = document.register("my-widget", {
         </section>
 
 
-        <section id="mailchimp-demo" style="height: 300px;">
-          <div class="fragment mailchimp" style="width: 50%;">
+        <section id="mailchimp-demo">
+          <h3>MailChimp</h3>
+          <br>
+          <div class="mailchimp" style="width: 50%;">
             <!-- disable-events is something I added to kill reveal.js key listeners -->
             <mc-signup data-disable-events="true"
                        url="http://robdodson.us7.list-manage.com/subscribe/post"
@@ -890,12 +896,23 @@ var Widget = document.register("my-widget", {
                        id="6719a28b56">
             </mc-signup>
           </div>
-          <h3>&lt;mc-signup&gt;&lt;/mc-signup&gt;</h3>
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;mc-signup
+  url="http://robdodson.us7.list-manage.com/subscribe/post"
+  u="5727aa0eb1ccbf4ae68284189"
+  id="6719a28b56"&gt;
+&lt;/mc-signup&gt;
+          </code></pre>
         </section>
 
 
         <section>
-          <h3>&lt;file-csv&gt;&lt;/file-csv&gt;</h3>
+          <h3>Google Analytics</h3>
+          <br>
+          <g-analytics account="UA-44428880-1" domain="localhost"></g-analytics>
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;g-analytics account="UA-44428880-1" domain="localhost"&gt;&lt;/g-analytics&gt;
+          </code></pre>
         </section>
 
 
@@ -984,15 +1001,15 @@ var Widget = document.register("my-widget", {
 
 
         <section>
-          <div style="text-align: left; display: inline-block;">
-            <h3 style="margin-bottom: 5px;">Templates</h3>
-            <p style="margin-bottom: 35px;"><em>Scaffolding</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="1">Shadow DOM</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="1"><em>Encapsulation</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="2">Custom Elements</h3>
-            <p style="margin-bottom: 35px;" class="fragment" data-fragment-index="2"><em>The Tag</em></p>
-            <h3 style="margin-bottom: 5px;" class="fragment" data-fragment-index="3">Imports</h3>
-            <p class="fragment" data-fragment-index="3"><em>Transport</em></p>
+          <div class="spec-list">
+            <h3 class="spec-name faded">Templates</h3>
+            <p class="spec-definition faded"><em>Scaffolding</em></p>
+            <h3 class="spec-name faded">Shadow DOM</h3>
+            <p class="spec-definition faded"><em>Encapsulation</em></p>
+            <h3 class="spec-name fragment burn fade-out" data-fragment-index="1">Custom Elements</h3>
+            <p class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>The Tag</em></p>
+            <h3 class="spec-name fragment burn" data-fragment-index="1">Imports</h3>
+            <p class="spec-definition fragment burn" data-fragment-index="1"><em>Packaging</em></p>
           </div>
         </section>
 
@@ -1092,19 +1109,25 @@ document.body.appendChild(template.content.cloneNode(true));
 
         <section>
           <h3>Requirements</h3>
-          <p>
-            Use Chrome Canary, turn on:
-            Enable Experimental WebKit features in about:flags
-            Enable experimental JavaScript in about:flags
-            Enable Show Shadow DOM in DevTools
-          </p>
+          <ul class="unstyled-list">
+            <li><strong>Chrome Canary</strong>, <code>about:flags</code></li>
+              <ul>
+                <li>Enable Experimental Web Platform features</li>
+                <li>Enable experimental JavaScript</li>
+                <li>Enable HTML Imports</li>
+              </ul>
+            <li>Enable Show Shadow DOM in Developer Tools</li>
+          </ul>
         </section>
 
 
         <section>
-          <h1>Polymer</h1>
+          <h1>Use 'em Today!</h1>
         </section>
 
+        <section>
+          <h1>Polymer</h1>
+        </section>
 
         <section class="left-align">
           <p>A collection of <strong>polyfills</strong> which let us use Web Components in <strong>all modern browsers.</strong></p>
@@ -1115,6 +1138,17 @@ document.body.appendChild(template.content.cloneNode(true));
             <li><i class="icon-ok-circle supported"></i> Internet Explorer 10+</li>
             <li><i class="icon-ok-circle supported"></i> Safari 6+ / Mobile Safari</li>
             <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
+          </ul>
+        </section>
+
+        <section class="left-align">
+          <p>A <strong>framework</strong> for building applications with <strong>web components.</strong></p>
+          <ul class="unstyled-list fragment">
+            <li><i class="icon-ok-circle supported"></i> Web Animations</li>
+            <li><i class="icon-ok-circle supported"></i> Pointer Events</li>
+            <li><i class="icon-ok-circle supported"></i> Template Binding</li>
+            <li><i class="icon-ok-circle supported"></i> Node.bind()</li>
+            <li><i class="icon-ok-circle supported"></i> Model-driven Views (MDV)</li>
           </ul>
         </section>
 
@@ -1143,6 +1177,29 @@ document.body.appendChild(template.content.cloneNode(true));
           </div>
         </section>
 
+        <section class="demo">
+          <h3>Bindings</h3>
+          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;polymer-element name="color-picker"&gt;
+  &lt;template&gt;
+    &lt;p&gt;My favorite color is
+      &lt;span style="background: {{ color }}"&gt;{{ color }}&lt;/span&gt;
+    &lt;/p&gt;
+    &lt;input type="text" value="{{ color }}"&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer("color-picker", {
+      color: "Tomato"
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+          </code></pre>
+
+          <div class="widget">
+            <!-- disable-events is something I added to kill reveal.js key listeners -->
+            <color-picker data-disable-events="true"></color-picker>
+          </div>
+        </section>
 
         <section>
           <h3>Links!</h3>
