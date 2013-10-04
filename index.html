@@ -42,9 +42,11 @@
     <!-- Include any js libraries that our elements use -->
     <script src="./lib/js/chart.min.js"></script>
     <script src="./lib/js/moment.js"></script>
+    <script src="./lib/js/markdown.js"></script>
     <script src="./lib/js/polymer.min.js"></script>
     <!-- Import all custom elements -->
     <link rel="import" href="./imports/chart.html">
+    <link rel="import" href="./imports/mark-down.html">
     <link rel="import" href="./imports/mailchimp.html">
     <link rel="import" href="./imports/google-analytics.html">
     <link rel="import" href="./imports/moment.html">
@@ -102,13 +104,11 @@
         </section>
 
         <section>
-          <h2>Within this talk</h2>
-          <ul>
-            <li>Web Components?</li>
-            <li>The Specs</li>
-            <li>Using Web Components Today!</li>
-          </ul>
-
+          <h2 class="left-align" style="font-size: 90px;">Within this talk...</h2>
+          <hr>
+          <h3 class="left-align" style="font-size: 70px;">Web Components?</h3>
+          <h3 class="left-align" style="font-size: 70px;">The Specs</h3>
+          <h3 class="left-align" style="font-size: 70px;">Use 'em, Today!</h3>
           <aside class="notes">
             <p>What are web components...</p>
             <p>The 4 underlying technologies that <strong>collectively</strong> make up web components</p>
@@ -116,9 +116,9 @@
           </aside>
         </section>
 
-        <section>
-          <h2 class="blink" style="font-size: 95px;"><i class="icon-warning-sign"></i> Code Ahead!</h2>
-          <img width="70%" class="chromeless" src="./img/wrestler.gif">
+        <section data-background="./img/wrestler.gif">
+          <h2 class="blink alert-box"><i class="icon-warning-sign"></i> Code Ahead!</h2>
+          <!-- <img width="70%" class="chromeless" src="./img/wrestler.gif"> -->
           <aside class="notes">
             <p>A ton of code...</p>
             <p>We will mess with your head...</p>
@@ -127,9 +127,9 @@
           </aside>
         </section>
 
-        <section>
-          <h2><i class="icon-heart"></i> Web Components</h2>
-          <img width="80%" class="chromeless" src="./img/jake.gif">
+        <section data-background="./img/jake.gif">
+          <!-- <h2><i class="icon-heart"></i> Web Components</h2> -->
+          <img style="margin-left: 35%; margin-top: -20%;" class="chromeless" width="800px" src="./img/you.png">
           <aside class="notes">
             <p>If you can hang in there...</p>
             <p>Fundamentally change the way we build web applications</p>
@@ -145,21 +145,33 @@
           <h3 class="fragment">3. React with lifecycle callbacks</h3>
           <aside class="notes">
             <p>"Umbrella" term</p>
-            <p>A few different technologies, making their way through the W3C</p>
             <p>Collectively, let us do cool stuff...</p>
           </aside>
         </section>
 
-        <section id="chart-demo" style="height: 300px;">
-          <h3>&lt;chart-pie&gt;&lt;/chart-pie&gt;</h3>
-          <div class="fragment" data-pie="true"></div>
+        <section id="chart-demo" style="height: 200px;">
+          <code style="font-size: 50px;">&lt;chart-pie&gt;&lt;/chart-pie&gt;</code>
+          <div class="fragment" data-pie="true" style="height: 20px;"></div>
           <aside class="notes">
-            <p>To give you an example...</p>
             <p>Imagine you're building a data viz library</p>
-            <p>The way we do this today...</p>
-            <p>Exposes a more declarative approach to web development</p>
-            <p>Previously not possible without the use of iframes...but iframes are wonky</p>
           </aside>
+        </section>
+
+        <section class="left-align">
+          <div style="display: inline-block; margin-right: 100px;">
+            <code style="font-size: 43px;">
+              &lt;mark-down&gt;<br>
+              &nbsp;&nbsp;## Oh hai!<br>
+              &nbsp;&nbsp;### How _you_ doin?<br>
+              &nbsp;&nbsp;[Link me!](foo.com)<br>
+              &lt;/mark-down&gt;
+            </code>
+          </div>
+          <mark-down>
+            ## Oh hai!
+            ### How _you_ doin?
+            [Link me!](foo.com)
+          </mark-down>
         </section>
 
         <section>
@@ -198,15 +210,15 @@
         </section> -->
 
         <section class="left-align">
-          <p>We want to build <strong>applications</strong> but we're using tools designed for <strong>static documents.</strong></p>
+          <h2>We want to build <strong>applications</strong> but we're using tools designed for <strong>static documents.</strong></h2>
 
           <aside class="notes">
             <p>iOS and Android SDKs</p>
           </aside>
         </section>
 
-        <section>
-          <h3>We Need to <a href="http://extensiblewebmanifesto.org/">Extend the Browser</a></h3>
+        <section class="left-align">
+          <h2 style="font-size: 90px;">We Need to<br><strong>Extend the Browser</strong></h2>
 
           <aside class="notes">
             <p>Some smart people like Brendan Eich and Yehuda Katz got together...</p>
@@ -216,9 +228,9 @@
         </section>
 
         <section class="left-align">
-          <p>
-            Web Components use the same tools that the browser makers use. As a result <strong>it's only a short hop from web component to new standard.</strong>
-          </p>
+          <h2>
+            Web Components use the same tools <strong>that the browser makers use.</strong>
+          </h2>
           <aside class="notes">
             <p>pie-chart tag...</p>
             <p>You can see why this could be a big deal...</p>
@@ -236,14 +248,14 @@
 
         <section>
           <div class="spec-list">
-            <h3 class="spec-name">Templates</h3>
-            <p class="spec-definition"><em>Scaffolding</em></p>
-            <h3 class="spec-name fragment" data-fragment-index="1">Shadow DOM</h3>
-            <p class="spec-definition fragment" data-fragment-index="1"><em>Encapsulation</em></p>
-            <h3 class="spec-name fragment" data-fragment-index="2">Custom Elements</h3>
-            <p class="spec-definition fragment" data-fragment-index="2"><em>The Tag</em></p>
-            <h3 class="spec-name fragment" data-fragment-index="3">Imports</h3>
-            <p class="spec-definition fragment" data-fragment-index="3"><em>Packaging</em></p>
+            <h2 class="spec-name">Templates</h2>
+            <h3 class="voice voice-human spec-definition"><em>Scaffolding</em></h3>
+            <h2 class="spec-name fragment" data-fragment-index="1">Shadow DOM</h2>
+            <h3 class="voice voice-human spec-definition fragment" data-fragment-index="1"><em>Encapsulation</em></h3>
+            <h2 class="spec-name fragment" data-fragment-index="2">Custom Elements</h2>
+            <h3 class="voice voice-human spec-definition fragment" data-fragment-index="2"><em>Extensions</em></h3>
+            <h2 class="spec-name fragment" data-fragment-index="3">Imports</h2>
+            <h3 class="voice voice-human spec-definition fragment" data-fragment-index="3"><em>Packaging</em></h3>
           </div>
           <aside class="notes">
             <p>Templates: Just like mustache</p>
@@ -254,12 +266,12 @@
 
         <section>
           <div style="display: inline-block;" class="left-align">
-            <h3>Templates +</h3>
-            <h3>Shadow DOM</h3>
+            <h2>Templates +</h2>
+            <h2>Shadow DOM</h2>
             <hr>
-            <h3>Custom Elements</h3>
+            <h2>Custom Elements</h2>
             <br>
-            <h4><em>Imports gets everything on the page</em></h4>
+            <h3 class="voice voice-human"><em>Imports get everything on the page</em></h3>
           </div>
         </section>
         
@@ -267,18 +279,16 @@
           <h1>Templates</h1>
         </section>
 
-        <section class="left-align">
-          <p>Templates are <strong>inert</strong> chunks of DOM that can be reused throughout the page.</p>
-        </section>
 
         <section class="left-align">
-          If you've used mustache or handlebars it's the same concept. <strong>But now it has its own tag.</strong>
+          <h3>Templates are <strong>inert</strong> chunks of DOM that can be reused.</h3>
         </section>
+
 
         <section>
           <h3>Template Basics</h3>
-<pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn" data-fragment-index="1">&lt;template id="my-widget"&gt;</span>
+<pre style="font-size: 30px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="1">&lt;template&gt;</span>
   <span class="fragment burn" data-fragment-index="2">&lt;p&gt;Once upon a time...&lt;/p&gt;</span>
   <span class="fragment burn" data-fragment-index="3">&lt;img src=""/&gt; &lt;!-- Fill me in when you're ready --&gt;</span>
   <span class="fragment burn" data-fragment-index="4">&lt;script&gt;
@@ -296,27 +306,25 @@
 
         <section class="demo" id="demo-templates">
           <h3>Using Templates</h3>
-          <div class="demo-code">
-            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn" data-fragment-index="1">&lt;template id="my-widget"&gt;
+          <div class="demo-code" style="margin-bottom: 10px;">
+            <pre style="font-size: 25px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="1">&lt;template id="my-template"&gt;
   &lt;img src=""/&gt;
   &lt;p&gt;Templates. Full of WIN!&lt;/p&gt;
-  &lt;script&gt;
-    alert("I'm alive!")
-  &lt;/script&gt;
+  &lt;script&gt; alert("I'm alive!") &lt;/script&gt;
 &lt;/template&gt;</span>
 
 <span class="fragment burn" data-fragment-index="2">&lt;script&gt;
-  var template = document.querySelector("#my-widget");
-  template.content.querySelector("img").src = "./img/corgi.gif";
-  document.body.appendChild(template.content.cloneNode(true));
+  var tmpl = document.querySelector("#my-template");
+  tmpl.content.querySelector("img").src = "corgi.gif";
+  document.body.appendChild(tmpl.content.cloneNode(true));
 &lt;/script&gt;</span>
             </code></pre>
             <button class="demo-btn" onclick="demos.template();">Run</button>
           </div>
 
           <template id="my-widget">
-            <img class="chromeless marginless" width="300" src=""/>
+            <img class="chromeless marginless" width="350" src=""/>
             <p>Templates. Full of WIN!</p>
             <script>
               alert("I'm alive!");
@@ -326,7 +334,7 @@
 
         <section style="text-align: left;">
           <h2>Gotchas</h2>
-          <br>
+          <hr>
           <h3 class="fragment" data-fragment-index="1">No Built-In Data Interpolation</h3>
           <p class="fragment" data-fragment-index="1"><em>{{ }} tags don't do anything...yet</em></p>
           <br>
@@ -334,27 +342,26 @@
           <p class="fragment" data-fragment-index="2"><em>You'll have to append each separately</em></p>
         </section>
 
-        <section>
+        <section class="left-align">
           <h2>Browser Support</h2>
-          <ul class="unstyled-list">
-            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
-            <li><i class="icon-ok-circle supported"></i> Firefox</li>
-            <li><i class="icon-remove-circle not-supported"></i> Internet Explorer</li>
-            <li><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</li>
-            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
-          </ul>
+          <hr>
+          <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</h3>
+          <h3><i class="icon-ok-circle supported"></i> Firefox</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
+          <h3><i class="icon-ok-circle supported"></i> Opera / Opera Mini</h3>
         </section>
 
         <section>
           <div class="spec-list">
-            <h3 class="spec-name fragment burn fade-out" data-fragment-index="1">Templates</h3>
-            <p class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>Scaffolding</em></p>
-            <h3 class="spec-name fragment burn" data-fragment-index="1">Shadow DOM</h3>
-            <p class="spec-definition fragment burn" data-fragment-index="1"><em>Encapsulation</em></p>
-            <h3 class="spec-name faded">Custom Elements</h3>
-            <p class="spec-definition faded"><em>The Tag</em></p>
-            <h3 class="spec-name faded">Imports</h3>
-            <p class="spec-definition faded"><em>Packaging</em></p>
+            <h2 class="spec-name fragment burn fade-out" data-fragment-index="1">Templates</h2>
+            <h3 class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>Scaffolding</em></h3>
+            <h2 class="spec-name fragment burn" data-fragment-index="1">Shadow DOM</h2>
+            <h3 class="spec-definition fragment burn" data-fragment-index="1"><em>Encapsulation</em></h3>
+            <h2 class="spec-name faded">Custom Elements</h2>
+            <h3 class="spec-definition faded"><em>Extensions</em></h3>
+            <h2 class="spec-name faded">Imports</h2>
+            <h3 class="spec-definition faded"><em>Packaging</em></h3>
           </div>
         </section>
 
@@ -364,9 +371,7 @@
         </section>
         
         <section class="left-align">
-          <p style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</p>
-
-          <p>It is <strong>the same technology used by browser makers</strong> to implement tags like <strong>&lt;video&gt;</strong> and <strong>&lt;textarea&gt;</strong>.</p>
+          <h3 style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</h3>
 
           <aside class="notes">
             <p>Take some HTML and CSS nodes, bundle them together</p>
@@ -375,11 +380,15 @@
             <p>Same tech as browser makers</p>
           </aside>
         </section>
+
+        <section class="left-align">
+          <h3>It is <strong>the same technology used by browser makers</strong> to implement tags like &lt;video&gt; and &lt;textarea&gt;.</h3>
+        </section>
         
         <section>
           <h3>&lt;video&gt;'s secret DOM</h3>
           <video src="./videos/bunny.webm" controls></video>
-          <pre style="text-align: center;"><code data-trim contenteditable style="margin-top: 20px;">
+          <pre style="text-align: center; font-size: 33px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;video src="./bunny.webm" controls&gt;&lt;/video&gt;
           </code></pre>
         </section>
@@ -387,17 +396,17 @@
         <section class="left-align">
           <div style="width: 40%; display: inline-block;">
             <div>
-              <p><strong>Shadow Host</strong></p>
+              <p style="font-size: 42px;"><strong>Shadow Host</strong></p>
               <p><em>The node that contains all of our shadow DOM</em></p>
             </div>
             <br>
             <div class="fragment" data-fragment-index="2">
-              <p><strong>Shadow Root</strong></p>
+              <p style="font-size: 42px;"><strong>Shadow Root</strong></p>
               <p><em>The first node in the shadow DOM</em></p>
             </div>
             <br>
             <div class="fragment" data-fragment-index="3">
-              <p><strong>Shadow Boundary</strong></p>
+              <p style="font-size: 42px;"><strong>Shadow Boundary</strong></p>
               <p><em>The barrier that protects our shadow DOM</em></p>
             </div>
           </div>
@@ -410,23 +419,18 @@
         </section>
 
         <section>
-          <p><code>element.createShadowRoot()</code></p>
-          <br>
-          <ul>
-            <li>Returns a <strong>shadow root</strong></li>
-            <li>Renders the element as a <strong>shadow host</strong></li>
-          </ul>
+          <h3 class="voice voice-human normal-letters"><code>element.createShadowRoot()</code></h3>
         </section>
 
         <section class="demo">
           <h3>Our first shadow dom</h3>
           <div class="demo-code">
-<pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<pre style="font-size: 28px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="1">&lt;div class="widget"&gt;Hello, world!&lt;/div&gt;</span><span class="fragment burn" data-fragment-index="2">
 &lt;script&gt;
   var host = document.querySelector(".widget");
   var root = host.createShadowRoot();
-  root.innerHTML = "&lt;span&gt;I'm &lt;em&gt;inside&lt;/em&gt; yr div!&lt;/span&gt;";
+  root.innerHTML = "&lt;em&gt;I'm inside yr div!&lt;/em&gt;";
 &lt;/script&gt;
 </span>
 </code></pre>
@@ -447,38 +451,37 @@
           <h3>Style Encapsulation</h3>
           
           <div class="demo-code">
-            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+            <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="1">&lt;template&gt;</span>
   <span class="fragment burn" data-fragment-index="2">&lt;style&gt;
-    h4 { color: white; background: tomato; }
+    h3 { color: white; background: tomato; }
   &lt;/style&gt;</span>
-
-  <span class="fragment burn" data-fragment-index="3">&lt;h4&gt;A Shadow H4 Header&lt;/h4&gt;</span>
+  <span class="fragment burn" data-fragment-index="3">&lt;h3&gt;A Shadow H3 Header&lt;/h3&gt;</span>
 <span class="fragment burn" data-fragment-index="1">&lt;/template&gt;</span>
             </code></pre>
 
-            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+            <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="4">&lt;script&gt;
-  var template = document.querySelector("template");
+  var tmpl = document.querySelector("template");
   var host = document.querySelector(".widget");
   var root = host.createShadowRoot();
-  root.appendChild(template.content.cloneNode(true));
+  root.appendChild(tmpl.content.cloneNode(true));
 &lt;/script&gt;</span>
             </code></pre>
           </div>
 
           <template>
             <style>
-              h4 {
+              h3 {
                 color: white;
                 background: tomato;
               }
             </style>
-            <h4>A Shadow H4 Header</h4>
+            <h3>A Shadow H3 Header</h3>
           </template>
 
           <div class="fragment">
-            <h4>An H4 Header</h4>
+            <h3>An H3 Header</h3>
             <div class="widget"></div>
           </div>
         </section>
@@ -491,7 +494,7 @@
         </section>
 
 
-        <section id="demo-applyAuthorStyles" class="left-align demo">
+        <!-- <section id="demo-applyAuthorStyles" class="left-align demo">
           <p><strong><code>applyAuthorStyles</code></strong> (default: <code>false</code>)</p>
           <p><code>false</code>: Author styles <strong>will not</strong> affect your component.</p>
           <p><code>true</code>: Author styles <strong>will</strong> affect your component.</p>
@@ -525,10 +528,10 @@
               to be able to expose specific elements for the user to style
             </p>
           </aside>
-        </section>
+        </section> -->
 
 
-        <section id="demo-resetStyleInheritance" class="left-align demo">
+        <!-- <section id="demo-resetStyleInheritance" class="left-align demo">
           <p><strong><code>resetStyleInheritance</code></strong> (default: <code>false</code>)</p>
           <p><code>false</code>: Inheritable styles <strong>will</strong> affect your component.</p>
           <p><code>true</code>: Inheritable styles <strong>will not</strong> affect your component.</p>
@@ -556,12 +559,12 @@
             </div>
 
           </div>
-        </section>
+        </section> -->
 
         <section id="demo-parts" class="demo" style="height: 600px;">
           <h3>Styling Parts</h3>
           <div class="demo-code">
-            <pre style="margin-bottom: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
+            <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Shadow DOM -->
 &lt;template&gt;
   &lt;h3 part="heading"&gt;Interesting Article&lt;/h3&gt;
@@ -569,7 +572,7 @@
 &lt;/template&gt;
             </code></pre>
 
-            <pre style="margin-bottom: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
+            <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Parent document -->
 &lt;style&gt;
   .widget::part(heading) { font-family: Courier; }
@@ -600,26 +603,21 @@
 
 
         <section class="left-align">
-          <p><strong>Insertion points</strong> invite content from the host element into the Shadow DOM.</p>
-        </section>
-
-
-        <section>
-          content tag
+          <h3><strong>Insertion points</strong> invite content from the host element into the Shadow DOM.</h3>
         </section>
 
 
         <section id="demo-insertion-points" class="demo">
           <h3>Insertion Points</h3>
           <div class="demo-code">
-            <pre><code data-trim contenteditable style="margin-top: 20px;">
+            <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Shadow DOM -->
 &lt;template&gt;
   &lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
 &lt;/template&gt;
             </code></pre>
 
-            <pre><code data-trim contenteditable style="margin-top: 20px;">
+            <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Parent document -->
 &lt;div class="widget"&gt;
   Jigglypuff
@@ -645,13 +643,12 @@
         </section>
 
         <section class="left-align">
-          <p>Specific content can be targeted with the <strong><code>select</code></strong> attribute. </p>
-          <p><code>&lt;content select=".foo"&gt;&lt;/content&gt;</code></p>
+          <h3>Specific content can be targeted with the <strong>select</strong> attribute. </h3>
         </section>
 
         <section id="demo-select" class="demo">
           <h3>Select</h3>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Parent document -->
 &lt;div class="widget"&gt;
   Hello World
@@ -660,7 +657,7 @@
 &lt;/div&gt;
           </code></pre>
 
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
 <!-- Shadow DOM -->
 &lt;p&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/p&gt;
 &lt;p&gt;First Name: &lt;content select=".first-name"&gt;&lt;/content&gt;&lt;/p&gt;
@@ -668,7 +665,7 @@
           </code></pre>
 
           <template>
-            <style>p { margin: 0 0 10px; }</style>
+            <style>p { margin: 0 0 10px; text-align: left; }</style>
             <p>Last Name: <content select=".last-name"></content></p>
             <p>First Name: <content select=".first-name"></content></p>
             <p><content select=""></content></p>
@@ -736,27 +733,26 @@
 
         </section> -->
 
-        <section>
+        <section class="left-align">
           <h2>Browser Support</h2>
-          <ul class="unstyled-list">
-            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
-            <li><i class="icon-remove-circle not-supported"></i> Firefox <em>(In Development)</em></li>
-            <li><i class="icon-remove-circle not-supported"></i> Internet Explorer</li>
-            <li><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</li>
-            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
-          </ul>
+          <hr>
+          <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Firefox <em>(In Development)</em></h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
+          <h3><i class="icon-ok-circle supported"></i> Opera / Opera Mini</h3>
         </section>
 
         <section>
           <div class="spec-list">
-            <h3 class="spec-name faded">Templates</h3>
-            <p class="spec-definition faded"><em>Scaffolding</em></p>
-            <h3 class="spec-name fragment burn fade-out" data-fragment-index="1">Shadow DOM</h3>
-            <p class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>Encapsulation</em></p>
-            <h3 class="spec-name fragment burn" data-fragment-index="1">Custom Elements</h3>
-            <p class="spec-definition fragment burn" data-fragment-index="1"><em>The Tag</em></p>
-            <h3 class="spec-name faded">Imports</h3>
-            <p class="spec-definition faded"><em>Packaging</em></p>
+            <h2 class="spec-name faded">Templates</h2>
+            <h3 class="spec-definition faded"><em>Scaffolding</em></h3>
+            <h2 class="spec-name fragment burn fade-out" data-fragment-index="1">Shadow DOM</h2>
+            <h3 class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>Encapsulation</em></h3>
+            <h2 class="spec-name fragment burn" data-fragment-index="1">Custom Elements</h2>
+            <h3 class="spec-definition fragment burn" data-fragment-index="1"><em>Extensions</em></h3>
+            <h2 class="spec-name faded">Imports</h2>
+            <h3 class="spec-definition faded"><em>Packaging</em></h3>
           </div>
         </section>
 
@@ -766,27 +762,33 @@
 
 
         <section class="left-align">
-          <p>Custom Elements are <strong>new tags</strong> which inherit from <code>HTMLElement</code> and add <strong>enhanced features</strong>.</p>
+          <h3>Custom Elements are <strong>new tags</strong> that <strong>extend the browser</strong>.</h3>
         </section>
 
 
         <section>
           <div style="display: inline-block;" class="left-align">
-            <h3>Templates +</h3>
-            <h3>Shadow DOM</h3>
+            <h2>Templates +</h2>
+            <h2>Shadow DOM</h2>
             <hr>
-            <h3>Custom Elements</h3>
+            <h2>Custom Elements</h2>
           </div>
         </section>
 
 
         <section>
-          <p style="font-size: 32px;"><code>document.register('tag-name', { prototype: proto })</code></p>
+          <p style="text-align: left; font-size: 50px; margin-top: 10%;"><code>document.register('tag-name', {<br>
+            &nbsp;&nbsp;prototype: proto<br>
+          })</code></p>
           <br>
-          <ul>
-            <li>Tag name <strong>must</strong> contain a dash</li>
-            <li>Prototype <strong>must</strong> inherit from <strong><code>HTMLElement</code></strong></li>
-          </ul>
+          
+          <h3 class="left-align voice voice-human fragment">
+            <i class="icon-ok supported"></i> Tag name <strong>must</strong> have a dash
+          </h3>
+          
+          <h3 class="left-align voice voice-human fragment">
+            <i class="icon-ok supported"></i> Proto must inherit from <strong>HTMLElement</strong>
+          </h3>
         </section>
 
 
@@ -830,6 +832,7 @@
 
         <section class="left-align">
           <h3>Lifecycle Callbacks</h3>
+          <hr>
           <div style="font-size: 30px;">
             <div class="fragment burn">
               <p>
@@ -841,14 +844,14 @@
               <p>
                 <strong><code>enteredDocumentCallback()<sup>*</sup></code></strong><br>
                 When an element is added to the page<br>
-                <sup>*</sup><em>renamed to <strong><code>enteredViewCallback</code></strong></em>
+                <sup>*</sup><em>will be renamed <strong><code>enteredViewCallback</code></strong></em>
               </p>
             </div>
             <div class="fragment burn">
               <p>
                 <strong><code>leftDocumentCallback()<sup>*</sup></code></strong><br>
                 When an element is removed from the page<br>
-                <sup>*</sup><em>renamed to <strong><code>leftViewCallback</code></strong></em>
+                <sup>*</sup><em>will be renamed <strong><code>leftViewCallback</code></strong></em>
               </p>
             </div>
             <div class="fragment burn">
@@ -877,11 +880,6 @@ var MyButton = document.register("my-button", {
 <span class="fragment burn" data-fragment-index="3">&lt;button is="my-button"&gt;&lt;/button&gt;</span>
             </code></pre>
           </div>
-        </section>
-
-
-        <section>
-          <h3>Insertion Points</h3>
         </section>
 
 
@@ -988,15 +986,14 @@ var MyButton = document.register("my-button", {
         </section>
 
 
-        <section>
+        <section class="left-align">
           <h2>Browser Support</h2>
-          <ul class="unstyled-list">
-            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
-            <li><i class="icon-remove-circle not-supported"></i> Firefox <em>(In Development)</em></li>
-            <li><i class="icon-remove-circle not-supported"></i> Internet Explorer</li>
-            <li><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</li>
-            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
-          </ul>
+          <hr>
+          <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Firefox <em>(In Development)</em></h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
+          <h3><i class="icon-ok-circle supported"></i> Opera / Opera Mini</h3>
         </section>
 
 
@@ -1007,7 +1004,7 @@ var MyButton = document.register("my-button", {
             <h3 class="spec-name faded">Shadow DOM</h3>
             <p class="spec-definition faded"><em>Encapsulation</em></p>
             <h3 class="spec-name fragment burn fade-out" data-fragment-index="1">Custom Elements</h3>
-            <p class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>The Tag</em></p>
+            <p class="spec-definition fragment burn fade-out" data-fragment-index="1"><em>Extensions</em></p>
             <h3 class="spec-name fragment burn" data-fragment-index="1">Imports</h3>
             <p class="spec-definition fragment burn" data-fragment-index="1"><em>Packaging</em></p>
           </div>

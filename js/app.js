@@ -41,7 +41,7 @@
     var section = Reveal.getCurrentSlide();
     var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
-    root.innerHTML = '<span>I\'m <em>inside</em> yr div!</span>';
+    root.innerHTML = '<em>I\'m inside yr div!</em>';
   };
 
   demos.styleEncapsulation = function styleEncapsulation() {
@@ -53,35 +53,35 @@
   };
   demos.styleEncapsulation();
 
-  demos.doResetStyles = true;
-  demos.resetStyleInheritance = function resetStyleInheritance() {
-    var section = document.querySelector('#demo-resetStyleInheritance');
-    var output = section.querySelector('#isStyleInheritance');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    util.emptyNode(root);
-    this.doResetStyles = !this.doResetStyles;
-    root.resetStyleInheritance = this.doResetStyles;
-    output.textContent = this.doResetStyles;
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.resetStyleInheritance();
+  // demos.doResetStyles = true;
+  // demos.resetStyleInheritance = function resetStyleInheritance() {
+  //   var section = document.querySelector('#demo-resetStyleInheritance');
+  //   var output = section.querySelector('#isStyleInheritance');
+  //   var template = section.querySelector('template');
+  //   var host = section.querySelector('.widget');
+  //   var root = host.createShadowRoot();
+  //   util.emptyNode(root);
+  //   this.doResetStyles = !this.doResetStyles;
+  //   root.resetStyleInheritance = this.doResetStyles;
+  //   output.textContent = this.doResetStyles;
+  //   root.appendChild(template.content.cloneNode(true));
+  // };
+  // demos.resetStyleInheritance();
 
-  demos.doAuthorStyles = true;
-  demos.applyAuthorStyles = function applyAuthorStyles() {
-    var section = document.querySelector('#demo-applyAuthorStyles');
-    var output = section.querySelector('#isAuthorStyles');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    util.emptyNode(root);
-    this.doAuthorStyles = !this.doAuthorStyles;
-    root.applyAuthorStyles = this.doAuthorStyles;
-    output.textContent = this.doAuthorStyles;
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.applyAuthorStyles();
+  // demos.doAuthorStyles = true;
+  // demos.applyAuthorStyles = function applyAuthorStyles() {
+  //   var section = document.querySelector('#demo-applyAuthorStyles');
+  //   var output = section.querySelector('#isAuthorStyles');
+  //   var template = section.querySelector('template');
+  //   var host = section.querySelector('.widget');
+  //   var root = host.createShadowRoot();
+  //   util.emptyNode(root);
+  //   this.doAuthorStyles = !this.doAuthorStyles;
+  //   root.applyAuthorStyles = this.doAuthorStyles;
+  //   output.textContent = this.doAuthorStyles;
+  //   root.appendChild(template.content.cloneNode(true));
+  // };
+  // demos.applyAuthorStyles();
 
   demos.parts = function parts() {
     var section = document.querySelector('#demo-parts');

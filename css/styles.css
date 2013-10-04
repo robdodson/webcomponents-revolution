@@ -50,13 +50,22 @@ video {
   font-size: 0.6em;
 }
 
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  line-height: 1em;
+}
+
 /**
  * Demos
  */
 
 .reveal .demo-code {
- position: relative;
- margin-bottom: 40px;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .demo-btn {
@@ -141,6 +150,10 @@ h4 {
   text-transform: none;
 }
 
+.voice.voice-loud {
+  text-transform: uppercase;
+}
+
 /**
  * Helpers
  */
@@ -177,6 +190,10 @@ h4 {
 
 .hidden {
   display: none;
+}
+
+.reveal .normal-letters {
+  letter-spacing: normal;
 }
 
 .wide-rule {
@@ -231,25 +248,34 @@ h4 {
  * Extensions
  */
 
- .reveal .billboard {
-   font-family: 'league_gothicregular';
-   letter-spacing: 5px;
- }
+.reveal .billboard {
+  font-family: 'league_gothicregular';
+  letter-spacing: 5px;
+}
 
- .reveal .stencil {
-   font-family: 'capture_itregular';
-   letter-spacing: 5px;
- }
+.reveal .stencil {
+  font-family: 'capture_itregular';
+  letter-spacing: 5px;
+}
 
- .reveal .strong {
-   font-weight: bold;
- }
+.reveal .strong {
+  font-weight: bold;
+}
 
- .reveal section .chromeless {
-   border: none;
-   box-shadow: none;
-   background: none;
- }
+.reveal section .chromeless {
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+.reveal .alert-box {
+  font-size: 110px;
+  color: white;
+  font-family: 'Open Sans';
+  letter-spacing: 2px;
+  background: rgba(229, 139, 68, 0.5);
+  padding: 15px;
+}
 
 /**
  * Standard CSS classes for charred-trail. Visible elements that are not
@@ -325,10 +351,6 @@ h4 {
 /**
  * Icons
  */
-
-.icon-warning-sign {
-  color: #E58B44;
-}
 
 .icon-heart {
   color: #d14;
