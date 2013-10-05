@@ -104,11 +104,11 @@
         </section>
 
         <section>
-          <h2 class="left-align" style="font-size: 90px;">Within this talk...</h2>
+          <h2 class="left-align voice voice-human" style="font-size: 90px;">Within this talk...</h2>
           <hr>
-          <h3 class="left-align" style="font-size: 70px;">Web Components?</h3>
-          <h3 class="left-align" style="font-size: 70px;">The Specs</h3>
-          <h3 class="left-align" style="font-size: 70px;">Use 'em, Today!</h3>
+          <h3 class="left-align voice voice-human" style="font-size: 70px;">Web Components?</h3>
+          <h3 class="left-align voice voice-human" style="font-size: 70px;">The Specs</h3>
+          <h3 class="left-align voice voice-human" style="font-size: 70px;">Use 'em, Today!</h3>
           <aside class="notes">
             <p>What are web components...</p>
             <p>The 4 underlying technologies that <strong>collectively</strong> make up web components</p>
@@ -281,7 +281,7 @@
 
 
         <section class="left-align">
-          <h3>Templates are <strong>inert</strong> chunks of DOM that can be reused.</h3>
+          <h2>Templates are <strong>inert</strong> chunks of DOM that can be reused.</h2>
         </section>
 
 
@@ -365,13 +365,13 @@
           </div>
         </section>
 
-        <section data-state="blackout">
-          <img class="chromeless" width="100%" src="./img/jurassic.gif">
-          <h1 style="color: #FFF;">Shadow DOM</h1>
+        <section data-state="blackout" data-background="./img/finn.gif">
+          <!-- <img class="chromeless" width="100%" src="./img/finn.gif"> -->
+          <h1 style="color: #FFF; font-weight: bold;">Shadow DOM</h1>
         </section>
         
         <section class="left-align">
-          <h3 style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</h3>
+          <h2 style="margin-bottom: 30px;">The Shadow DOM provides <strong>style and markup encapsulation</strong>.</h2>
 
           <aside class="notes">
             <p>Take some HTML and CSS nodes, bundle them together</p>
@@ -762,7 +762,7 @@
 
 
         <section class="left-align">
-          <h3>Custom Elements are <strong>new tags</strong> that <strong>extend the browser</strong>.</h3>
+          <h2>Custom Elements are <strong>new tags</strong> that <strong>extend the browser</strong>.</h2>
         </section>
 
 
@@ -1023,24 +1023,25 @@ var MyButton = document.register("my-button", {
 
 
         <section class="left-align">
-          <p>Imports allow you to <strong>load additional documents</strong> into your page without having to write any ajax.</p>
+          <h2>Imports <strong>load <br>external documents</strong> into your page.</h2>
         </section>
 
 
-        <section>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
-&lt;link rel="import" href="/path/to/some/import.html"&gt;
-          </code></pre>
-          <ul>
-            <li>Uses <code>link</code> tag, just like a styesheet</li>
-            <li>New <code>rel</code> type of <code>import</code></li>
-          </ul>
+        <section class="left-align">
+          <p style="font-size: 55px; margin-top: 5%;"><code>&lt;link rel="import" <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;href="my-import.html"&gt;</code></p>
+          <br>
+          <h3 class="voice voice-human">
+            <i class="icon-ok supported"></i> Use a <strong>link</strong> tag, just like CSS
+          </h3>
+          <h3 class="voice voice-human">
+            <i class="icon-ok supported"></i> Use <strong>rel</strong> type <strong>import</strong>
+          </h3>
         </section>
 
 
         <section>
           <h3>Importing Custom Elements</h3>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;head&gt;
   &lt;link rel="import" href="./imports/chart.html"&gt;
 &lt;/head&gt;
@@ -1048,7 +1049,7 @@ var MyButton = document.register("my-button", {
   &lt;chart-pie&gt;&lt;/chart-pie&gt; <!-- ready to rock -->
 &lt;/body&gt;
           </code></pre>
-            <p><em>No need to check if the import is loaded</em></p>
+            <p style="font-size: 45px;"><em>No need to check if the import is loaded</em></p>
         </section>
 
 
@@ -1142,35 +1143,34 @@ document.body.appendChild(template.content.cloneNode(true));
         </section>
 
         <section class="left-align">
-          <p>A collection of <strong>polyfills</strong> which let us use Web Components in <strong>all modern browsers.</strong></p>
-
-          <ul class="unstyled-list fragment">
-            <li><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</li>
-            <li><i class="icon-ok-circle supported"></i> Firefox</li>
-            <li><i class="icon-ok-circle supported"></i> Internet Explorer 10+</li>
-            <li><i class="icon-ok-circle supported"></i> Safari 6+ / Mobile Safari</li>
-            <li><i class="icon-ok-circle supported"></i> Opera / Opera Mini</li>
-          </ul>
+          <h2>A collection of <strong>polyfills</strong> which let us use Web Components in <strong>all modern browsers.</strong></h2>
+          <aside class="notes">
+            IE 10+
+            Safari 6+
+          </aside>
         </section>
 
         <section class="left-align">
-          <p>A <strong>framework</strong> for building applications with <strong>web components.</strong></p>
-          <ul class="unstyled-list fragment">
-            <li><i class="icon-ok-circle supported"></i> Web Animations</li>
-            <li><i class="icon-ok-circle supported"></i> Pointer Events</li>
-            <li><i class="icon-ok-circle supported"></i> Template Binding</li>
-            <li><i class="icon-ok-circle supported"></i> Node.bind()</li>
-            <li><i class="icon-ok-circle supported"></i> Model-driven Views (MDV)</li>
-          </ul>
+          <h2><em>Also</em> a <strong>framework</strong> for building applications with <strong>web components.</strong></h2>
+        </section>
+
+        <section class="left-align">
+          <h3>Polymer Extras</h3>
+          <hr>
+          <h3><i class="icon-ok-circle supported"></i> Web Animations</h3>
+          <h3><i class="icon-ok-circle supported"></i> Pointer Events</h3>
+          <h3><i class="icon-ok-circle supported"></i> Template Binding</h3>
+          <h3><i class="icon-ok-circle supported"></i> Node.bind()</h3>
+          <h3><i class="icon-ok-circle supported"></i> Model-driven Views (MDV)</h3>
         </section>
 
         <section class="demo">
           <h3>Basic Polymer Element</h3>
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 29px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="1">&lt;script src="polymer.js"&gt;&lt;/script&gt;</span>
           </code></pre>
 
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 29px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="2">&lt;polymer-element name="my-element"&gt;</span>
   <span class="fragment burn" data-fragment-index="3">&lt;template&gt;
     Hello, I'm a &lt;strong&gt;Polymer&lt;/strong&gt; element
@@ -1179,7 +1179,7 @@ document.body.appendChild(template.content.cloneNode(true));
 <span class="fragment burn" data-fragment-index="2">&lt;/polymer-element&gt;</span>
           </code></pre>
 
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 29px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="5">&lt;!-- Ready to rock! --&gt;
 &lt;my-element&gt;&lt;/my-element&gt;</span>
           </code></pre>
@@ -1191,7 +1191,7 @@ document.body.appendChild(template.content.cloneNode(true));
 
         <section class="demo">
           <h3>Bindings</h3>
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;polymer-element name="color-picker"&gt;
   &lt;template&gt;
     &lt;p&gt;My favorite color is
@@ -1200,9 +1200,7 @@ document.body.appendChild(template.content.cloneNode(true));
     &lt;input type="text" value="{{ color }}"&gt;
   &lt;/template&gt;
   &lt;script&gt;
-    Polymer("color-picker", {
-      color: "Tomato"
-    });
+    Polymer("color-picker", { color: "Tomato" });
   &lt;/script&gt;
 &lt;/polymer-element&gt;
           </code></pre>
@@ -1213,22 +1211,22 @@ document.body.appendChild(template.content.cloneNode(true));
           </div>
         </section>
 
-        <section>
-          <h3>Links!</h3>
-          <ul>
-            <li><a href="http://ebidel.github.io/webcomponents/">Web Components Resources</a></li>
-            <li><a href="http://www.polymer-project.org/">Polymer</a></li>
-            <li><a href="http://www.x-tags.org/">X-Tags</a></li>
-            <li><a href="http://mozilla.github.io/brick/">Brick</a></li>
-            <li><a href="http://customelements.io/">CustomElements.io</a></li>
-            <li><a href="http://www.chromestatus.com/features">Chromium Dashboard</a></li>
-          </ul>
+        <section class="left-align">
+          <h3>Awesome Knowledges!</h3>
+          <hr>
+          <h4><a href="http://ebidel.github.io/webcomponents/">Web Components Resources</a></h4>
+          <h4><a href="https://www.google.com/#fp=501e3a7c68104311&q=(site%3Ahtml5rocks.com+inurl%3Awebcomponents)+OR+(site%3Aupdates.html5rocks.com+webcomponents)">HTML5 Rocks</a></h4>
+          <h4><a href="http://www.polymer-project.org/">Polymer</a></h4>
+          <h4><a href="http://www.x-tags.org/">X-Tags</a></h4>
+          <h4><a href="http://mozilla.github.io/brick/">Brick</a></h4>
+          <h4><a href="http://customelements.io/">CustomElements.io</a></h4>
+          <h4><a href="http://www.chromestatus.com/features">Chromium Dashboard</a></h4>
         </section>
 
 
         <section>
           <h1>Thanks!</h1>
-          <h3>Rob Dodson / @rob_dodson</h3>
+          <h3><a href="http://robdodson.me">Rob Dodson</a> / <a href="http://twitter.com/rob_dodson">@rob_dodson</a></h3>
         </section>
       </div>
     </div>
