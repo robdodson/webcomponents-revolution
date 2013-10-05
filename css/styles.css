@@ -229,6 +229,12 @@ h4 {
   line-height: 1.3em;
 }
 
+.reveal pre.full-bleed {
+  margin: 0;
+  width: 100%;
+  font-size: 29px;
+}
+
 .lighten {
   color: gray;
 }
@@ -339,9 +345,11 @@ h4 {
   display: inline-block;
 }
 .reveal .spec-list .spec-name {
+  font-size: 65px;
   margin-bottom: 5px;
 }
 .reveal .spec-list .spec-definition {
+  font-size: 50px;
   margin-bottom: 35px;
 }
 .reveal .spec-list .spec-definition:last-child {

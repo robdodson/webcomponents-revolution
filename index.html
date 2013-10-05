@@ -792,48 +792,75 @@
         </section>
 
 
-        <section class="demo">
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn">&lt;template id="widget-template"&gt;
-  &lt;style&gt;...&lt;/style&gt;
-  &lt;div&gt;
-    &lt;h4&gt;I am a widget!&lt;/h4&gt;
-  &lt;/div&gt;
-&lt;/template&gt;</span>
-          </code></pre>
+        <!-- <section>
+          <p style="text-align: left; font-size: 50px; margin-top: 10%;"><code>document.register('chart-pie', {<br>
+            &nbsp;&nbsp;prototype: ChartPieProto<br>
+          })</code></p>
+          <br>
+          <h3 class="left-align voice voice-human fragment">
+            <code>&lt;chart-pie&gt;&lt;/chart-pie&gt;</code>
+          </h3>
+          
+          <h3 class="left-align voice voice-human fragment">
+            <code>document.createElement('chart-pie');</code>
+          </h3>
+        </section> -->
 
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn">var template = document.querySelector("#widget-template");</span>
+
+        <section class="demo">
+          <h3>Creating a Custom Element</h3>
+          <pre class="full-bleed"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn">var tmpl = document.querySelector("#some-template");</span>
 
 <span class="fragment burn">var WidgetProto = Object.create(HTMLElement.prototype);</span>
 
 <span class="fragment burn">WidgetProto.createdCallback = function() {
   var root = this.createShadowRoot();
-  root.appendChild(template.content.cloneNode(true));
+  root.appendChild(tmpl.content.cloneNode(true));
 };</span>
 
 <span class="fragment burn">var Widget = document.register("my-widget", {
   prototype: WidgetProto
 });</span>
           </code></pre>
-          
-          <!-- <div class="fragment">
-            <h4>Add your element to the page</h4>
-            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn" data-fragment-index="1">var widget = new Widget(); // OR</span>
-<span class="fragment burn" data-fragment-index="2">var widget = document.createElement("my-widget"); // OR</span>
-<span class="fragment burn" data-fragment-index="3">&lt;my-widget&gt;&lt;/my-widget&gt;</span>
-            </code></pre>
-          </div> -->
+        </section>
 
-          <div class="widget"><my-widget></my-widget></div>
+
+        <section class="left-align">
+          <h3>Using Your Element</h3>
+          <hr>
+          <br>
+          <p><code>&lt;my-widget&gt;&lt;/my-widget&gt; <span class="right lighten" style="margin-right: 50px;">// OR</span></code></p>
+          <p><code>document.createElement("my-widget") <span class="right lighten" style="margin-right: 50px;">// OR</span></code></p>
+          <p><code>new Widget()</code></p>
+        </section>
+
+
+        <section>
+          <h3>Extending Existing Elements</h3>
+          <pre class="full-bleed"><code data-trim contenteditable style="margin-top: 20px;">
+var MyButton = document.register("my-button", {
+  extends: "button",
+  prototype: Object.create(HTMLButtonElement.prototype)
+});
+          </code></pre>
+          <br>
+          <h4>Add your element to the page</h4>
+          <pre class="full-bleed"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span>&lt;button is="my-button"&gt;&lt;/button&gt;</span>
+<span>var btn = document.createElement("button", "my-button");</span>
+<span>var btn = new MyButton();</span>
+          </code></pre>
+          <aside class="notes">
+            Called "Type Extension Elements"
+          </aside>
         </section>
 
 
         <section class="left-align">
           <h3>Lifecycle Callbacks</h3>
           <hr>
-          <div style="font-size: 30px;">
+          <div style="font-size: 32px;">
             <div class="fragment burn">
               <p>
                 <strong><code>createdCallback()</code></strong><br>
@@ -865,21 +892,14 @@
 
 
         <section>
-          <h3>Extending Existing Elements</h3>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
-var MyButton = document.register("my-button", {
-  extends: "button",
-  prototype: Object.create(HTMLButtonElement.prototype)
-});
+          <h3>Goodbye &lt;element&gt;... for now</h3>
+          <pre style="font-size: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
+<!-- Do not use! Will be removed. -->
+&lt;element name="my-widget"&gt;
+  ...
+&lt;/element&gt;
           </code></pre>
-          <div class="fragment">
-            <h4>Add your element to the page</h4>
-            <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn" data-fragment-index="1">var widget = new MyButton(); // OR</span>
-<span class="fragment burn" data-fragment-index="2">var widget = document.createElement("button", "my-button"); // OR</span>
-<span class="fragment burn" data-fragment-index="3">&lt;button is="my-button"&gt;&lt;/button&gt;</span>
-            </code></pre>
-          </div>
+          <h3>It's taking a <a href="http://lists.w3.org/Archives/Public/public-webapps/2013JulSep/0290.html">beauty nap</a></h3>
         </section>
 
 
@@ -972,17 +992,6 @@ var MyButton = document.register("my-button", {
               </code></pre>
             </div>
           </div>
-        </section>
-
-
-        <section>
-          <h3>Goodbye &lt;element&gt;... for now</h3>
-          <pre><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Do not use! -->
-&lt;element name="my-widget"&gt;
-  ...
-&lt;/element&gt;
-          </code></pre>
         </section>
 
 
