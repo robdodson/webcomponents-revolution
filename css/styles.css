@@ -112,22 +112,36 @@ input[type="text"] {
   padding: 3px;
 }
 
-moment-now,
-moment-format,
-moment-parse,
-moment-from {
-  padding: 3px 6px;
-  background: tomato;
-  color: white;
-}
-
-.reveal .mailchimp,
-.reveal .moment {
+.reveal .mailchimp {
   margin: 0 auto 40px;
 }
 
 .reveal .moment {
-  font-size: 34px;
+  margin: 0 auto 50px;
+  font-size: 41px;
+}
+
+.reveal .moment:last-child {
+  margin-bottom: 30px;
+}
+
+.reveal .moment-code > div {
+  position: relative;
+}
+
+.reveal .moment-code pre {
+  position: absolute;
+  font-size: 30px;
+  line-height: 1.3em;
+}
+
+moment-now,
+moment-format,
+moment-parse,
+moment-from {
+  padding: 3px 10px;
+  background: tomato;
+  color: white;
 }
 
 /* This style is fudged in here for the applyAuthorStyles demo */
@@ -222,11 +236,6 @@ h4 {
 
 .marginless {
   margin: 0 !important;
-}
-
-.reveal .embiggen code {
-  font-size: 24px;
-  line-height: 1.3em;
 }
 
 .reveal pre.full-bleed {

@@ -906,7 +906,7 @@ var MyButton = document.register("my-button", {
         <section id="mailchimp-demo">
           <h3>MailChimp</h3>
           <br>
-          <div class="mailchimp" style="width: 50%;">
+          <div class="mailchimp" style="width: 60%; zoom: 1.25">
             <!-- disable-events is something I added to kill reveal.js key listeners -->
             <mc-signup data-disable-events="true"
                        url="http://robdodson.us7.list-manage.com/subscribe/post"
@@ -914,7 +914,7 @@ var MyButton = document.register("my-button", {
                        id="6719a28b56">
             </mc-signup>
           </div>
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 25px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;mc-signup
   url="http://robdodson.us7.list-manage.com/subscribe/post"
   u="5727aa0eb1ccbf4ae68284189"
@@ -928,33 +928,34 @@ var MyButton = document.register("my-button", {
           <h3>Google Analytics</h3>
           <br>
           <g-analytics account="UA-44428880-1" domain="localhost"></g-analytics>
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;g-analytics account="UA-44428880-1" domain="localhost"&gt;&lt;/g-analytics&gt;
+          <pre style="font-size: 30px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;g-analytics
+  account="UA-44428880-1"
+  domain="localhost"&gt;
+&lt;/g-analytics&gt;
           </code></pre>
         </section>
 
 
-        <section style="margin-top: -50px;">
+        <section style="margin-top: -80px;">
+          <h3 style="margin-bottom: 50px;">Moment</h3>
           <div class="left-align">
             <div class="moment">
-              Today is: <moment-now></moment-now>
+              Right now: <moment-now></moment-now>
             </div>
             <div class="fragment moment" data-fragment-index="2">
-              Or to put it another way:
+              Formatted:
               <moment-format tokens="MMMM Do YYYY, h:mm:ss a">
                 <moment-now></moment-now>
               </moment-format>
             </div>
             <div class="fragment moment" data-fragment-index="3">
-              Oct 26, 1985 becomes: <moment-parse>Oct 26, 1985</moment-parse>
-            </div>
-            <div class="fragment moment" data-fragment-index="4">
-              Or just:
-              <moment-format tokens="dddd, MMMM Do">
+              Oct 26, 1985:
+              <moment-format tokens="dddd, MMMM Do YYYY">
                 <moment-parse>Oct 26, 1985</moment-parse>
               </moment-format>
             </div>
-            <div class="fragment moment" data-fragment-index="5">
+            <div class="fragment moment" data-fragment-index="4">
               Btw, that was: 
               <moment-from>
                 <moment-parse>Oct 26, 1985</moment-parse>
@@ -962,29 +963,25 @@ var MyButton = document.register("my-button", {
               </moment-from>
             </div>
           </div>
-          <div class="embiggen">
-            <div style="position: relative;">
-              <pre style="position: absolute;"><code data-trim contenteditable>
+          <div class="moment-code">
+            <div>
+              <pre><code data-trim contenteditable>
 <moment-now></moment-now>
               </code></pre>
 
-              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="2"><code data-trim contenteditable>
+              <pre class="fragment fragment-hidden" data-fragment-index="2"><code data-trim contenteditable>
 <moment-format tokens="MMMM Do YYYY, h:mm:ss a">
   <moment-now></moment-now>
 </moment-format>
               </code></pre>
 
-              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="3"><code data-trim contenteditable>
-<moment-parse>Oct 26, 1985</moment-parse>
-              </code></pre>
-
-              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="4"><code data-trim contenteditable>
-<moment-format tokens="dddd, MMMM Do">
+              <pre class="fragment fragment-hidden" data-fragment-index="3"><code data-trim contenteditable>
+<moment-format tokens="dddd, MMMM Do YYYY">
   <moment-parse>Oct 26, 1985</moment-parse>
 </moment-format>
               </code></pre>
 
-              <pre style="position: absolute;" class="fragment fragment-hidden" data-fragment-index="5"><code data-trim contenteditable>
+              <pre class="fragment fragment-hidden" data-fragment-index="4"><code data-trim contenteditable>
 <moment-from>
   <moment-parse>Oct 26, 1985</moment-parse>
   <moment-now></moment-now>
@@ -1113,17 +1110,26 @@ document.body.appendChild(template.content.cloneNode(true));
         </section> -->
 
 
-        <section>
-          <h3>Requirements</h3>
-          <ul class="unstyled-list">
-            <li><strong>Chrome Canary</strong>, <code>about:flags</code></li>
-              <ul>
-                <li>Enable Experimental Web Platform features</li>
-                <li>Enable experimental JavaScript</li>
-                <li>Enable HTML Imports</li>
-              </ul>
-            <li>Enable Show Shadow DOM in Developer Tools</li>
-          </ul>
+        <section class="left-align">
+          <h2>Browser Support</h2>
+          <hr>
+          <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome <br><em>(behind a flag)</em></h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Firefox</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Opera / Opera Mini</h3>
+        </section>
+
+
+        <section class="left-align">
+          <h2>Use Chrome Canary</h2>
+          <hr>
+          <p style="font-size: 50px;">In <code>about:flags</code></p>
+          <p style="font-size: 50px;"><i class="icon-ok"></i> Experimental Web Platform features</p>
+          <p style="font-size: 50px;"><i class="icon-ok"></i> Experimental JavaScript</p>
+          <p style="font-size: 50px;"><i class="icon-ok"></i> HTML Imports</p>
+          <hr>
+          <p style="font-size: 50px;"><i class="icon-ok"></i> Show Shadow DOM in Developer Tools</p>
         </section>
 
 
