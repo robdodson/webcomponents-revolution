@@ -1,10 +1,26 @@
+<!-- <my-element> definition -->
 <polymer-element name="my-element">
   <template>
-    Hello, I'm a <strong>Polymer</strong> element
+    <h2>
+      Hello, I'm a <strong>Polymer</strong> element
+    </h2>
   </template>
   <script>Polymer("my-element");</script>
 </polymer-element>
 
+<!-- <fav-color> definition -->
+<polymer-element name="fav-color" attributes="color">
+  <template>
+    <h2>My favorite color is: {{ color }}</h2>
+  </template>
+  <script>
+    Polymer('fav-color', {
+      color: 'Orange'
+    });
+  </script>
+</polymer-element>
+
+<!-- <color-picker> definition -->
 <polymer-element name="color-picker">
   <template>
     <style>
@@ -16,9 +32,9 @@
       font-size: 30px;
     }
     </style>
-    <p>My favorite color is
+    <h2>My favorite color is
       <span style="background: {{ color }}">{{ color }}</span>
-    </p>
+    </h2>
     <input type="text" value="{{ color }}">
   </template>
   <script>

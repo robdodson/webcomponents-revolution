@@ -1123,6 +1123,13 @@ document.body.appendChild(template.content.cloneNode(true));
 
 
         <section class="left-align">
+          <h3>Web Components: Summary</h3>
+          <hr>
+          
+        </section>
+
+
+        <section class="left-align">
           <h2>Use Chrome Canary</h2>
           <hr>
           <p style="font-size: 50px;">In <code>about:flags</code></p>
@@ -1166,31 +1173,55 @@ document.body.appendChild(template.content.cloneNode(true));
 
         <section class="demo">
           <h3>Basic Polymer Element</h3>
-          <pre style="font-size: 29px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="1">&lt;script src="polymer.js"&gt;&lt;/script&gt;</span>
           </code></pre>
 
-          <pre style="font-size: 29px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="2">&lt;polymer-element name="my-element"&gt;</span>
   <span class="fragment burn" data-fragment-index="3">&lt;template&gt;
-    Hello, I'm a &lt;strong&gt;Polymer&lt;/strong&gt; element
+    &lt;h2&gt;
+      Hello, I'm a &lt;strong&gt;Polymer&lt;/strong&gt; element
+    &lt;/h2&gt;
   &lt;/template&gt;</span>
   <span class="fragment burn" data-fragment-index="4">&lt;script&gt;Polymer("my-element");&lt;/script&gt;</span>
 <span class="fragment burn" data-fragment-index="2">&lt;/polymer-element&gt;</span>
           </code></pre>
 
-          <pre style="font-size: 29px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+          <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="5">&lt;!-- Ready to rock! --&gt;
 &lt;my-element&gt;&lt;/my-element&gt;</span>
           </code></pre>
 
-          <div class="widget expand">
+          <div class="widget">
             <my-element></my-element>
           </div>
         </section>
 
         <section class="demo">
-          <h3>Bindings</h3>
+          <h3>Attributes</h3>
+          <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;polymer-element name="fav-color" attributes="color"&gt;
+  &lt;template&gt;
+    &lt;h2&gt;My favorite color is: {{ color }}&lt;/h2&gt;
+  &lt;/template&gt;
+  &lt;script&gt;
+    Polymer('fav-color', {
+      color: 'Orange'
+    });
+  &lt;/script&gt;
+&lt;/polymer-element&gt;
+          </code></pre>
+          <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;fav-color color="Purple"&gt;&lt;/fav-color&gt;
+          </code></pre>
+          <div class="widget">
+            <fav-color color="Purple"></fav-color>
+          </div>
+        </section>
+
+        <section class="demo">
+          <h3>Live Bindings</h3>
           <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;polymer-element name="color-picker"&gt;
   &lt;template&gt;
@@ -1210,6 +1241,17 @@ document.body.appendChild(template.content.cloneNode(true));
             <color-picker data-disable-events="true"></color-picker>
           </div>
         </section>
+
+
+        <section data-background="./img/geometry.gif">
+          <h1 style="color: white; font-weight: bold;">OMG WTF WAS ALL THAT?!!</h1>
+        </section>
+
+
+        <section data-background="./img/excited-casette.gif">
+          
+        </section>
+
 
         <section class="left-align">
           <h3>Awesome Knowledges!</h3>
