@@ -451,14 +451,19 @@
           <h3>Style Encapsulation</h3>
           
           <div class="demo-code">
-            <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+            <div class="ribbon-container">
+              <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="1">&lt;template&gt;</span>
   <span class="fragment burn" data-fragment-index="2">&lt;style&gt;
     h3 { color: white; background: tomato; }
   &lt;/style&gt;</span>
   <span class="fragment burn" data-fragment-index="3">&lt;h3&gt;A Shadow H3 Header&lt;/h3&gt;</span>
 <span class="fragment burn" data-fragment-index="1">&lt;/template&gt;</span>
-            </code></pre>
+              </code></pre>
+              <div class="ribbon-wrapper-blue">
+                <div class="ribbon-blue">Shadow</div>
+              </div>
+            </div>
 
             <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 <span class="fragment burn" data-fragment-index="4">&lt;script&gt;
@@ -564,16 +569,19 @@
         <section id="demo-parts" class="demo" style="height: 600px;">
           <h3>Styling Parts</h3>
           <div class="demo-code">
-            <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Shadow DOM -->
+            <div class="ribbon-container">
+              <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;template&gt;
   &lt;h3 part="heading"&gt;Interesting Article&lt;/h3&gt;
   &lt;p part="article"&gt;Article copy is special!&lt;/p&gt;
 &lt;/template&gt;
-            </code></pre>
+              </code></pre>
+              <div class="ribbon-wrapper-blue">
+                <div class="ribbon-blue">Shadow</div>
+              </div>
+            </div>
 
             <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Parent document -->
 &lt;style&gt;
   .widget::part(heading) { font-family: Courier; }
   .widget::part(article) { font-style: italic; }
@@ -604,21 +612,26 @@
 
         <section class="left-align">
           <h3><strong>Insertion points</strong> invite content from the host element into the Shadow DOM.</h3>
+
+          <h3>Use the <strong>&lt;content&gt; tag</strong> to create an insertion point.</h3>
         </section>
 
 
         <section id="demo-insertion-points" class="demo">
           <h3>Insertion Points</h3>
           <div class="demo-code">
-            <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Shadow DOM -->
+            <div class="ribbon-container">
+              <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;template&gt;
   &lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
 &lt;/template&gt;
-            </code></pre>
+              </code></pre>
+              <div class="ribbon-wrapper-blue">
+                <div class="ribbon-blue">Shadow</div>
+              </div>
+            </div>
 
             <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Parent document -->
 &lt;div class="widget"&gt;
   Jigglypuff
 &lt;/div&gt;
@@ -648,8 +661,7 @@
 
         <section id="demo-select" class="demo">
           <h3>Select</h3>
-          <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Parent document -->
+          <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;div class="widget"&gt;
   Hello World
   &lt;span class="first-name"&gt;Rob&lt;/span&gt;
@@ -657,18 +669,22 @@
 &lt;/div&gt;
           </code></pre>
 
-          <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
-<!-- Shadow DOM -->
-&lt;p&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/p&gt;
-&lt;p&gt;First Name: &lt;content select=".first-name"&gt;&lt;/content&gt;&lt;/p&gt;
-&lt;p&gt;&lt;content select=""&gt;&lt;/content&gt;&lt;/p&gt;
-          </code></pre>
+          <div class="ribbon-container">
+            <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;h3&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/h3&gt;
+&lt;h3&gt;First Name: &lt;content select=".first-name"&gt;&lt;/content&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;content select=""&gt;&lt;/content&gt;&lt;/h3&gt;
+            </code></pre>
+            <div class="ribbon-wrapper-blue">
+              <div class="ribbon-blue">Shadow</div>
+            </div>
+          </div>
 
           <template>
-            <style>p { margin: 0 0 10px; text-align: left; }</style>
-            <p>Last Name: <content select=".last-name"></content></p>
-            <p>First Name: <content select=".first-name"></content></p>
-            <p><content select=""></content></p>
+            <style>h3 { margin: 0 0 10px; text-align: left; }</style>
+            <h3>Last Name: <content select=".last-name"></content></h3>
+            <h3>First Name: <content select=".first-name"></content></h3>
+            <h3><content select=""></content></h3>
           </template>
 
           <div class="widget expand">
@@ -1133,11 +1149,11 @@ document.body.appendChild(template.content.cloneNode(true));
           <h2>Use Chrome Canary</h2>
           <hr>
           <p style="font-size: 50px;">In <code>about:flags</code></p>
-          <p style="font-size: 50px;"><i class="icon-ok"></i> Experimental Web Platform features</p>
-          <p style="font-size: 50px;"><i class="icon-ok"></i> Experimental JavaScript</p>
-          <p style="font-size: 50px;"><i class="icon-ok"></i> HTML Imports</p>
+          <p style="font-size: 50px;"><i class="icon-ok supported"></i> Experimental Web Platform features</p>
+          <p style="font-size: 50px;"><i class="icon-ok supported"></i> Experimental JavaScript</p>
+          <p style="font-size: 50px;"><i class="icon-ok supported"></i> HTML Imports</p>
           <hr>
-          <p style="font-size: 50px;"><i class="icon-ok"></i> Show Shadow DOM in Developer Tools</p>
+          <p style="font-size: 50px;"><i class="icon-ok supported"></i> Show Shadow DOM in Developer Tools</p>
         </section>
 
 
@@ -1249,7 +1265,7 @@ document.body.appendChild(template.content.cloneNode(true));
 
 
         <section data-background="./img/excited-casette.gif">
-          
+          <img style="margin-left: 55%; margin-top: -45%;" class="chromeless" width="600px" src="./img/you2.png">
         </section>
 
 
