@@ -485,18 +485,18 @@
             <h3>A Shadow H3 Header</h3>
           </template>
 
-          <div class="fragment">
+          <div>
             <h3>An H3 Header</h3>
             <div class="widget"></div>
           </div>
         </section>
 
 
-        <section>
+        <!-- <section>
           <h2 class="blink" style="color: violet; font-weight: bold;"><em>ZOMG PROTECTED C$$</em></h2>
           <img width="50%" class="chromeless" src="./img/colbert.gif">
           <p><em>(worth the price of admission)</em></p>
-        </section>
+        </section> -->
 
 
         <!-- <section id="demo-applyAuthorStyles" class="left-align demo">
@@ -1141,13 +1141,18 @@ document.body.appendChild(template.content.cloneNode(true));
           <h3><i class="icon-remove-circle not-supported"></i> Opera / Opera Mini</h3>
         </section>
 
-
-        <section class="left-align">
-          <h3>Web Components: Summary</h3>
-          <hr>
-          
+        <section>
+          <div class="spec-list">
+            <h2 class="spec-name">Templates</h2>
+            <h3 class="voice voice-human spec-definition"><em>Scaffolding</em></h3>
+            <h2 class="spec-name">Shadow DOM</h2>
+            <h3 class="voice voice-human spec-definition"><em>Encapsulation</em></h3>
+            <h2 class="spec-name">Custom Elements</h2>
+            <h3 class="voice voice-human spec-definition"><em>Extensions</em></h3>
+            <h2 class="spec-name">Imports</h2>
+            <h3 class="voice voice-human spec-definition"><em>Packaging</em></h3>
+          </div>
         </section>
-
 
         <section class="left-align">
           <h2>Use Chrome Canary</h2>
@@ -1221,19 +1226,19 @@ document.body.appendChild(template.content.cloneNode(true));
         <section class="demo">
           <h3>Attributes</h3>
           <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;polymer-element name="fav-color" attributes="color"&gt;
-  &lt;template&gt;
+<span class="fragment burn" data-fragment-index="1">&lt;polymer-element name="fav-color" attributes="color"&gt;</span>
+  <span class="fragment burn" data-fragment-index="2">&lt;template&gt;
     &lt;h2&gt;My favorite color is: {{ color }}&lt;/h2&gt;
-  &lt;/template&gt;
-  &lt;script&gt;
-    Polymer('fav-color', {
-      color: 'Orange'
+  &lt;/template&gt;</span>
+  <span class="fragment burn" data-fragment-index="3">&lt;script&gt;
+    Polymer("fav-color", {
+      color: "Orange"
     });
-  &lt;/script&gt;
-&lt;/polymer-element&gt;
+  &lt;/script&gt;</span>
+<span class="fragment burn" data-fragment-index="1">&lt;/polymer-element&gt;</span>
           </code></pre>
           <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;fav-color color="Purple"&gt;&lt;/fav-color&gt;
+<span class="fragment burn" data-fragment-index="4">&lt;fav-color color="Purple"&gt;&lt;/fav-color&gt;</span>
           </code></pre>
           <div class="widget">
             <fav-color color="Purple"></fav-color>
@@ -1243,33 +1248,32 @@ document.body.appendChild(template.content.cloneNode(true));
         <section class="demo">
           <h3>Live Bindings</h3>
           <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;polymer-element name="color-picker"&gt;
-  &lt;template&gt;
+<span class="fragment burn" data-fragment-index="1">&lt;polymer-element name="color-picker"&gt;</span>
+  <span class="fragment burn" data-fragment-index="2">&lt;template&gt;
     &lt;p&gt;My favorite color is
       &lt;span style="background: {{ color }}"&gt;{{ color }}&lt;/span&gt;
     &lt;/p&gt;
     &lt;input type="text" value="{{ color }}"&gt;
-  &lt;/template&gt;
-  &lt;script&gt;
+  &lt;/template&gt;</span>
+  <span class="fragment burn" data-fragment-index="3">&lt;script&gt;
     Polymer("color-picker", { color: "Tomato" });
-  &lt;/script&gt;
-&lt;/polymer-element&gt;
+  &lt;/script&gt;</span>
+<span class="fragment burn" data-fragment-index="1">&lt;/polymer-element&gt;</span>
           </code></pre>
 
           <div class="widget">
             <!-- disable-events is something I added to kill reveal.js key listeners -->
             <color-picker data-disable-events="true"></color-picker>
           </div>
+
+          <aside class="notes">
+            <strong>!!! DO NOT TYPE ANYTHING !!!</strong>
+          </aside>
         </section>
 
 
-        <section data-background="./img/geometry.gif">
-          <h1 style="color: white; font-weight: bold;">OMG WTF WAS ALL THAT?!!</h1>
-        </section>
-
-
-        <section data-background="./img/excited-casette.gif">
-          <img style="margin-left: 55%; margin-top: -45%;" class="chromeless" width="600px" src="./img/you2.png">
+        <section>
+          <h1><strong>There's moar!</strong></h1>
         </section>
 
 
@@ -1286,9 +1290,23 @@ document.body.appendChild(template.content.cloneNode(true));
         </section>
 
 
+        <section data-background="./img/geometry.gif">
+          <h1 style="color: white; font-weight: bold;">OMG WTF WAS ALL THAT?!!</h1>
+        </section>
+
+
+        <section data-background="./img/excited-casette.gif">
+          <img style="margin-left: 55%; margin-top: -45%;" class="chromeless" width="600px" src="./img/you2.png">
+          <aside class="notes">
+            
+          </aside>
+        </section>
+
+
         <section>
-          <h1>Thanks!</h1>
+          <h1 style="margin-top: 150px;"><strong>Thanks!</strong></h1>
           <h3><a href="http://robdodson.me">Rob Dodson</a> / <a href="http://twitter.com/rob_dodson">@rob_dodson</a></h3>
+          <img src="./img/heart2.gif" class="chromeless" width="100px" style="margin-left: 250px;">
         </section>
       </div>
     </div>
