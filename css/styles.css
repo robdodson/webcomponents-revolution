@@ -59,6 +59,18 @@ video {
   line-height: 1em;
 }
 
+/* This style is baked in for the applyAuthorStyles demo */
+h3 {
+  margin: 0 0 20px 0;
+  color: #333333;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-weight: normal;
+  font-size: 1.55em;
+}
+
 /**
  * Demos
  */
@@ -142,18 +154,6 @@ moment-from {
   padding: 3px 10px;
   background: tomato;
   color: white;
-}
-
-/* This style is fudged in here for the applyAuthorStyles demo */
-h4 {
-  margin: 20px 0;
-  color: #333333;
-  font-family: "Quicksand", sans-serif;
-  font-weight: 200;
-  line-height: 0.9em;
-  letter-spacing: -0.08em;
-  text-transform: uppercase;
-  text-shadow: none;
 }
 
 /**
