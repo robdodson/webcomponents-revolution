@@ -288,6 +288,14 @@
           </h2>
         </section>
 
+        <section data-background="./img/wrestler.gif">
+          <h2 class="blink alert-box"><i class="icon-warning-sign"></i> Code Ahead!</h2>
+        </section>
+
+        <section data-background="./img/jake.gif">
+          <img style="margin-left: 35%; margin-top: -20%;" class="chromeless" width="800px" src="./img/you.png">
+        </section>
+
         <section id="chart-demo" style="height: 200px;">
           <code style="font-size: 50px;">&lt;chart-pie&gt;&lt;/chart-pie&gt;</code>
           <div class="fragment" data-pie="true" style="height: 20px;"></div>
@@ -311,14 +319,6 @@
             ### How _you_ doin?
             [Link me!](foo.com)
           </mark-down>
-        </section>
-
-        <section data-background="./img/wrestler.gif">
-          <h2 class="blink alert-box"><i class="icon-warning-sign"></i> Code Ahead!</h2>
-        </section>
-
-        <section data-background="./img/jake.gif">
-          <img style="margin-left: 35%; margin-top: -20%;" class="chromeless" width="800px" src="./img/you.png">
         </section>
 
         <!-- <section>
@@ -1380,7 +1380,7 @@ document.body.appendChild(template.content.cloneNode(true));
         <section class="demo">
           <h3>Live Bindings</h3>
           <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn" data-fragment-index="1">&lt;polymer-element name="color-picker"&gt;</span>
+<span class="fragment burn" data-fragment-index="1">&lt;polymer-element name="color-picker" attributes="color"&gt;</span>
   <span class="fragment burn" data-fragment-index="2">&lt;template&gt;
     &lt;p&gt;My favorite color is
       &lt;span style="background: {{ color }}"&gt;{{ color }}&lt;/span&gt;
