@@ -67,9 +67,9 @@
           <h2 class="voice voice-human">Hi I'm Rob,</h2>
           <h2 class="voice voice-human">I'll be your guide today.</h2>
           <hr class="wide-rule">
-          <h4><a href="http://robdodson.me"><i class="icon-rss-sign"></i> robdodson.me</a></h4>
-          <h4><a href="http://twitter.com/rob_dodson"><i class="icon-twitter-sign"></i> @rob_dodson</a></h4>
-          <h4><a href="http://github.com/robdodson"><i class="icon-github-sign"></i> robdodson</a></h4>
+          <h4 style="text-transform: none;"><a href="http://robdodson.me"><i class="icon-rss-sign"></i> robdodson.me</a></h4>
+          <h4 style="text-transform: none;"><a href="http://twitter.com/rob_dodson"><i class="icon-twitter-sign"></i> @rob_dodson</a></h4>
+          <h4 style="text-transform: none;"><a href="http://github.com/robdodson"><i class="icon-github-sign"></i> robdodson</a></h4>
 
           <aside class="notes">
             <p>Freelance front-end developer</p>
@@ -933,16 +933,16 @@ var MyButton = document.register("my-button", {
             </div>
             <div class="fragment burn">
               <p>
-                <strong><code>enteredDocumentCallback()<sup>*</sup></code></strong><br>
+                <strong><code>enteredViewCallback()<sup>*</sup></code></strong><br>
                 When an element is added to the page<br>
-                <sup>*</sup><em>will be renamed <strong><code>enteredViewCallback</code></strong></em>
+                <sup>*</sup><em>previously named <strong><code>enteredDocumentCallback</code></strong></em>
               </p>
             </div>
             <div class="fragment burn">
               <p>
-                <strong><code>leftDocumentCallback()<sup>*</sup></code></strong><br>
+                <strong><code>leftViewCallback()<sup>*</sup></code></strong><br>
                 When an element is removed from the page<br>
-                <sup>*</sup><em>will be renamed <strong><code>leftViewCallback</code></strong></em>
+                <sup>*</sup><em>previously named <strong><code>leftDocumentCallback</code></strong></em>
               </p>
             </div>
             <div class="fragment burn">
@@ -1144,35 +1144,34 @@ document.body.appendChild(template.content.cloneNode(true));
         </section> -->
 
 
-        <!-- <section>
+        <section>
           <h3>The import</h3>
-          <pre><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-&lt;template id="chart-pie"&gt;
+          <pre style="font-size: 27px;" class="full-bleed"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;template&gt;
   ...
 &lt;/template&gt;
 
 &lt;script&gt;
-  <span class="fragment burn" data-fragment-index="1">// thisDoc refers to the "importee", which is chart.html
-  var thisDoc = document.currentScript.ownerDocument;</span>
+  <span class="fragment burn" data-fragment-index="1">var owner = document.currentScript.ownerDocument;</span>
+  <span class="fragment burn" data-fragment-index="2">var tmpl = owner.querySelector("template");</span>
+  
+  <span class="fragment burn" data-fragment-index="3">var WidgetProto = Object.create(HTMLElement.prototype);
 
-  <span class="fragment burn" data-fragment-index="2">// thatDoc refers to the "importer", which is index.html
-  var thatDoc = document;</span>
-
-  <span class="fragment burn" data-fragment-index="3">// use thisDoc to find our template
-  var template = thisDoc.querySelector("#chart-pie");</span>
-
-  <span class="fragment burn" data-fragment-index="4">var ChartPieProto = Object.create(HTMLElement.prototype);
-  ChartPieProto.createdCallback = function() {
+  WidgetProto.createdCallback = function() {
     ...
   };</span>
 
-  <span class="fragment burn" data-fragment-index="5">// use thatDoc to register our element
-  var ChartPie = thatDoc.register("chart-pie", {
-    prototype: ChartPieProto
+  <span class="fragment burn" data-fragment-index="4">var Widget = document.register("my-widget", {
+    prototype: WidgetProto
   });</span>
 &lt;/script&gt;
           </code></pre>
-        </section> -->
+        </section>
+
+
+        <section>
+          <img class="chromeless" src="./img/owner-document.png">
+        </section>
 
 
         <section class="left-align">
@@ -1185,7 +1184,7 @@ document.body.appendChild(template.content.cloneNode(true));
           <h3><i class="icon-remove-circle not-supported"></i> Opera / Opera Mini</h3>
         </section>
 
-        <section>
+        <!-- <section>
           <div class="spec-list">
             <h2 class="spec-name">Templates</h2>
             <h3 class="voice voice-human spec-definition"><em>Scaffolding</em></h3>
@@ -1196,9 +1195,9 @@ document.body.appendChild(template.content.cloneNode(true));
             <h2 class="spec-name">Imports</h2>
             <h3 class="voice voice-human spec-definition"><em>Packaging</em></h3>
           </div>
-        </section>
+        </section> -->
 
-        <section class="left-align">
+        <!-- <section class="left-align">
           <h2>Use Chrome Canary</h2>
           <hr>
           <p style="font-size: 50px;">In <code>about:flags</code></p>
@@ -1207,7 +1206,7 @@ document.body.appendChild(template.content.cloneNode(true));
           <p style="font-size: 50px;"><i class="icon-ok supported"></i> HTML Imports</p>
           <hr>
           <p style="font-size: 50px;"><i class="icon-ok supported"></i> Show Shadow DOM in Developer Tools</p>
-        </section>
+        </section> -->
 
 
         <section>
