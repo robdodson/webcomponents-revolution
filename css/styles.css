@@ -42,6 +42,22 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Open Sans Condensed';
+  src: url('../fonts/opensans-condbold-webfont.eot');
+  src: url('../fonts/opensans-condbold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/opensans-condbold-webfont.woff') format('woff'),
+       url('../fonts/opensans-condbold-webfont.ttf') format('truetype'),
+       url('../fonts/opensans-condbold-webfont.svg#open_sans_condensedbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  var-text-color: green;
+  var-header-font: Courier;
+}
+
 video {
   width: 600px;
 }
@@ -90,6 +106,14 @@ h3 {
   box-sizing: border-box;
   width: 90%;
   border: 2px dashed gray;
+  margin: 15px auto;
+  padding: 0 40px;
+}
+
+/* This style seems funny but it's here to illustrate a :host example */
+.reveal .demo .widget-borderless {
+  box-sizing: border-box;
+  width: 90%;
   margin: 15px auto;
   padding: 0 40px;
 }

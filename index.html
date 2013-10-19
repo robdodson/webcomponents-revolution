@@ -662,6 +662,125 @@
         </section>
 
 
+        <section id="demo-host" class="demo">
+          <h3>Styling :host</h3>
+          <div class="demo-code">
+            <div class="ribbon-container">
+              <pre style="font-size: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;template&gt;
+  &lt;style&gt;
+    :host {
+      border: 5px solid red;
+    }
+  &lt;/style&gt;
+  &lt;h2&gt;Oh hai!&lt;/h2&gt;
+&lt;/template&gt;
+              </code></pre>
+              <div class="ribbon-wrapper-blue">
+                <div class="ribbon-blue">Shadow</div>
+              </div>
+            </div>
+          </div>
+
+          <template>
+            <style>
+              :host {
+                /*
+                  We have to use important because Reveal.js
+                  has a higher specificity on the :host
+                 */
+                border: 5px solid red !important; 
+              }
+            </style>
+            <h2>Oh hai!</h2>
+          </template>
+
+          <div class="widget-borderless"></div>
+        </section>
+
+
+        <section id="demo-theming" class="demo">
+          <h3>Theming</h3>
+          <div class="demo-code">
+            <div class="ribbon-container">
+              <pre style="font-size: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;template&gt;
+  &lt;style&gt;
+    :host(.skinny) h2 {
+      font-family: 'Open Sans Condensed';
+      letter-spacing: -0.09em;
+    }
+  &lt;/style&gt;
+  &lt;h2&gt;Oh hai!&lt;/h2&gt;
+&lt;/template&gt;
+              </code></pre>
+              <div class="ribbon-wrapper-blue">
+                <div class="ribbon-blue">Shadow</div>
+              </div>
+            </div>
+          </div>
+
+          <template>
+            <style>
+              :host(.skinny) h2 {
+                /*
+                  We have to use important because Reveal.js
+                  has a higher specificity on the :host
+                 */
+                font-family: 'Open Sans Condensed' !important;
+                letter-spacing: -0.09em;
+              }
+            </style>
+            <h2>All jammed up</h2>
+          </template>
+
+          <div class="skinny">
+            <div class="widget"></div>
+          </div>
+        </section>
+
+
+        <section id="demo-custom-props" class="demo">
+          <h3>Custom Properties</h3>
+          <div class="demo-code">
+            <div class="ribbon-container">
+              <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;template&gt;
+  &lt;style&gt;
+    h2 {
+      font-family: var(header-font);
+    }
+  &lt;/style&gt;
+  &lt;h2&gt;Custom prop stylin'&lt;/h2&gt;
+&lt;/template&gt;
+              </code></pre>
+              <div class="ribbon-wrapper-blue">
+                <div class="ribbon-blue">Shadow</div>
+              </div>
+            </div>
+
+            <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;style&gt;
+  body {
+    var-header-font: Courier;
+  }
+&lt;/style&gt;
+            </code></pre>
+          </div>
+
+          <template>
+            <style>
+              h2 {
+                font-family: var(header-font);
+              }
+            </style>
+            <h2>Custom prop stylin'</h2>
+          </template>
+
+          <div class="widget"></div>
+        </section>
+
+
         <section class="left-align">
           <h3><strong>Insertion points</strong> invite content from the host element into the Shadow DOM.</h3>
 
@@ -713,14 +832,6 @@
 
         <section id="demo-select" class="demo">
           <h3>Select</h3>
-          <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;div class="widget"&gt;
-  Hello World
-  &lt;span class="first-name"&gt;Rob&lt;/span&gt;
-  &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
-&lt;/div&gt;
-          </code></pre>
-
           <div class="ribbon-container">
             <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;h3&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/h3&gt;
@@ -731,6 +842,14 @@
               <div class="ribbon-blue">Shadow</div>
             </div>
           </div>
+
+          <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;div class="widget"&gt;
+  Hello World
+  &lt;span class="first-name"&gt;Rob&lt;/span&gt;
+  &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
+&lt;/div&gt;
+          </code></pre>
 
           <template>
             <style>h3 { margin: 0 0 10px; text-align: left; }</style>
@@ -1314,6 +1433,36 @@ document.body.appendChild(template.content.cloneNode(true));
           </aside>
         </section>
 
+        <section class="left-align">
+          <h3>Lifecycle Callbacks</h3>
+          <hr>
+          <div style="font-size: 32px;">
+            <div class="fragment burn">
+              <p>
+                <strong><code>created()</code></strong><br>
+                When a new instance is created. Use like a constructor
+              </p>
+            </div>
+            <div class="fragment burn">
+              <p>
+                <strong><code>enteredView()</code></strong><br>
+                When an element is added to the page<br>
+              </p>
+            </div>
+            <div class="fragment burn">
+              <p>
+                <strong><code>leftView()</code></strong><br>
+                When an element is removed from the page<br>
+              </p>
+            </div>
+            <div class="fragment burn">
+              <p>
+                <strong><code>attributeChanged(attrName, oldVal, newVal)</code></strong><br>
+                When one of an element's attributes changes
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section>
           <h1><strong>There's moar!</strong></h1>
