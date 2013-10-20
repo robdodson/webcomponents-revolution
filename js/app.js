@@ -174,7 +174,39 @@
 
 
 (function () {
-  
+
+  // This code was written in the wee hours...
+  // It is horrible.
+
+  var focusedSlide;
+
+  function focusOn() {
+    focusedSlide = Reveal.getCurrentSlide();
+    var fragments = focusedSlide.querySelectorAll('.fragment');
+    Array.prototype.forEach.call(fragments, function(fragment) {
+      fragment.classList.add('force-focus');
+    });
+    document.addEventListener('keydown', focusOff);
+  }
+
+  function focusOff() {
+    console.log('focusOff running...');
+    var fragments = focusedSlide.querySelectorAll('.fragment');
+    Array.prototype.forEach.call(fragments, function(fragment) {
+      fragment.classList.remove('force-focus');
+    });
+    document.removeEventListener('keydown', focusOff);
+  }
+
+  Reveal.addEventListener('slidechanged', function(e) {
+    // e.previousSlide, e.currentSlide, e.indexh, e.indexv
+    var fragments = e.currentSlide.querySelectorAll('.fragment');
+    var focusedFragments = e.currentSlide.querySelectorAll('.fragment.focus');
+    if (fragments.length && fragments.length > 1 && !focusedFragments.length) {
+      focusOn();
+    }
+  });
+
   document.addEventListener('keydown', function(e) {
     // Kill keyboard events on slides with text input
     if (e.target.getAttribute('data-disable-events')) {
@@ -184,10 +216,7 @@
 
     // Make all fragments visible
     if (e.keyCode === 74) { // j key
-      var fragments = Reveal.getCurrentSlide().querySelectorAll('.fragment');
-      Array.prototype.forEach.call(fragments, function(fragment) {
-        fragment.classList.toggle('force-focus');
-      });
+      focusOn(e);
     }
 
   }, true);
