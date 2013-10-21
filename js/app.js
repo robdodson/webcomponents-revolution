@@ -19,8 +19,8 @@
   var showPie = function showPie(e) {
     if (Boolean(e.fragment.getAttribute('data-pie'))) {
       var slide = Reveal.getCurrentSlide();
-      var pie = document.createElement('chart-pie');
-      slide.appendChild(pie);
+      var el = '<chart-pie values="[30, 50, 100]"></chart-pie>';
+      slide.querySelector('div[data-pie]').innerHTML = el;
       Reveal.removeEventListener('fragmentshown', showPie);
     }
   };

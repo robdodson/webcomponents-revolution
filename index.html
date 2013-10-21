@@ -96,7 +96,7 @@
         </section>
 
         <section data-background="./img/jake.gif">
-          <img style="margin-left: 35%; margin-top: -20%;" class="chromeless" width="800px" src="./img/you.png">
+          <img style="margin-left: 35%; margin-top: -20%;" class="chromeless" width="700px" src="./img/you.png">
         </section>
 
         <section class="left-align">
@@ -278,7 +278,7 @@
 
         <section id="chart-demo" style="height: 200px;">
           <code style="font-size: 50px;">&lt;chart-pie&gt;&lt;/chart-pie&gt;</code>
-          <div class="fragment" data-pie="true" style="height: 20px;"></div>
+          <div class="fragment" data-pie="true"></div>
           <aside class="notes">
             <p>Imagine you're building a data viz library</p>
           </aside>
@@ -364,7 +364,6 @@
         <section>
           <h3>The Content Keyword</h3>
           <img class="chromeless" src="./img/template-content.png">
-          <p class="left-align"><em>This protects our template from accidentally being queried.</em></p>
         </section>
 
         <section class="demo" id="demo-templates">
@@ -1048,32 +1047,6 @@
         </section>
 
 
-        <section>
-          <h1>Demo!</h1>
-        </section>
-
-
-        <section>
-          <h3>Extending Existing Elements</h3>
-          <pre class="full-bleed"><code data-trim contenteditable style="margin-top: 20px;">
-var MyButton = document.register("my-button", {
-  extends: "button",
-  prototype: Object.create(HTMLButtonElement.prototype)
-});
-          </code></pre>
-          <br>
-          <h4>Add your element to the page</h4>
-          <pre class="full-bleed"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span>&lt;button is="my-button"&gt;&lt;/button&gt;</span>
-<span>var btn = document.createElement("button", "my-button");</span>
-<span>var btn = new MyButton();</span>
-          </code></pre>
-          <aside class="notes">
-            Called "Type Extension Elements"
-          </aside>
-        </section>
-
-
         <section class="left-align">
           <h3>Lifecycle Callbacks</h3>
           <hr>
@@ -1111,6 +1084,28 @@ var MyButton = document.register("my-button", {
           <h1>Demo!</h1>
         </section>
 
+
+        <section>
+          <h3>Type Extension Elements</h3>
+          <pre class="full-bleed"><code data-trim contenteditable style="margin-top: 20px;">
+var MyButton = document.register("my-button", {
+  extends: "button",
+  prototype: Object.create(HTMLButtonElement.prototype)
+});
+          </code></pre>
+          <br>
+          <h4>Add your element to the page</h4>
+          <pre class="full-bleed"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span>&lt;button is="my-button"&gt;&lt;/button&gt;</span>
+<span>var btn = document.createElement("button", "my-button");</span>
+<span>var btn = new MyButton();</span>
+          </code></pre>
+          <aside class="notes">
+            Called "Type Extension Elements"
+          </aside>
+        </section>
+
+
         <section>
           <h3>Goodbye &lt;element&gt;... for now</h3>
           <pre style="font-size: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
@@ -1143,6 +1138,25 @@ var MyButton = document.register("my-button", {
           </code></pre>
         </section>
 
+        <section>
+          <h3>Dashboards</h3>
+          <div style="zoom: 0.9;">
+            <chart-pie values="[20, 30, 100]"></chart-pie>
+            <chart-doughnut values="[30, 50, 100, 40, 120]"></chart-doughnut>
+            <chart-polar-area values="[30, 90, 18, 58, 82]"></chart-polar-area>
+            <chart-radar></chart-radar>
+            <chart-line></chart-line>
+            <chart-bar></chart-bar>
+          </div>
+          <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+&lt;chart-pie values="[...]"&gt;&lt;/chart-pie&gt;
+&lt;chart-doughnut values="[...]"&gt;&lt;/chart-doughnut&gt;
+&lt;chart-polar-area values="[...]"&gt;&lt;/chart-polar-area&gt;
+&lt;chart-radar values="[...]"&gt;&lt;/chart-radar&gt;
+&lt;chart-line values="[...]"&gt;&lt;/chart-line&gt;
+&lt;chart-bar values="[...]"&gt;&lt;/chart-bar&gt;
+          </code></pre>
+        </section>
 
         <section>
           <h3>Google Analytics</h3>

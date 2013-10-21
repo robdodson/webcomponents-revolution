@@ -91,6 +91,13 @@ h3 {
  * Demos
  */
 
+div[data-pie] {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 20px auto;
+}
+
 .reveal .demo-code {
   position: relative;
   margin-bottom: 10px;
