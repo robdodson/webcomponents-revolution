@@ -92,32 +92,32 @@
   };
   demos.parts();
 
-  demos.hostStyle = function hostStyle() {
-    var section = document.querySelector('#demo-host');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget-borderless');
-    var root = host.createShadowRoot();
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.hostStyle();
+  // demos.hostStyle = function hostStyle() {
+  //   var section = document.querySelector('#demo-host');
+  //   var template = section.querySelector('template');
+  //   var host = section.querySelector('.widget-borderless');
+  //   var root = host.createShadowRoot();
+  //   root.appendChild(template.content.cloneNode(true));
+  // };
+  // demos.hostStyle();
 
-  demos.theming = function theming() {
-    var section = document.querySelector('#demo-theming');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.theming();
+  // demos.theming = function theming() {
+  //   var section = document.querySelector('#demo-theming');
+  //   var template = section.querySelector('template');
+  //   var host = section.querySelector('.widget');
+  //   var root = host.createShadowRoot();
+  //   root.appendChild(template.content.cloneNode(true));
+  // };
+  // demos.theming();
 
-  demos.customProps = function customProps() {
-    var section = document.querySelector('#demo-custom-props');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.customProps();
+  // demos.customProps = function customProps() {
+  //   var section = document.querySelector('#demo-custom-props');
+  //   var template = section.querySelector('template');
+  //   var host = section.querySelector('.widget');
+  //   var root = host.createShadowRoot();
+  //   root.appendChild(template.content.cloneNode(true));
+  // };
+  // demos.customProps();
 
   demos.insertionPoints = function insertionPoints() {
     var section = document.querySelector('#demo-insertion-points');

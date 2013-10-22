@@ -265,47 +265,6 @@
 						}
 					}
 
-					// This code was written in the wee hours...
-					// It is horrible.
-
-					var mainReveal;
-					var focusedSlide;
-
-					if (window.opener) {
-						mainReveal = window.opener.Reveal;
-					}
-
-					function focusOn() {
-						console.log('focusOn');
-						setTimeout(function() {
-							focusedSlide = mainReveal.getCurrentSlide();
-							var fragments = focusedSlide.querySelectorAll('.fragment');
-							Array.prototype.forEach.call(fragments, function(fragment) {
-								fragment.classList.add('force-focus');
-							});
-							currentSlide.contentWindow.addEventListener('keydown', focusOff);
-						}, 0);
-					}
-
-					function focusOff(e) {
-						console.log('focusOff');
-						var fragments = focusedSlide.querySelectorAll('.fragment');
-						Array.prototype.forEach.call(fragments, function(fragment) {
-							fragment.classList.remove('force-focus');
-						});
-						currentSlide.contentWindow.removeEventListener('keydown', focusOff);
-					}
-
-					mainReveal.addEventListener('slidechanged', function(e) {
-						console.log('slidechanged');
-						// e.previousSlide, e.currentSlide, e.indexh, e.indexv
-						var fragments = mainReveal.getCurrentSlide().querySelectorAll('.fragment');
-						var focusedFragments = mainReveal.getCurrentSlide().querySelectorAll('.fragment.focus');
-						if (fragments.length && fragments.length > 1 && !focusedFragments.length) {
-							focusOn();
-						}
-					});
-
 				}
 				else {
 
