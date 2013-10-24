@@ -33,7 +33,7 @@
   demos.template = function template() {
     var section = Reveal.getCurrentSlide();
     var template = section.querySelector('#my-widget');
-    template.content.querySelector('img').src = 'http://localhost:3000/img/corgi.gif';
+    template.content.querySelector('img').src = './img/corgi.gif';
     section.appendChild(template.content.cloneNode(true));
   };
 
