@@ -417,7 +417,7 @@
           <p class="fragment" data-fragment-index="2"><em>You'll have to append each separately</em></p>
         </section>
 
-        <section class="left-align">
+        <!-- <section class="left-align">
           <h2>Browser Support</h2>
           <hr>
           <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</h3>
@@ -425,7 +425,7 @@
           <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
           <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
           <h3><i class="icon-ok-circle supported"></i> Opera / Opera Mini</h3>
-        </section>
+        </section> -->
 
         <section>
           <div class="spec-list">
@@ -519,6 +519,92 @@
           <aside class="notes">
             Inspect with dev tools
           </aside>
+        </section>
+
+        <section class="left-align">
+          <h3><strong>Insertion points</strong> invite content from the host element into the Shadow DOM.</h3>
+
+          <h3>Use the <strong>&lt;content&gt; tag</strong> to create an insertion point.</h3>
+        </section>
+
+        <section id="demo-insertion-points" class="demo">
+          <h3>Insertion Points</h3>
+          <div class="demo-code">
+            <div class="ribbon-container">
+              <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;template&gt;
+  &lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
+&lt;/template&gt;
+              </code></pre>
+              <div class="ribbon-wrapper-blue">
+                <div class="ribbon-blue">Shadow</div>
+              </div>
+            </div>
+
+            <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;div class="widget"&gt;Jigglypuff&lt;/div&gt;
+            </code></pre>
+          </div>
+
+          <div class="widget">
+            <div class="hidden pokemon">
+              Jigglypuff
+            </div>
+          </div>
+
+          <template>
+            <h2>A Wild <content></content> Appeared!</h2>
+          </template>
+
+          <img class="jigglypuff chromeless" src="./img/jigglypuff.png">
+
+          <aside class="notes">
+            A single content tag is kind of like a catch-all
+          </aside>
+        </section>
+
+        <section class="left-align">
+          <h3>Specific content can be targeted with the <strong>select</strong> attribute. </h3>
+        </section>
+
+        <section id="demo-select" class="demo">
+          <h3>Select</h3>
+          <div class="ribbon-container">
+            <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;h3&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/h3&gt;
+&lt;h3&gt;First Name: &lt;content select=".first-name"&gt;&lt;/content&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;content select=""&gt;&lt;/content&gt;&lt;/h3&gt;
+            </code></pre>
+            <div class="ribbon-wrapper-blue">
+              <div class="ribbon-blue">Shadow</div>
+            </div>
+          </div>
+
+          <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;div class="widget"&gt;
+  Hello World
+  &lt;span class="first-name"&gt;Rob&lt;/span&gt;
+  &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
+&lt;/div&gt;
+          </code></pre>
+
+          <template>
+            <style>h3 { margin: 0 0 10px; text-align: left; }</style>
+            <h3>Last Name: <content select=".last-name"></content></h3>
+            <h3>First Name: <content select=".first-name"></content></h3>
+            <h3><content select=""></content></h3>
+          </template>
+
+          <div class="widget expand">
+            Hello
+            <span class="first-name">Rob</span>
+            <span class="last-name">Dodson</span>
+            World
+          </div>
+        </section>
+
+        <section>
+          <a href="http://html5-demos.appspot.com/static/shadowdom-visualizer/index.html"><img src="./img/shadow-dom-viz.png"></a>
         </section>
 
         <section id="demo-style-encapsulation" class="demo">
@@ -633,11 +719,11 @@
           </div>
         </section>
 
-        <section class="left-align">
+        <!-- <section class="left-align">
           <h3>You can <strong>poke holes</strong> in the <br>shadow boundary with the <br><strong>part</strong> attribute.</h3>
-        </section>
+        </section> -->
 
-        <section id="demo-parts" class="demo" style="height: 600px;">
+        <!-- <section id="demo-parts" class="demo" style="height: 600px;">
           <h3>Styling Parts</h3>
           <div class="demo-code">
             <div class="ribbon-container">
@@ -678,7 +764,7 @@
           </template>
 
           <div class="widget"></div>
-        </section>
+        </section> -->
 
         <section id="demo-host" class="demo">
           <h3>Styling :host</h3>
@@ -797,103 +883,70 @@
 
           <div class="widget"></div>
         </section>
-
+        
         <section class="left-align">
-          <h3><strong>Insertion points</strong> invite content from the host element into the Shadow DOM.</h3>
-
-          <h3>Use the <strong>&lt;content&gt; tag</strong> to create an insertion point.</h3>
+          <h3>
+            You can <strong>style into</strong> the shadow boundary with the
+            <strong>&ldquo; hat &rdquo;</strong> and <br><strong>&ldquo; cat &rdquo;</strong> selectors.
+          </h3>
         </section>
 
-
-        <section id="demo-insertion-points" class="demo">
-          <h3>Insertion Points</h3>
+        <section id="demo-catAndHat" class="demo">
+          <h3>The Cat and the Hat</h3>
           <div class="demo-code">
             <div class="ribbon-container">
-              <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;template&gt;
-  &lt;h2&gt;A Wild &lt;content&gt;&lt;/content&gt; Appeared!&lt;/h2&gt;
-&lt;/template&gt;
+              <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
+<template>
+  <h2>First Shadow DOM</h2>
+  <content></content>
+</template>
               </code></pre>
               <div class="ribbon-wrapper-blue">
                 <div class="ribbon-blue">Shadow</div>
               </div>
             </div>
 
-            <pre style="font-size: 28px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;div class="widget"&gt;
-  Jigglypuff
-&lt;/div&gt;
+            <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
+&lt;style&gt;
+  /* the hat */
+  .widget ^ h2 { color: red; }
+
+  /* the cat */
+  .widget ^^ h2 { font-family: Courier; }
+&lt;/style&gt;
             </code></pre>
           </div>
+
+          <style>
+          /* the hat */
+          #demo-catAndHat .widget ^ h2 { color: red; }
+
+          /* the cat */
+          #demo-catAndHat .widget ^^ h2 { font-family: Courier; }
+          </style>
+
+          <template id="first-tmpl">
+            <h2>First Shadow DOM</h2>
+            <content></content>
+          </template>
+
+          <template id="second-tmpl">
+            <h2>Second Shadow DOM</h2>
+          </template>
 
           <div class="widget">
-            <div class="hidden pokemon">
-              Jigglypuff
-            </div>
-          </div>
-
-          <template>
-            <h2>A Wild <content></content> Appeared!</h2>
-          </template>
-
-          <img class="jigglypuff chromeless" src="./img/jigglypuff.png">
-
-          <aside class="notes">
-            A single content tag is kind of like a catch-all
-          </aside>
-        </section>
-
-        <section class="left-align">
-          <h3>Specific content can be targeted with the <strong>select</strong> attribute. </h3>
-        </section>
-
-        <section id="demo-select" class="demo">
-          <h3>Select</h3>
-          <div class="ribbon-container">
-            <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;h3&gt;Last Name: &lt;content select=".last-name"&gt;&lt;/content&gt;&lt;/h3&gt;
-&lt;h3&gt;First Name: &lt;content select=".first-name"&gt;&lt;/content&gt;&lt;/h3&gt;
-&lt;h3&gt;&lt;content select=""&gt;&lt;/content&gt;&lt;/h3&gt;
-            </code></pre>
-            <div class="ribbon-wrapper-blue">
-              <div class="ribbon-blue">Shadow</div>
-            </div>
-          </div>
-
-          <pre style="font-size: 24px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;div class="widget"&gt;
-  Hello World
-  &lt;span class="first-name"&gt;Rob&lt;/span&gt;
-  &lt;span class="last-name"&gt;Dodson&lt;/span&gt;
-&lt;/div&gt;
-          </code></pre>
-
-          <template>
-            <style>h3 { margin: 0 0 10px; text-align: left; }</style>
-            <h3>Last Name: <content select=".last-name"></content></h3>
-            <h3>First Name: <content select=".first-name"></content></h3>
-            <h3><content select=""></content></h3>
-          </template>
-
-          <div class="widget expand">
-            Hello
-            <span class="first-name">Rob</span>
-            <span class="last-name">Dodson</span>
-            World
+            <div class="another-widget"></div>
           </div>
         </section>
 
-        <section>
-          <a href="http://html5-demos.appspot.com/static/shadowdom-visualizer/index.html"><img src="./img/shadow-dom-viz.png"></a>
-        </section>
 
-        <section>
+        <!-- <section>
           <h2>What About JavaScript?</h2>
         </section>
 
         <section class="left-align">
           <h2>There is no special encapsulation but <strong>events are retargeted</strong> to the Shadow Host.</h2>
-        </section>
+        </section> -->
 
         <!-- <section id="demo-retargeted-events" class="demo">
           <h3>Events are retargeted</h3>
@@ -937,7 +990,7 @@
 
         </section> -->
 
-        <section class="left-align">
+        <!-- <section class="left-align">
           <h2>Browser Support</h2>
           <hr>
           <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</h3>
@@ -945,7 +998,7 @@
           <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
           <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
           <h3><i class="icon-ok-circle supported"></i> Opera / Opera Mini</h3>
-        </section>
+        </section> -->
 
         <section>
           <div class="spec-list">
@@ -1147,7 +1200,7 @@ var MyButton = document.register("my-button", {
           </code></pre>
         </section>
 
-        <section>
+        <!-- <section>
           <h3>Google Analytics</h3>
           <br>
           <g-analytics account="UA-44428880-1" domain="localhost"></g-analytics>
@@ -1157,7 +1210,7 @@ var MyButton = document.register("my-button", {
   domain="localhost"&gt;
 &lt;/g-analytics&gt;
           </code></pre>
-        </section>
+        </section> -->
 
 
         <section style="margin-top: -80px;">
@@ -1215,7 +1268,7 @@ var MyButton = document.register("my-button", {
         </section>
 
 
-        <section class="left-align">
+        <!-- <section class="left-align">
           <h2>Browser Support</h2>
           <hr>
           <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</h3>
@@ -1223,7 +1276,7 @@ var MyButton = document.register("my-button", {
           <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
           <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
           <h3><i class="icon-ok-circle supported"></i> Opera / Opera Mini</h3>
-        </section>
+        </section> -->
 
 
         <section>
@@ -1303,7 +1356,7 @@ document.body.appendChild(template.content.cloneNode(true));
         </section> -->
 
 
-        <section>
+        <!-- <section>
           <h3>The import</h3>
           <pre style="font-size: 27px;" class="full-bleed"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;template&gt;
@@ -1325,14 +1378,14 @@ document.body.appendChild(template.content.cloneNode(true));
   });</span>
 &lt;/script&gt;
           </code></pre>
-        </section>
+        </section> -->
 
 
-        <section>
+        <!-- <section>
           <img class="chromeless" src="./img/owner-document.png">
-        </section>
+        </section> -->
 
-        <section class="left-align">
+        <!-- <section class="left-align">
           <h2>Browser Support</h2>
           <hr>
           <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome <br><em>(behind a flag)</em></h3>
@@ -1340,9 +1393,9 @@ document.body.appendChild(template.content.cloneNode(true));
           <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
           <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
           <h3><i class="icon-remove-circle not-supported"></i> Opera / Opera Mini</h3>
-        </section>
+        </section> -->
 
-        <!-- <section>
+        <section>
           <div class="spec-list">
             <h2 class="spec-name">Templates</h2>
             <h3 class="voice voice-human spec-definition"><em>Scaffolding</em></h3>
@@ -1353,7 +1406,59 @@ document.body.appendChild(template.content.cloneNode(true));
             <h2 class="spec-name">Imports</h2>
             <h3 class="voice voice-human spec-definition"><em>Packaging</em></h3>
           </div>
-        </section> -->
+        </section>
+
+        <section>
+          <h2>Support</h2>
+          <hr>
+          <table class="support-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th><img width="70px" class="chromeless" src="./img/chrome-canary.png"></th>
+                <th><img width="70px" class="chromeless" src="./img/chrome.png"></th>
+                <th><img width="70px" class="chromeless" src="./img/firefox.png"></th>
+                <th><img width="70px" class="chromeless" src="./img/ie9-10.png"></th>
+                <th><img width="70px" class="chromeless" src="./img/safari.png"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><h4>Templates</h4></td>
+                <td><i class="icon-ok supported"></i></td>
+                <td><i class="icon-ok supported"></i></td>
+                <td><i class="icon-ok supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+              </tr>
+              <tr>
+                <td><h4>Shadow DOM</h4></td>
+                <td><i class="icon-ok supported"></i></td>
+                <td><i class="icon-ok supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+                <td><i class="icon-ok supported"></i></td>
+              </tr>
+              <tr>
+                <td><h4>Custom Elements</h4></td>
+                <td><i class="icon-ok supported"></i></td>
+                <td><i class="icon-ok supported"></i><sup style="font-size: 14px;">*</sup></td>
+                <td><i class="icon-ok supported"></i><sup style="font-size: 14px;">*</sup></td>
+                <td><i class="icon-remove not-supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+              </tr>
+              <tr>
+                <td><h4>Imports</h4></td>
+                <td><i class="icon-ok supported"></i><sup style="font-size: 14px;">*</sup></td>
+                <td><i class="icon-remove not-supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+                <td><i class="icon-remove not-supported"></i></td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="text-align: left; margin-top: 25px;"><small><em><sup>*</sup> Behind a flag</small></em></p>
+        </section>
 
         <section class="left-align">
           <h2>Use Chrome Canary</h2>

@@ -83,14 +83,29 @@
   };
   demos.resetStyleInheritance();
 
-  demos.parts = function parts() {
-    var section = document.querySelector('#demo-parts');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    root.appendChild(template.content.cloneNode(true));
+  // demos.parts = function parts() {
+  //   var section = document.querySelector('#demo-parts');
+  //   var template = section.querySelector('template');
+  //   var host = section.querySelector('.widget');
+  //   var root = host.createShadowRoot();
+  //   root.appendChild(template.content.cloneNode(true));
+  // };
+  // demos.parts();
+
+  demos.catAndHat = function catAndHat() {
+    var section = document.querySelector('#demo-catAndHat');
+    var tmpl1 = section.querySelector('#first-tmpl');
+    var host1 = section.querySelector('.widget');
+    var root1 = host1.createShadowRoot();
+
+    var tmpl2 = section.querySelector('#second-tmpl');
+    var host2 = section.querySelector('.another-widget');
+    var root2 = host2.createShadowRoot();
+
+    root2.appendChild(tmpl2.content.cloneNode(true));
+    root1.appendChild(tmpl1.content.cloneNode(true));
   };
-  demos.parts();
+  demos.catAndHat();
 
   demos.hostStyle = function hostStyle() {
     var section = document.querySelector('#demo-host');
