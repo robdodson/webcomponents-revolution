@@ -26,6 +26,9 @@
     <!-- Our styles -->
     <link rel="stylesheet" href="css/styles.css" id="styles">
 
+    <!-- Include Web Components polyfills -->
+    <script src="bower_components/platform/platform.js"></script>
+
     <script src="lib/js/head.min.js"></script>
     
 
@@ -40,20 +43,20 @@
 
     <!-- Custom Elements -->
     <!-- Include any js libraries that our elements use -->
-    <script src="./lib/js/chart.min.js"></script>
-    <script src="./lib/js/moment.js"></script>
-    <script src="./lib/js/markdown.js"></script>
-    <script src="./lib/js/polymer.min.js"></script>
+    <script src="lib/js/moment.js"></script>
+
     <!-- Import all custom elements -->
-    <link rel="import" href="./imports/chart.html">
-    <link rel="import" href="./imports/mark-down.html">
-    <link rel="import" href="./imports/mailchimp.html">
-    <link rel="import" href="./imports/google-analytics.html">
-    <link rel="import" href="./imports/moment.html">
-    <link rel="import" href="./imports/demos.html">
-    <link rel="import" href="./imports/polymer-elements.html">
+    <link rel="import"
+      href="bower_components/chart-elements/chart-elements.html">
+    <link rel="import"
+      href="bower_components/mark-down/mark-down.html">
+    <link rel="import" href="imports/mailchimp.html">
+    <link rel="import" href="imports/google-analytics.html">
+    <link rel="import" href="imports/moment.html">
+    <!-- <link rel="import" href="imports/demos.html"> -->
+    <link rel="import" href="imports/polymer-elements.html">
     <!-- Specific import for the 'imports' section of the talk -->
-    <link rel="import" href="./imports/blog-post.html">
+    <!-- <link rel="import" href="imports/blog-post.html"> -->
   </head>
 
   <body>
@@ -78,7 +81,7 @@
           </aside>
         </section>
 
-        <section class="left-align">
+        <!-- <section class="left-align">
           <h3>
             This presentation contains <strong>native Web Components</strong> and <br>will
             only display properly in <br><a href="https://www.google.com/intl/en/chrome/browser/canary.html">Chrome Canary.</a>
@@ -88,8 +91,7 @@
           <p><i class="icon-ok supported"></i> Experimental Web Platform features</p>
           <p><i class="icon-ok supported"></i> Experimental JavaScript</p>
           <p><i class="icon-ok supported"></i> HTML Imports</p>
-
-        </section>
+        </section> -->
 
         <section>
           <h2 class="left-align voice voice-human" style="font-size: 90px;">Within this talk...</h2>
@@ -270,7 +272,7 @@
           <h2>Web Components!</h2>
           <br>
           <h3 class="fragment">1. Create your own HTML Elements</h3>
-          <h3 class="fragment">2. Encapsulate your styles</h3>
+          <h3 class="fragment">2. Scope your styles</h3>
           <h3 class="fragment">3. React with lifecycle callbacks</h3>
           <aside class="notes">
             <p>"Umbrella" term</p>
@@ -307,7 +309,7 @@
               &lt;/mark-down&gt;
             </code>
           </div>
-          <mark-down>
+          <mark-down style="display: inline-block;">
             ## Oh hai!
             ### How _you_ doin?
             [Link me!](foo.com)
@@ -392,7 +394,7 @@
 <span class="fragment burn" data-fragment-index="2">&lt;script&gt;
   var tmpl = document.querySelector("#my-template");
   tmpl.content.querySelector("img").src = "corgi.gif";
-  document.body.appendChild(tmpl.content.cloneNode(true));
+  document.body.appendChild(document.importNode(tmpl.content, true));
 &lt;/script&gt;</span>
             </code></pre>
             <button class="demo-btn" onclick="demos.template();">Run</button>
@@ -544,7 +546,7 @@
   var tmpl = document.querySelector("template");
   var host = document.querySelector(".widget");
   var root = host.createShadowRoot();
-  root.appendChild(tmpl.content.cloneNode(true));
+  root.appendChild(document.importNode(tmpl.content, true));
 &lt;/script&gt;</span>
             </code></pre>
           </div>
@@ -565,86 +567,18 @@
           </div>
         </section>
 
-
-        <section id="demo-applyAuthorStyles" class="left-align demo">
-          <p><strong><code>applyAuthorStyles</code></strong> (default: <code>false</code>)</p>
-          <p><code>false</code>: Author styles <strong>will not</strong> affect your component.</p>
-          <p><code>true</code>: Author styles <strong>will</strong> affect your component.</p>
-          <br>
-          <div>
-
-            <template>
-              <style>
-                h3 {
-                  color: white;
-                  background: tomato;
-                }
-              </style>
-              <h3>A Shadow H3 Header</h3>
-            </template>
-
-            <div class="center-align">
-              <h3>An H3 Header</h3>
-              <div class="widget"></div>
-            </div>
-
-            <div class="wrap">
-              <button class="demo-btn right" onclick="demos.applyAuthorStyles();">Toggle</button>
-              <code>root.applyAuthorStyles: <span id="isAuthorStyles"></span></code>
-            </div>
-            
-          </div>
-          <aside class="notes">
-            <p>
-              These are good for broad changes but you probably also want
-              to be able to expose specific elements for the user to style
-            </p>
-          </aside>
-        </section>
-
-
-        <section id="demo-resetStyleInheritance" class="left-align demo">
-          <p><strong><code>resetStyleInheritance</code></strong> (default: <code>false</code>)</p>
-          <p><code>false</code>: Inheritable styles <strong>will</strong> affect your component.</p>
-          <p><code>true</code>: Inheritable styles <strong>will not</strong> affect your component.</p>
-          <br>
-          <div>
-
-            <template>
-              <style>
-                h3 {
-                  color: white;
-                  background: tomato;
-                }
-              </style>
-              <h3>A Shadow H3 Header</h3>
-            </template>
-
-            <div class="center-align">
-              <h3>An H3 Header</h3>
-              <div class="widget"></div>
-            </div>
-
-            <div class="wrap">
-              <button class="demo-btn right" onclick="demos.resetStyleInheritance();">Toggle</button>
-              <code>root.resetStyleInheritance: <span id="isStyleInheritance"></span></code>
-            </div>
-
-          </div>
-        </section>
-
         <section class="left-align">
-          <h3>You can <strong>poke holes</strong> in the <br>shadow boundary with the <br><strong>part</strong> attribute.</h3>
+          <h3>You can <strong>poke holes</strong> in the <br>shadow boundary with the <br><strong>::shadow</strong> pseudo-element.</h3>
         </section>
 
         <section id="demo-parts" class="demo" style="height: 600px;">
-          <h3>Styling Parts</h3>
+          <h3>Styling</h3>
           <div class="demo-code">
             <div class="ribbon-container">
               <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;template&gt;
-  &lt;h3 part="heading"&gt;Interesting Article&lt;/h3&gt;
-  &lt;p part="article"&gt;Article copy is special!&lt;/p&gt;
+  &lt;h3 class="heading"&gt;Interesting Article&lt;/h3&gt;
+  &lt;p class="article"&gt;Article copy is special!&lt;/p&gt;
 &lt;/template&gt;
               </code></pre>
               <div class="ribbon-wrapper-blue">
@@ -654,8 +588,8 @@
 
             <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;style&gt;
-  .widget::part(heading) { font-family: Courier; }
-  .widget::part(article) { font-style: italic; }
+  .widget::shadow .heading { font-family: Courier; }
+  .widget::shadow .article { font-style: italic; }
 &lt;/style&gt;
             </code></pre>
             <aside class="notes">
@@ -668,13 +602,13 @@
           </div>
 
           <style>
-            .widget::part(heading) { font-family: Courier; }
-            .widget::part(article) { font-style: italic; }
+            .widget::shadow .heading { font-family: Courier; }
+            .widget::shadow .article { font-style: italic; }
           </style>
 
           <template>
-            <h3 part="heading">Interesting Article</h3>
-            <p part="article">Article copy is special!</p>
+            <h3 class="heading">Interesting Article</h3>
+            <p class="article">Article copy is special!</p>
           </template>
 
           <div class="widget"></div>
@@ -724,7 +658,7 @@
               <pre style="font-size: 30px;"><code data-trim contenteditable style="margin-top: 20px;">
 &lt;template&gt;
   &lt;style&gt;
-    :host(.skinny) h2 {
+    :host-context(.skinny) h2 {
       font-family: 'Open Sans Condensed';
       letter-spacing: -0.09em;
     }
@@ -740,7 +674,7 @@
 
           <template>
             <style>
-              :host(.skinny) h2 {
+              :host-context(.skinny) h2 {
                 /*
                   We have to use important because Reveal.js
                   has a higher specificity on the :host
@@ -755,47 +689,6 @@
           <div class="skinny">
             <div class="widget"></div>
           </div>
-        </section>
-
-
-        <section id="demo-custom-props" class="demo">
-          <h3>Custom Properties</h3>
-          <div class="demo-code">
-            <div class="ribbon-container">
-              <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;template&gt;
-  &lt;style&gt;
-    h2 {
-      font-family: var(header-font);
-    }
-  &lt;/style&gt;
-  &lt;h2&gt;Custom prop stylin'&lt;/h2&gt;
-&lt;/template&gt;
-              </code></pre>
-              <div class="ribbon-wrapper-blue">
-                <div class="ribbon-blue">Shadow</div>
-              </div>
-            </div>
-
-            <pre style="font-size: 25px;"><code data-trim contenteditable style="margin-top: 20px;">
-&lt;style&gt;
-  body {
-    var-header-font: Courier;
-  }
-&lt;/style&gt;
-            </code></pre>
-          </div>
-
-          <template>
-            <style>
-              h2 {
-                font-family: var(header-font);
-              }
-            </style>
-            <h2>Custom prop stylin'</h2>
-          </template>
-
-          <div class="widget"></div>
         </section>
 
         <section class="left-align">
@@ -981,7 +874,7 @@
 
 
         <section>
-          <p style="text-align: left; font-size: 50px; margin-top: 10%;"><code>document.register('tag-name', {<br>
+          <p style="text-align: left; font-size: 42px; margin-top: 10%;"><code>document.registerElement('tag-name', {<br>
             &nbsp;&nbsp;prototype: proto<br>
           })</code></p>
           <br>
@@ -1020,10 +913,10 @@
 
 <span class="fragment burn">WidgetProto.createdCallback = function() {
   var root = this.createShadowRoot();
-  root.appendChild(tmpl.content.cloneNode(true));
+  root.appendChild(document.importNode(tmpl.content, true));
 };</span>
 
-<span class="fragment burn">var Widget = document.register("my-widget", {
+<span class="fragment burn">var Widget = document.registerElement("my-widget", {
   prototype: WidgetProto
 });</span>
           </code></pre>
@@ -1052,16 +945,14 @@
             </div>
             <div class="fragment burn">
               <p>
-                <strong><code>enteredViewCallback()<sup>*</sup></code></strong><br>
-                When an element is added to the page<br>
-                <sup>*</sup><em>previously named <strong><code>enteredDocumentCallback</code></strong></em>
+                <strong><code>attachedCallback()</code></strong><br>
+                When an element is added to the page
               </p>
             </div>
             <div class="fragment burn">
               <p>
-                <strong><code>leftViewCallback()<sup>*</sup></code></strong><br>
-                When an element is removed from the page<br>
-                <sup>*</sup><em>previously named <strong><code>leftDocumentCallback</code></strong></em>
+                <strong><code>detachedCallback()</code></strong><br>
+                When an element is removed from the page
               </p>
             </div>
             <div class="fragment burn">
@@ -1077,7 +968,7 @@
         <section>
           <h3>Type Extension Elements</h3>
           <pre class="full-bleed"><code data-trim contenteditable style="margin-top: 20px;">
-var MyButton = document.register("my-button", {
+var MyButton = document.registerElement("my-button", {
   extends: "button",
   prototype: Object.create(HTMLButtonElement.prototype)
 });
@@ -1130,12 +1021,12 @@ var MyButton = document.register("my-button", {
         <section>
           <h3>Dashboards</h3>
           <div style="zoom: 0.9;">
-            <chart-pie values="[20, 30, 100]"></chart-pie>
-            <chart-doughnut values="[30, 50, 100, 40, 120]"></chart-doughnut>
-            <chart-polar-area values="[30, 90, 18, 58, 82]"></chart-polar-area>
-            <chart-radar></chart-radar>
-            <chart-line></chart-line>
-            <chart-bar></chart-bar>
+            <chart-pie width="200" height="200" values="[20, 30, 100]"></chart-pie>
+            <chart-doughnut width="200" height="200" values="[30, 50, 100, 40, 120]"></chart-doughnut>
+            <chart-polar-area width="200" height="200" values="[30, 90, 18, 58, 82]"></chart-polar-area>
+            <chart-radar width="200" height="200"></chart-radar>
+            <chart-line width="400" height="200"></chart-line>
+            <chart-bar width="400" height="200"></chart-bar>
           </div>
           <pre style="font-size: 24px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
 &lt;chart-pie values="[...]"&gt;&lt;/chart-pie&gt;
@@ -1320,7 +1211,7 @@ document.body.appendChild(template.content.cloneNode(true));
     ...
   };</span>
 
-  <span class="fragment burn" data-fragment-index="4">var Widget = document.register("my-widget", {
+  <span class="fragment burn" data-fragment-index="4">var Widget = document.registerElement("my-widget", {
     prototype: WidgetProto
   });</span>
 &lt;/script&gt;
@@ -1335,11 +1226,11 @@ document.body.appendChild(template.content.cloneNode(true));
         <section class="left-align">
           <h2>Browser Support</h2>
           <hr>
-          <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome <br><em>(behind a flag)</em></h3>
-          <h3><i class="icon-remove-circle not-supported"></i> Firefox</h3>
+          <h3><i class="icon-ok-circle supported"></i> Chrome / Mobile Chrome</h3>
+          <h3><i class="icon-remove-circle not-supported"></i> Firefox <em>(In Development)</em></h3>
           <h3><i class="icon-remove-circle not-supported"></i> Internet Explorer</h3>
           <h3><i class="icon-remove-circle not-supported"></i> Safari / Mobile Safari</h3>
-          <h3><i class="icon-remove-circle not-supported"></i> Opera / Opera Mini</h3>
+          <h3><i class="icon-ok-circle supported"></i> Opera / Opera Mini</h3>
         </section>
 
         <!-- <section>
@@ -1354,18 +1245,6 @@ document.body.appendChild(template.content.cloneNode(true));
             <h3 class="voice voice-human spec-definition"><em>Packaging</em></h3>
           </div>
         </section> -->
-
-        <section class="left-align">
-          <h2>Use Chrome Canary</h2>
-          <hr>
-          <p style="font-size: 50px;">In <code>chrome://flags</code></p>
-          <p style="font-size: 50px;"><i class="icon-ok supported"></i> Experimental Web Platform features</p>
-          <p style="font-size: 50px;"><i class="icon-ok supported"></i> Experimental JavaScript</p>
-          <p style="font-size: 50px;"><i class="icon-ok supported"></i> HTML Imports</p>
-          <hr>
-          <p style="font-size: 50px;"><i class="icon-ok supported"></i> Show Shadow DOM in Developer Tools</p>
-        </section>
-
 
         <section>
           <h1>Use 'em Today!</h1>
@@ -1384,23 +1263,22 @@ document.body.appendChild(template.content.cloneNode(true));
         </section>
 
         <section class="left-align">
-          <h2><em>Also</em> a <strong>framework</strong> for building applications with <strong>web components.</strong></h2>
+          <h2><em>Also</em> a <strong>library</strong> for building applications with <strong>web components.</strong></h2>
         </section>
 
         <section class="left-align">
           <h3>Polymer Extras</h3>
           <hr>
           <h3><i class="icon-ok-circle supported"></i> Web Animations</h3>
-          <h3><i class="icon-ok-circle supported"></i> Pointer Events</h3>
-          <h3><i class="icon-ok-circle supported"></i> Template Binding</h3>
-          <h3><i class="icon-ok-circle supported"></i> Node.bind()</h3>
+          <h3><i class="icon-ok-circle supported"></i> Gestures</h3>
           <h3><i class="icon-ok-circle supported"></i> Model-driven Views (MDV)</h3>
         </section>
 
         <section class="demo">
           <h3>Basic Polymer Element</h3>
-          <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
-<span class="fragment burn" data-fragment-index="1">&lt;script src="polymer.js"&gt;&lt;/script&gt;</span>
+          <pre style="font-size: 26px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
+<span class="fragment burn" data-fragment-index="1">&lt;script src="components/platform/platform.js"&gt;&lt;/script&gt;
+&lt;link rel="import" href="components/polymer/polymer.html"&gt;</span>
           </code></pre>
 
           <pre style="font-size: 27px;"><code data-trim data-noescape contenteditable style="margin-top: 20px;">
@@ -1478,19 +1356,19 @@ document.body.appendChild(template.content.cloneNode(true));
           <div style="font-size: 32px;">
             <div class="fragment burn">
               <p>
-                <strong><code>created()</code></strong><br>
+                <strong><code>createdCallback()</code></strong><br>
                 When a new instance is created. Use like a constructor
               </p>
             </div>
             <div class="fragment burn">
               <p>
-                <strong><code>enteredView()</code></strong><br>
+                <strong><code>attachedCallback()</code></strong><br>
                 When an element is added to the page<br>
               </p>
             </div>
             <div class="fragment burn">
               <p>
-                <strong><code>leftView()</code></strong><br>
+                <strong><code>detachedCallback()</code></strong><br>
                 When an element is removed from the page<br>
               </p>
             </div>

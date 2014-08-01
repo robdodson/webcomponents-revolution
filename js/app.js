@@ -19,7 +19,7 @@
   var showPie = function showPie(e) {
     if (Boolean(e.fragment.getAttribute('data-pie'))) {
       var slide = Reveal.getCurrentSlide();
-      var el = '<chart-pie values="[30, 50, 100]"></chart-pie>';
+      var el = '<chart-pie values="[30, 50, 100]" width="200" height="200"></chart-pie>';
       slide.querySelector('div[data-pie]').innerHTML = el;
       Reveal.removeEventListener('fragmentshown', showPie);
     }
@@ -34,7 +34,7 @@
     var section = Reveal.getCurrentSlide();
     var template = section.querySelector('#my-widget');
     template.content.querySelector('img').src = './img/corgi.gif';
-    section.appendChild(template.content.cloneNode(true));
+    section.appendChild(document.importNode(template.content, true));
   };
 
   demos.shadowRoot = function shadowRoot() {
@@ -49,39 +49,9 @@
     var template = section.querySelector('template');
     var host = section.querySelector('.widget');
     var root = host.createShadowRoot();
-    root.appendChild(template.content.cloneNode(true));
+    root.appendChild(document.importNode(template.content, true));
   };
   demos.styleEncapsulation();
-
-  demos.doAuthorStyles = true;
-  demos.applyAuthorStyles = function applyAuthorStyles() {
-    var section = document.querySelector('#demo-applyAuthorStyles');
-    var output = section.querySelector('#isAuthorStyles');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    util.emptyNode(root);
-    this.doAuthorStyles = !this.doAuthorStyles;
-    root.applyAuthorStyles = this.doAuthorStyles;
-    output.textContent = this.doAuthorStyles;
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.applyAuthorStyles();
-
-  demos.doResetStyles = true;
-  demos.resetStyleInheritance = function resetStyleInheritance() {
-    var section = document.querySelector('#demo-resetStyleInheritance');
-    var output = section.querySelector('#isStyleInheritance');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    util.emptyNode(root);
-    this.doResetStyles = !this.doResetStyles;
-    root.resetStyleInheritance = this.doResetStyles;
-    output.textContent = this.doResetStyles;
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.resetStyleInheritance();
 
   demos.parts = function parts() {
     var section = document.querySelector('#demo-parts');
@@ -110,15 +80,6 @@
   };
   demos.theming();
 
-  demos.customProps = function customProps() {
-    var section = document.querySelector('#demo-custom-props');
-    var template = section.querySelector('template');
-    var host = section.querySelector('.widget');
-    var root = host.createShadowRoot();
-    root.appendChild(template.content.cloneNode(true));
-  };
-  demos.customProps();
-
   demos.insertionPoints = function insertionPoints() {
     var section = document.querySelector('#demo-insertion-points');
     var template = section.querySelector('template');
@@ -126,10 +87,10 @@
     host.classList.remove('hidden');
     var root = host.createShadowRoot();
     root.appendChild(template.content.cloneNode(true));
-    // var jigglypuff = section.querySelector('.jigglypuff');
-    // setTimeout(function() {
-    //   jigglypuff.classList.add('in');
-    // }, 2000);
+    var jigglypuff = section.querySelector('.jigglypuff');
+    setTimeout(function() {
+      jigglypuff.classList.add('in');
+    }, 2000);
   };
   demos.insertionPoints();
 
